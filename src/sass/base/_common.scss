@@ -17,6 +17,6 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: $primary-bg-color;
-  color: $text-color;
+  background-color: var(--main-bg-cl);
+  color: var(--main-text-cl);
 }
