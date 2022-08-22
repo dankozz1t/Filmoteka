@@ -1,23 +1,32 @@
 .hero-library__content {
-  background-color: #303030;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 230px;
+  width: 100%;
+
   background-image: url(/src/images/Rectangle-1x-mobile.jpg);
-  opacity: 0.9;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 
-  flex-grow: 1;
   @include media(retina) {
     background-image: url(/src/images/Rectangle-2x-mobile.jpg);
   }
+
   @include media(tablet) {
+    height: 220px;
     background-image: url(/src/images/Rectangle-1x-tablet.jpg);
+
     @include media(retina) {
       background-image: url(/src/images/Rectangle-2x-tablet.jpg);
     }
   }
+
   @include media(desktop) {
     background-image: url(/src/images/Rectangle-1x-Desktop.jpg);
+
     @include media(retina) {
       background-image: url(/src/images/Rectangle-2x-Desktop.jpg);
     }
