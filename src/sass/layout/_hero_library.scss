@@ -1,23 +1,36 @@
 .hero-library__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+
+  width: 100%;
+  height: 230px;
+
   background-color: #303030;
   background-image: url(/src/images/Rectangle-1x-mobile.jpg);
-  opacity: 0.9;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  opacity: 0.9;
 
-  flex-grow: 1;
   @include media(retina) {
     background-image: url(/src/images/Rectangle-2x-mobile.jpg);
   }
+
   @include media(tablet) {
+    height: 220px;
+
     background-image: url(/src/images/Rectangle-1x-tablet.jpg);
+
     @include media(retina) {
       background-image: url(/src/images/Rectangle-2x-tablet.jpg);
     }
   }
+
   @include media(desktop) {
     background-image: url(/src/images/Rectangle-1x-Desktop.jpg);
+
     @include media(retina) {
       background-image: url(/src/images/Rectangle-2x-Desktop.jpg);
     }
