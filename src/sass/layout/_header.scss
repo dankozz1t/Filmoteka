@@ -2,6 +2,9 @@
   z-index: 999;
   position: absolute;
 
+  position: absolute;
+  z-index: 999;
+
   width: 100%;
 
   margin-left: auto;
@@ -19,6 +22,7 @@
   display: inline-flex;
   justify-content: flex-start;
   align-items: center;
+
   align-content: center;
 
   margin-top: 40px;
@@ -32,6 +36,9 @@
 
 .header__logo-text {
   display: none;
+  margin-left: 12px;
+
+  color: var(--secondary-text-cl);
 
   margin-left: 12px;
 
@@ -68,12 +75,11 @@
   position: relative;
 
   margin-right: 39px;
+
   @include font(500, 12px, 14px);
 
   text-transform: uppercase;
 }
-// .header__nav-link {
-// }
 
 .current::after {
   content: '';
