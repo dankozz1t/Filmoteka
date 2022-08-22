@@ -2,24 +2,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-grow: 1;
 
   width: 100%;
-
   height: 230px;
-  width: 100%;
 
   background-image: url(../images/abstract-1x-mobile.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 
-  background-color: #303030;
   background-image: url(../images/abstract-1x-mobile.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  opacity: 0.9;
 
   @include media(retina) {
     background-image: url(/src/images/abstract-2x-mobile.jpg);
@@ -64,6 +59,8 @@
   @include media(tablet) {
     min-width: 336px;
     height: 20px;
+
+    padding-top: 0;
   }
 
   @include media(desktop) {
@@ -90,11 +87,15 @@
   background-color: inherit;
 
   padding-right: 10px;
-  left: -20px;
+  left: -21px;
   padding-top: 30px;
   padding-bottom: 10px;
 
   fill: #ffffff;
+
+  @include media(tablet) {
+    padding-top: 13px;
+  }
 
   &:hover,
   &:focus {
