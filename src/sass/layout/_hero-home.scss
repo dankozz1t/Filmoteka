@@ -1,0 +1,82 @@
+.hero-home {
+  //   position: absolute;
+}
+.hero-home__content {
+  height: 100px;
+  width: 100%;
+  background-image: url(../images/abstract-1x-mobile.jpg);
+  opacity: 0.9;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  height: 230px;
+
+  @include media(retina) {
+    background-image: url(/src/images/abstract-2x-mobile.jpg);
+  }
+  @include media(tablet) {
+    background-image: url(/src/images/abstract-1x-tablet.jpg);
+    height: 220px;
+    @include media(retina) {
+      background-image: url(/src/images/abstract-2x-tablet.jpg);
+    }
+  }
+  @include media(desktop) {
+    background-image: url(/src/images/abstract-1x-Desktop.jpg);
+    @include media(retina) {
+      background-image: url(/src/images/abstract-2x-Desktop.jpg);
+    }
+  }
+}
+
+.hero-home__input {
+  @include font(400, 12px, 16px);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--secondary-text-cl);
+  border: none;
+  border-bottom: 0.5px solid #ffffff;
+  background-color: transparent;
+  min-width: 180px;
+  outline: unset;
+
+  @include media(tablet) {
+    min-width: 336px;
+    height: 20px;
+  }
+
+  @include media(desktop) {
+    min-width: 395px;
+  }
+}
+
+.hero-home__form-btn {
+  position: relative;
+  border: 0;
+  background-color: inherit;
+  padding-right: 10px;
+  left: -20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  fill: #ffffff;
+}
+
+.hero-home__content:hover,
+.hero-home__content:focus {
+  border: 0.5px solid var(--secondary-accent-cl);
+}
+
+input::placeholder {
+  color: #ffffff;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  line-height: 1.143;
+}
