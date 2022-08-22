@@ -4,8 +4,8 @@
   "description": "",
   "homepage": "https://dankozz1t.github.io/Filmoteka",
   "scripts": {
-    "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /Filmoteka/"
+    "start": "parcel src/home.html",
+    "build": "parcel build src/home.html --public-url /Filmoteka/"
   },
   "repository": {
     "type": "git",
