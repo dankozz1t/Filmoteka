@@ -16,12 +16,11 @@
     color: var(--main-bg-cl);
     background-color: #ff6b08;
   }
-
-  &-wrapper {
-    display: flex;
-  }
 }
 
+.btn-wrapper {
+  display: flex;
+}
 // for header styles:
 
 // .header__btn {
