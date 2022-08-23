@@ -7,13 +7,11 @@
 
   background: rgba(0, 0, 0, 0.25);
 
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms,
-    visibility 250ms;
-
   visibility: visible;
   pointer-events: painted;
   opacity: 1;
   overflow-y: scroll;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .film-modal {
@@ -33,6 +31,8 @@
   visibility: visible;
   pointer-events: painted;
   opacity: 1;
+
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @include media(mobile-only) {
     max-width: 280px;
@@ -66,7 +66,8 @@
     gap: 16px;
   }
 }
-.film-modal__btn--close {
+.film-modal__btn--close,
+.team-modal__btn--close {
   position: absolute;
   top: 8px;
   right: 8px;
