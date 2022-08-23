@@ -1,20 +1,23 @@
-function renderItem(array) {
+export default function renderItem(array) {
   const markup = array
-    .map({ poster_path, title, genre_ids, release_date, vote_average }, () => {
-      `<li class="content__item">
+    .map(
+      ({ poster_path, title, genre_ids, release_date, vote_average, id }) => {
+        return `<li class="content__item" data-id="${id}">
     <div class="content__film-image">
-<img src="${poster_path}" alt="${title}" class="card-gallery-image"/>
+<img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" class="card-gallery-image"/>
     </div>
-<div>
-    <p class="content__film-name">${title}</p>
-</div>
+
 <div class="content__film-info">
-    <p><span>${genre_ids}</span> | <span>${release_date}</span></p>
-    <p class="card-gallery__rate">${vote_average}</p>
+    <p class="content__film-name">${title}</p>
+    <p class="content__film-subscription">${genre_ids} &#10072 ${release_date.slice(
+          0,
+          4
+        )}<span class="accent-box visually-hidden">${vote_average}</span></p>    
 </div>
 </div>
 </li>`;
-    })
+      }
+    )
     .join('');
   return markup;
 }
