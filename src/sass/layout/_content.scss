@@ -1,4 +1,8 @@
 .content__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+
   @include media(mobile-only) {
     padding: 20px 0 20px 0;
   }
@@ -10,9 +14,6 @@
 
 .content__item {
   border: 0.5px solid black;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
 
   @include media(tablet-only) {
     width: calc((100% - 2 * 30px) / 2);
