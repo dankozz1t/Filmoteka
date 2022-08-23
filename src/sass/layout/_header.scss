@@ -63,6 +63,7 @@
 }
 
 .header__logo-text {
+  @include font(500, 30px, 35.16px);
   display: none;
   margin-left: 12px;
 
@@ -102,18 +103,17 @@
   padding-bottom: 15px;
 }
 
+.header__nav-item:first-child {
+  margin-right: 39px;
+}
+
 .header__nav-item {
   display: flex;
   position: relative;
-  margin-right: 39px;
 
   @include font(500, 12px, 14px);
 
   text-transform: uppercase;
-
-  &:last-child {
-    margin-right: 0;
-  }
 
   &:hover,
   &:focus {
