@@ -13,11 +13,13 @@
   background-size: cover;
   opacity: 0.9;
 
-  @include media(retina) {
-    background-image: url(../images/abstract-2x-mobile.jpg);
+  @include media(mobile-only) {
+    @include media(retina) {
+      background-image: url(../images/abstract-2x-mobile.jpg);
+    }
   }
 
-  @include media(tablet) {
+  @include media(tablet-only) {
     height: 220px;
 
     background-image: url(../images/abstract-1x-tablet.jpg);
@@ -37,6 +39,7 @@
 }
 
 .header__nav {
+  margin-top: 40px;
   width: 280px;
   display: flex;
   align-items: center;
@@ -53,8 +56,6 @@
 
   align-content: center;
 
-  margin-top: 40px;
-
   color: var(--secondary-text-cl);
 }
 
@@ -63,7 +64,7 @@
 }
 
 .header__logo-text {
-  @include font(500, 30px, 35.16px);
+  @include font(30px, 35.16px);
   display: none;
   margin-left: 12px;
 
@@ -81,22 +82,8 @@
 .header__nav-list {
   display: flex;
 
-  margin-top: 40px;
-
   color: var(--secondary-text-cl);
-  // margin-left: 113px;
-
-  // @include media(tablet) {
-  //   margin-left: 387px;
-  // }
-  // @include media(desktop) {
-  //   margin-left: 899px;
-  // }
 }
-
-// .header__nav-link {
-//   padding: 10px;
-// }
 
 .header__nav-link {
   padding-top: 15px;
@@ -111,7 +98,7 @@
   display: flex;
   position: relative;
 
-  @include font(500, 12px, 14px);
+  @include font(12px, 14px);
 
   text-transform: uppercase;
 
@@ -216,7 +203,8 @@ svg {
 }
 
 input::placeholder {
-  @include font(400, 12px, 16px);
+  @include font(12px, 16px);
+  font-weight: 400;
   color: #ffffff;
 
   &:hover,
@@ -228,7 +216,8 @@ input::placeholder {
   transition-duration: var(--transition-time);
   transition-timing-function: var(--transition-cubic);
 
-  @include font(400, 12px, 16px);
+  @include font(12px, 16px);
+  font-weight: 400;
 }
 
 // .hero-home__form-icon:hover,

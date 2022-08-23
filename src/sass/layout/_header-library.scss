@@ -17,7 +17,7 @@
     background-image: url(../images/Rectangle-2x-mobile.jpg);
   }
 
-  @include media(tablet) {
+  @include media(tablet-only) {
     height: 220px;
 
     background-image: url(../images/Rectangle-1x-tablet.jpg);

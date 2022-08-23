@@ -37,29 +37,29 @@
 }
 .content__film-name {
   border: 0.5px solid black;
-  @include font(500, 12px, 14px);
+  @include font(12px, 14px);
   text-transform: uppercase;
   color: var(--main-text-cl);
 
   @include media(tablet) {
-    @include font(500, 12px, 16px);
+    @include font(12px, 16px);
   }
 
   @include media(desktop) {
-    @include font(500, 20px, 24px);
+    @include font(20px, 24px);
   }
 }
 
 .content__film-info {
   border: 0.5px solid black;
-  @include font(500, 12px, 16px);
+  @include font(12px, 16px);
   color: var(--secondary-accent-cl);
 
   @include media(tablet) {
-    @include font(500, 12px, 16px);
+    @include font(12px, 16px);
   }
 
   @include media(desktop) {
-    @include font(500, 20px, 24px);
+    @include font(20px, 24px);
   }
 }
