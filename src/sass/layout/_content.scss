@@ -1,8 +1,14 @@
-// .content {
-// }
-// .container {
-// }
-.content__list > .content__item {
+.content__list {
+  @include media(mobile-only) {
+    padding: 20px 0 20px 0;
+  }
+
+  @include media(tablet) {
+    padding: 60px 0 60px 0;
+  }
+}
+
+.content__item {
   border: 0.5px solid black;
   display: flex;
   flex-wrap: wrap;
