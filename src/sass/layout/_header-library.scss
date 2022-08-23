@@ -6,23 +6,24 @@
 
   height: 230px;
 
-  background-color: #303030;
-  background-image: url(../images/Rectangle-1x-mobile.jpg);
-  background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
+
+  background-color: #303030;
   opacity: 0.9;
 
   @include media(mobile-only) {
+    background-image: url(../images/Rectangle-1x-mobile.jpg);
+
     @include media(retina) {
       background-image: url(../images/Rectangle-2x-mobile.jpg);
     }
   }
 
   @include media(tablet-only) {
-    height: 220px;
-
     background-image: url(../images/Rectangle-1x-tablet.jpg);
+    height: 220px;
 
     @include media(retina) {
       background-image: url(../images/Rectangle-2x-tablet.jpg);
@@ -38,21 +39,19 @@
   }
 }
 
-.header-library__btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 30px;
-}
-
 .header__btn-wrapper {
-  margin-left: 50px;
+  margin-top: 30px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
 }
 
 .header__btn {
   text-transform: none;
+}
+
+.btn--white {
+  border-color: white;
+  color: white;
 }
