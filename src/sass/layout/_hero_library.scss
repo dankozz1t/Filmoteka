@@ -26,10 +26,10 @@
   }
 
   @include media(desktop) {
-    background-image: url(../images/Rectangle-1x-Desktop.jpg);
+    background-image: url(../images/Rectangle-1x-desktop.jpg);
 
     @include media(retina) {
-      background-image: url(../images/Rectangle-2x-Desktop.jpg);
+      background-image: url(../images/Rectangle-2x-desktop.jpg);
     }
   }
 }
