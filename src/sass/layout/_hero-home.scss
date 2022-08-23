@@ -17,24 +17,24 @@
   background-size: cover;
 
   @include media(retina) {
-    background-image: url(/src/images/abstract-2x-mobile.jpg);
+    background-image: url(../images/abstract-2x-mobile.jpg);
   }
 
   @include media(tablet) {
     height: 220px;
 
-    background-image: url(/src/images/abstract-1x-tablet.jpg);
+    background-image: url(../images/abstract-1x-tablet.jpg);
 
     @include media(retina) {
-      background-image: url(/src/images/abstract-2x-tablet.jpg);
+      background-image: url(../images/abstract-2x-tablet.jpg);
     }
   }
 
   @include media(desktop) {
-    background-image: url(/src/images/abstract-1x-Desktop.jpg);
+    background-image: url(../images/abstract-1x-Desktop.jpg);
 
     @include media(retina) {
-      background-image: url(/src/images/abstract-2x-Desktop.jpg);
+      background-image: url(../images/abstract-2x-Desktop.jpg);
     }
   }
 }
