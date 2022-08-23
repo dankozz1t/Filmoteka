@@ -1,0 +1,48 @@
+.btn {
+  padding: 0 5px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  text-transform: uppercase;
+
+  background-color: transparent;
+  border: 1px solid #000000;
+  border-radius: 5px;
+
+  &--accent {
+    border-color: transparent;
+    color: var(--main-bg-cl);
+    background-color: #ff6b08;
+  }
+}
+
+.btn-wrapper {
+  display: flex;
+}
+// for header styles:
+
+// .header__btn {
+//   width: 130px;
+//   height: 44px;
+
+//   @include media(tablet) {
+//     width: 152px;
+//     height: 44px;
+//   }
+//   @include media(desktop) {
+//     width: 147px;
+//     height: 42px;
+//   }
+// }
+
+// .header__btn-wrapper {
+//   gap: 20px;
+//   @include media(tablet) {
+//     gap: 32px;
+//   }
+//   @include media(desktop) {
+//     gap: 16px;
+//   }
+// }
