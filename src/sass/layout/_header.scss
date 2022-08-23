@@ -1,18 +1,52 @@
 .header {
-  z-index: 999;
-  position: absolute;
-
-  width: 100%;
-
   margin-left: auto;
   margin-right: auto;
+
+  display: flex;
+
+  height: 230px;
+
+  background-color: #303030;
+  background-image: url(../images/abstract-1x-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.9;
+
+  @include media(mobile-only) {
+    @include media(retina) {
+      background-image: url(../images/abstract-2x-mobile.jpg);
+    }
+  }
+
+  @include media(tablet-only) {
+    height: 220px;
+
+    background-image: url(../images/abstract-1x-tablet.jpg);
+
+    @include media(retina) {
+      background-image: url(../images/abstract-2x-tablet.jpg);
+    }
+  }
+
+  @include media(desktop) {
+    background-image: url(../images/abstract-1x-Desktop.jpg);
+
+    @include media(retina) {
+      background-image: url(../images/abstract-2x-Desktop.jpg);
+    }
+  }
 }
+
 .header__nav {
+  margin-top: 40px;
+  width: 280px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  width: 100%;
+  @include media(tablet) {
+    width: 100%;
+  }
 }
 
 .header__logo {
@@ -22,8 +56,6 @@
 
   align-content: center;
 
-  margin-top: 40px;
-
   color: var(--secondary-text-cl);
 }
 
@@ -32,6 +64,7 @@
 }
 
 .header__logo-text {
+  @include font(30px, 35.16px);
   display: none;
   margin-left: 12px;
 
@@ -46,44 +79,148 @@
   }
 }
 
-// .header__logo::before {
-//   background-image: url(/src/images/symbol-defs.svg#icon-film-from-header);
-//   width: 24px;
-//   fill: white;
-// }
-
 .header__nav-list {
   display: flex;
 
-  margin-top: 40px;
-
   color: var(--secondary-text-cl);
-  // margin-left: 113px;
+}
 
-  // @include media(tablet) {
-  //   margin-left: 387px;
-  // }
-  // @include media(desktop) {
-  //   margin-left: 899px;
-  // }
+.header__nav-link {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.header__nav-item:first-child {
+  margin-right: 39px;
 }
 
 .header__nav-item {
+  display: flex;
   position: relative;
 
-  margin-right: 39px;
-
-  @include font(500, 12px, 14px);
+  @include font(12px, 14px);
 
   text-transform: uppercase;
+
+  &:hover,
+  &:focus {
+    color: #ff001b;
+  }
+  transition-property: color;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--transition-cubic);
 }
 
 .current::after {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -4px;
+  bottom: 12px;
   width: 100%;
   height: 3px;
   background: #ff001b;
 }
+
+.header__form {
+  margin-left: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.header__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__input {
+  min-width: 180px;
+
+  color: var(--secondary-text-cl);
+
+  border: none;
+  border-bottom: 0.5px solid #ffffff;
+  background-color: transparent;
+
+  outline: unset;
+  padding-top: 20px;
+
+  @include media(tablet) {
+    min-width: 336px;
+    height: 20px;
+
+    padding-top: 0;
+  }
+
+  @include media(desktop) {
+    min-width: 395px;
+  }
+
+  &:hover,
+  &:focus {
+    color: #ff6b08;
+    border-bottom: 0.5px solid #ff6b08;
+  }
+
+  transition-property: border-bottom;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--transition-cubic);
+}
+
+.header__form-btn {
+  position: relative;
+  padding: 10px;
+  left: -21px;
+
+  border: 0;
+  background-color: transparent;
+
+  padding-right: 10px;
+  left: -21px;
+  padding-top: 30px;
+  padding-bottom: 10px;
+
+  fill: #ffffff;
+
+  @include media(tablet) {
+    padding-top: 13px;
+  }
+
+  &:hover,
+  &:focus {
+    stroke: #ff6b08;
+  }
+
+  transition-property: stroke;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--transition-cubic);
+}
+
+svg {
+  fill: transparent;
+}
+
+input::placeholder {
+  @include font(12px, 16px);
+  font-weight: 400;
+  color: #ffffff;
+
+  &:hover,
+  &:focus {
+    color: #ff6b08;
+  }
+
+  transition-property: fill;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--transition-cubic);
+
+  @include font(12px, 16px);
+  font-weight: 400;
+}
+
+// .hero-home__form-icon:hover,
+// .hero-home__form-icon:focus {
+//   fill: #ff6b08;
+// }

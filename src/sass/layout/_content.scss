@@ -18,41 +18,40 @@
 .content__item {
   @include media(tablet-only) {
     width: calc((100% - 3 * 30px) / 2);
-  };
+  }
 
   @include media(desktop) {
-    flex-basis: calc((100% - 32px)/3);
+    flex-basis: calc((100% - 32px) / 3);
   }
 }
 
-
 .content__film-image {
-  width: 100%
+  width: 100%;
 }
 
 .content__film-name {
-  @include font(500, 12px, 14px);
+  @include font(12px, 14px);
   text-transform: uppercase;
   color: var(--main-text-cl);
 
   @include media(tablet) {
-    @include font(500, 12px, 16px);
+    @include font(12px, 16px);
   }
 
   @include media(desktop) {
-    @include font(500, 20px, 24px);
+    @include font(20px, 24px);
   }
 }
 
 .content__film-info {
-  @include font(500, 12px, 16px);
+  @include font(12px, 16px);
 
   @include media(tablet) {
-    @include font(500, 12px, 16px);
+    @include font(12px, 16px);
   }
 
   @include media(desktop) {
-    @include font(500, 20px, 24px);
+    @include font(20px, 24px);
     margin-top: 12px;
   }
 }
@@ -68,6 +67,5 @@
   @include media(desktop) {
     width: 394px;
     height: 574px;
-
   }
 }
