@@ -333,7 +333,7 @@ input::placeholder:hover, input::placeholder:focus {
   background-size: cover;
   opacity: 0.9;
 }
-@media (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+@media screen and (max-width: 767px) and (min-device-pixel-ratio: 2), screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), screen and (max-width: 767px) and (min-resolution: 192dpi), screen and (max-width: 767px) and (min-resolution: 2dppx) {
   .header-library {
     background-image: url(../images/Rectangle-2x-mobile.jpg);
   }

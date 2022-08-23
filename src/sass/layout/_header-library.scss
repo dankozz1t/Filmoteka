@@ -13,8 +13,10 @@
   background-size: cover;
   opacity: 0.9;
 
-  @include media(retina) {
-    background-image: url(../images/Rectangle-2x-mobile.jpg);
+  @include media(mobile-only) {
+    @include media(retina) {
+      background-image: url(../images/Rectangle-2x-mobile.jpg);
+    }
   }
 
   @include media(tablet-only) {
