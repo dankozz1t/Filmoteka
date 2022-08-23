@@ -1,5 +1,5 @@
 .team-title {
-  margin: 50px 0;
+  margin: 30px 0;
   text-transform: uppercase;
   font-weight: 500;
   line-height: 35px;
@@ -131,6 +131,7 @@
   max-height: 95vh;
   transform: translate(-50%, 0) scale(1);
   overflow-y: auto;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @include media(mobile-only) {
     min-height: 400px;
@@ -148,8 +149,9 @@
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
-    width: 882px;
+    width: 950px;
     min-height: 562px;
+    padding: 20px;
   }
 
   background-color: var(--secondary-text-cl);
