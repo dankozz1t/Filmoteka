@@ -2,8 +2,11 @@
 @import './utils/variables';
 @import './vendors/mixin-media';
 @import './utils/mixin-font-size';
+
 @import './components/container';
-@import './base/common';
+
 @import './layout/header';
 @import './layout/hero-home';
-// @import './layout/hero-library';
+@import './layout/hero_library';
+@import './layout/content';
+@import './layout/footer';
