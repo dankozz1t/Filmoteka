@@ -14,7 +14,6 @@ export default class ApiService {
       const url = `${ApiService.BASE_URL}/movie/${this.searchQuery}?api_key=${ApiService.API_KEY}`;
       const data = await axios.get(url);
       this.films =  data.data.results;
-      console.log(this.films);
       return data;
     } catch (error) {
       console.error(error);
@@ -23,7 +22,9 @@ export default class ApiService {
   async fetchImagesByName(query) {
     try {
       const url = `${ApiService.BASE_URL}/search/movie/?api_key=${ApiService.API_KEY}&query=${query}`;
-      return axios.get(url);
+      const data = await axios.get(url);
+      this.films =  data.data.results;
+      return data;
     } catch (error) {
       console.error(error);
     }

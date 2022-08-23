@@ -20,7 +20,8 @@
   left: 50%;
   transform: translate(-50%);
 
-  height: 940px;
+  max-height: 940px;
+  height: fit-content;
   padding: 48px 20px 40px 20px;
 
   font-size: 12px;
@@ -44,7 +45,7 @@
     transform: translate(-50%, -50%);
 
     width: 704px;
-    height: 552px;
+    max-height: 552px;
     padding: 40px 36px;
   }
 
@@ -52,7 +53,7 @@
     left: 50%;
 
     width: 806px;
-    height: 558px;
+    max-height: 558px;
     padding: 40px 12px;
   }
 }
@@ -86,19 +87,20 @@
 
 .film-modal__description {
   min-width: 240px;
-  height: 245px;
+  height: fit-content;
+  max-height: 245px;
   margin-bottom: 20px;
   margin-top: 0;
 
   line-height: 1.7;
 
-  overflow: scroll;
+  overflow-y: scroll;
   @include media(tablet) {
-    height: 225px;
+    max-height: 225px;
     margin-bottom: 20px;
   }
   @include media(desktop) {
-    height: 165px;
+    max-height: 165px;
   }
 }
 
@@ -206,7 +208,7 @@
 .params__data-item {
   margin: 0;
   padding: 0;
-
+  width: 150px;
   &.js-title {
     text-transform: uppercase;
   }

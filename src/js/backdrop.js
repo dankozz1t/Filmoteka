@@ -19,7 +19,11 @@ export function toggleBackdrop() {
     }
   }
 
-  function onOpenFilmBtnClick() {
+  function onOpenFilmBtnClick(e) {
+    const film = e.target.parentNode.parentNode;
+  if (film.nodeName !== 'LI') {
+    return; 
+  }   
     backdropRef.classList.remove('visually-hidden');
     filmModalRef.classList.remove('visually-hidden');
     document.body.style.overflowY = 'hidden';
@@ -27,6 +31,7 @@ export function toggleBackdrop() {
     backdropRef.addEventListener('click', onCloseClick);
 
     window.addEventListener('keydown', onEscapeKeyDown);
+
   }
 
   function onOpenTeamBtnClick() {
