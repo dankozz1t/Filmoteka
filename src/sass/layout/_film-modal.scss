@@ -86,12 +86,19 @@
 
 .film-modal__description {
   min-width: 240px;
+  height: 245px;
   margin-bottom: 20px;
   margin-top: 0;
 
   line-height: 1.7;
+
+  overflow: scroll;
   @include media(tablet) {
+    height: 225px;
     margin-bottom: 20px;
+  }
+  @include media(desktop) {
+    height: 165px;
   }
 }
 
@@ -168,39 +175,38 @@
 }
 
 .params {
-  display: flex;
   margin-bottom: 20px;
 }
 .params__list {
+  display: inline-flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+}
+
+.params__item {
+  display: inline-block;
   width: 108px;
   margin: 0;
   padding: 0;
 
   color: var(--info-title-cl);
-  list-style: none;
-}
 
-.params__item {
-  margin: 0;
-
-  &:not(:last-child) {
-    margin-bottom: 8px;
+  @include media(desktop) {
+    width: 150px;
   }
-}
-
-.params__data {
-  margin: 0;
-  padding: 0;
-
-  list-style: none;
 }
 
 .params__data-item {
   margin: 0;
+  padding: 0;
 
-  &:not(:last-child) {
-    margin-bottom: 8px;
-  }
   &.js-title {
     text-transform: uppercase;
   }
