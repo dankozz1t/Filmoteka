@@ -6,7 +6,7 @@
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  width: 280px;
+  width: fit-content;
 }
 
 .pagination__btn {
@@ -20,6 +20,7 @@
   background-color: inherit;
   border-color: transparent;
   border-radius: 5px;
+  cursor: pointer;
 
   &--accent {
     color: var(--main-bg-cl);
@@ -29,4 +30,14 @@
   &--pale {
     background-color: #f7f7f7;
   }
+}
+.pagination__rest,
+.pagination__first,
+.pagination__last {
+  @include media(mobile-only) {
+    display: none;
+  }
+}
+.pagination__rest {
+  cursor: default;
 }

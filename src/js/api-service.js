@@ -7,30 +7,46 @@ export default class ApiService {
   constructor() {
     this.searchQuery = 'popular';
     this.films = null;
+    this.page = 1;
+    this.totalPages = null;
   }
 
   async fetchFilms() {
     try {
       const url = `${ApiService.BASE_URL}/movie/${this.searchQuery}?api_key=${ApiService.API_KEY}`;
       const data = await axios.get(url);
-      this.films =  data.data.results;
+      this.films = data.data.results;
+      this.page = data.data.page;
+      this.totalPages = data.data.total_pages;
       return data;
     } catch (error) {
       console.error(error);
     }
   }
-  async fetchImagesByName(query) {
+  async fetchImagesByName() {
     try {
-      const url = `${ApiService.BASE_URL}/search/movie/?api_key=${ApiService.API_KEY}&query=${query}`;
+      const url = `${ApiService.BASE_URL}/search/movie/?api_key=${ApiService.API_KEY}&query=${this.searchQuery}`;
       const data = await axios.get(url);
-      this.films =  data.data.results;
+      this.films = data.data.results;
+      this.page = data.data.page;
+      this.totalPages = data.data.total_pages;
+      console.log(this.totalPages);
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  async fetchImagesByPage() {
+    try {
+      const url = `${ApiService.BASE_URL}/search/movie/?api_key=${ApiService.API_KEY}&query=${this.searchQuery}&page=${this.page}`;
+      const data = await axios.get(url);
+      this.films = data.data.results;
+      this.page = data.data.page;
+      this.totalPages = data.data.total_pages;
+      console.log(this.totalPages);
       return data;
     } catch (error) {
       console.error(error);
     }
   }
 }
-
-
-
-

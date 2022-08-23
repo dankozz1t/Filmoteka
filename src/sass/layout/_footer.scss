@@ -19,12 +19,6 @@
 }
 
 .footer__text {
-  // @media screen and (min-width: 320px) and(max-width: 767px) {
-  //   font-size: 14px;
-  //   line-height: 1.4;
-  //   justify-content: center;
-  // }
-
   @include media(mobile-only) {
     font-size: 14px;
     line-height: 1.4;
@@ -32,6 +26,7 @@
   }
 
   display: flex;
+  align-items: center;
   text-align: center;
   color: var(--text-footer-cl);
   font-size: 16px;
