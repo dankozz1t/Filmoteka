@@ -1,0 +1,20 @@
+.team-title {
+  margin: 50px 0;
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 35px;
+  text-align: center;
+  color: #009fff;
+  font-size: 40px;
+}
+
+.team-list {
+  @include media(tablet) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @include media(desktop) {
+    justify-content: space-evenly;
+  }
+}
