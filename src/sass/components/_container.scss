@@ -1,5 +1,6 @@
 .container {
   margin: 0 auto;
+  width: 100%;
 
   @include media(mobile-only) {
     padding-left: 20px;
@@ -14,6 +15,6 @@
   }
 
   @include media(desktop) {
-    width: 1200px;
+    width: 1280px;    
   }
 }
