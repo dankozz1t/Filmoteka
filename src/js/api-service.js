@@ -6,15 +6,30 @@ export default class ApiService {
 
   constructor() {
     this.searchQuery = 'popular';
+    this.films = null;
   }
 
-  async fetchImages() {
+  async fetchFilms() {
     try {
       const url = `${ApiService.BASE_URL}/movie/${this.searchQuery}?api_key=${ApiService.API_KEY}`;
-
+      const data = await axios.get(url);
+      this.films =  data.data.results;
+      console.log(this.films);
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  async fetchImagesByName(query) {
+    try {
+      const url = `${ApiService.BASE_URL}/search/movie/?api_key=${ApiService.API_KEY}&query=${query}`;
       return axios.get(url);
     } catch (error) {
       console.error(error);
     }
   }
 }
+
+
+
+

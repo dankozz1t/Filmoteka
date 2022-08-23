@@ -2,7 +2,7 @@ export default function renderItem(array) {
   const markup = array
     .map(
       ({ poster_path, title, genre_ids, release_date, vote_average, id }) => {
-        return `<li class="content__item" data-id="${id}">
+        return `<li class="content__item" id="${id}">
     <div class="content__film-image">
 <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" class="card-gallery-image"/>
     </div>
