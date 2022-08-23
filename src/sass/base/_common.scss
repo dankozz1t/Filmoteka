@@ -1,24 +1,51 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
-.hidden,
 .is-hidden {
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  border: 0;
-  padding: 0;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  margin: -1px;
-  pointer-events: none;
+  display: none;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
+  font-weight: 500;
   background-color: var(--main-bg-cl);
   color: var(--main-text-cl);
   font-weight: 500;
   margin: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul,
+ol {
+  margin: 0px;
+  padding-left: 0px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+svg {
+  fill: currentColor;
+}
+
+a {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  color: inherit;
 }

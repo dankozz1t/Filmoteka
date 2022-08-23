@@ -4,8 +4,8 @@
   "description": "",
   "homepage": "https://dankozz1t.github.io/Filmoteka",
   "scripts": {
-    "start": "parcel src/home.html",
-    "build": "parcel build src/home.html --public-url /Filmoteka/"
+    "start": "parcel src/index.html",
+    "build": "parcel build src/*.html --public-url /Filmoteka/"
   },
   "repository": {
     "type": "git",
@@ -24,10 +24,12 @@
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
+    "buffer": "^6.0.3",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
     "parcel-transformer-hbs": "^1.0.4",
-    "posthtml-include": "^1.7.4"
+    "posthtml-include": "^1.7.4",
+    "process": "^0.11.10"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead"
 }
