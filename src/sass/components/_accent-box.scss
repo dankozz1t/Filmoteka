@@ -1,0 +1,28 @@
+.accent-box {
+  display: inline-block;
+  height: 16px;
+  width: 36px;
+
+  text-align: center;
+  color: var(--main-bg-cl);
+  border-radius: 5px;
+  background-color: #ff6b08;
+}
+.pale-box {
+  display: inline-block;
+  height: 16px;
+  width: 36px;
+  border-radius: 5px;
+
+  text-align: center;
+  color: #000000;
+  background-color: #f7f7f7;
+}
+
+// for film-card
+// .card__accent-box {
+//   @include media(desktop) {
+//     width: 40px;
+//     height: 20px;
+//   }
+// }
