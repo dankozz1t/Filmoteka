@@ -5,7 +5,8 @@ export default class ApiService {
   static BASE_URL = 'https://api.themoviedb.org/3';
 
   constructor() {
-    this.searchQuery = 'popular';
+    this.searchCategory = 'popular';
+    this.searchName = '';
     this.films = null;
     this.page = 1;
     this.totalPages = null;
@@ -13,7 +14,7 @@ export default class ApiService {
 
   async fetchFilms() {
     try {
-      const url = `${ApiService.BASE_URL}/movie/${this.searchQuery}?api_key=${ApiService.API_KEY}`;
+      const url = `${ApiService.BASE_URL}/movie/${this.searchCategory}?api_key=${ApiService.API_KEY}`;
       const data = await axios.get(url);
       this.films = data.data.results;
       this.page = data.data.page;
@@ -25,7 +26,7 @@ export default class ApiService {
   }
   async fetchImagesByName() {
     try {
-      const url = `${ApiService.BASE_URL}/search/movie/?api_key=${ApiService.API_KEY}&query=${this.searchQuery}`;
+      const url = `${ApiService.BASE_URL}/search/movie/?api_key=${ApiService.API_KEY}&query=${this.searchName}`;
       const data = await axios.get(url);
       this.films = data.data.results;
       this.page = data.data.page;
@@ -38,7 +39,13 @@ export default class ApiService {
   }
   async fetchImagesByPage() {
     try {
-      const url = `${ApiService.BASE_URL}/search/movie/?api_key=${ApiService.API_KEY}&query=${this.searchQuery}&page=${this.page}`;
+      let url = '';
+      if (this.searchName) {
+        url = `${ApiService.BASE_URL}/search/movie/?api_key=${ApiService.API_KEY}&query=${this.searchName}&page=${this.page}`;
+      } else {
+        url = `${ApiService.BASE_URL}/movie/${this.searchCategory}?api_key=${ApiService.API_KEY}&page=${this.page}`;
+      }
+
       const data = await axios.get(url);
       this.films = data.data.results;
       this.page = data.data.page;

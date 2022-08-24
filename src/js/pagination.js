@@ -266,7 +266,7 @@ export function renderPagination(page, total) {
   } else if (page === total) {
     markup = `<li>
         <button class="pagination__btn pagination__btn--pale js-previous" type="button">
-          <
+          >
         </button>
          <li>
         <button class="pagination__btn pagination__first js-first" type="button">1</button>

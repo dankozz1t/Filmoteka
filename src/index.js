@@ -21,6 +21,7 @@ const apiService = new ApiService();
 apiService.fetchFilms().then(({ data }) => {
   console.log(data);
   refs.contentList.insertAdjacentHTML('beforeend', renderItem(data.results));
+
   renderPagination(apiService.page, apiService.totalPages);
 
   // console.log(apiService.films);
@@ -34,8 +35,32 @@ function onPaginationClick(e) {
     return;
   }
   if (e.target.classList.contains('js-next')) {
-    console.log('ha');
     apiService.page += 1;
+    apiService.fetchImagesByPage().then(({ data }) => console.log(data));
+    renderPagination(apiService.page, apiService.totalPages);
+  }
+  if (e.target.classList.contains('js-previous')) {
+    apiService.page -= 1;
+    apiService.fetchImagesByPage().then(({ data }) => console.log(data));
+    renderPagination(apiService.page, apiService.totalPages);
+  }
+  if (e.target.classList.contains('js-second-previous')) {
+    apiService.page -= 2;
+    apiService.fetchImagesByPage().then(({ data }) => console.log(data));
+    renderPagination(apiService.page, apiService.totalPages);
+  }
+  if (e.target.classList.contains('js-second-next')) {
+    apiService.page += 2;
+    apiService.fetchImagesByPage().then(({ data }) => console.log(data));
+    renderPagination(apiService.page, apiService.totalPages);
+  }
+  if (e.target.classList.contains('js-first')) {
+    apiService.page = 1;
+    apiService.fetchImagesByPage().then(({ data }) => console.log(data));
+    renderPagination(apiService.page, apiService.totalPages);
+  }
+  if (e.target.classList.contains('js-last')) {
+    apiService.page = apiService.totalPages;
     apiService.fetchImagesByPage().then(({ data }) => console.log(data));
     renderPagination(apiService.page, apiService.totalPages);
   }
@@ -62,7 +87,7 @@ function onFormSubmit(e) {
   e.preventDefault();
   const query = e.target.elements.query.value;
   e.target.elements.query.value = '';
-  apiService.searchQuery = query;
+  apiService.searchName = query;
   // console.log(apiService.searchQuery);
   apiService.fetchImagesByName().then(({ data }) => {
     // console.log(data.results);
