@@ -1,5 +1,5 @@
 import { refs } from './js/reference.js';
-import topArrow from './js/lift-up';
+import { topArrow } from './js/lift-up';
 import { renderFilms } from './js/renderFilms.js';
 import { apiService } from './js/api-service.js';
 import { toggleBackdrop } from './js/backdrop.js';
