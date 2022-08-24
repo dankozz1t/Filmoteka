@@ -1,6 +1,6 @@
 import { refs } from './reference.js';
 
-export function topArrow() {
+export function onTopArrow() {
   window.addEventListener('scroll', trackScroll);
   refs.goTopBtn.addEventListener('click', backToTop);
 

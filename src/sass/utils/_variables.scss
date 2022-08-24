@@ -10,16 +10,23 @@ $desktop: 1280px;
   --main-text-cl: #000000;
   --secondary-text-cl: #ffffff;
 
-  --info-title-cl: #8C8C8C;
+  --info-title-cl: #8c8c8c;
   --text-footer-cl: #545454;
 
   // Background colors
   --main-bg-cl: #ffffff;
   --secondary-bg-cl: #f7f7f7;
+  --dark-bg-cl: #2f2f2f;
+  --dark-secondary-bg-cl: #272727;
 
   --secondary-accent-cl: #ff6b08;
 
   // Transition
   --transition-cubic: cubic-bezier(0.4, 0, 0.2, 1);
   --transition-time: 500ms;
+}
+
+:root {
+  /* COLORS */
+  --dark-icon-color: #fff;
 }

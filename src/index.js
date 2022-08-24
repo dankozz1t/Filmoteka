@@ -1,15 +1,18 @@
 import { refs } from './js/reference.js';
-import { topArrow } from './js/lift-up';
+import { onTopArrow } from './js/lift-up';
+import { onSwitch } from './js/switch';
 import { renderFilms } from './js/renderFilms.js';
 import { apiService } from './js/api-service.js';
 import { toggleBackdrop } from './js/backdrop.js';
 import { renderPagination } from './js/pagination.js';
 import { spinnerOn } from './js/spinner.js';
-import { spinnerOff } from './js/spinner.js'
+import { spinnerOff } from './js/spinner.js';
 import { onSmoothScroll } from './js/smoothScroll';
 
+onTopArrow();
+onSwitch();
 
-topArrow();
+const apiService = new ApiService();
 onSmoothScroll();
 
 refs.contentList.addEventListener('click', onGetInfoClick);
@@ -89,7 +92,7 @@ function fillModal(film) {
 function onFormSubmit(e) {
   e.preventDefault();
 
-spinnerOn()
+  spinnerOn();
 
   const query = e.target.elements.query.value;
   apiService.searchName = query;
@@ -103,5 +106,5 @@ spinnerOn()
       renderFilms(data.results);
     }
   });
-  spinnerOff()
+  spinnerOff();
 }

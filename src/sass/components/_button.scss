@@ -8,10 +8,20 @@
   text-transform: uppercase;
 
   background-color: transparent;
-  border: 1px solid #000000;
+  border: 1px solid;
   border-radius: 5px;
 
   cursor: pointer;
+
+  &--black {
+    border-color: black;
+    color: color;
+  }
+
+  &--white {
+    border-color: white;
+    color: white;
+  }
 
   &--accent {
     border-color: transparent;

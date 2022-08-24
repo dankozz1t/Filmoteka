@@ -20,6 +20,12 @@ export const refs = {
   paginationControls: document.querySelector('.pagination__controls'),
   currentPage: document.querySelector('.js-current'),
 
+  toggle: document.getElementById('toggleDark'),
+  body: document.querySelector('body'),
+
+  switchBtn: document.querySelector('.switch__btn'),
+  switchIcon: document.querySelector('.switch__btn__icon'),
+
   failureMessage: document.querySelector('.failure-message'),
 
   spinner: document.querySelector('.loader'),
