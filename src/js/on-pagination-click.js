@@ -6,6 +6,7 @@ export function onPaginationClick(e) {
     apiService.page += 1;
     apiService.fetchImagesByPage().then(({ data }) => console.log(data));
     renderPagination(apiService.page, apiService.totalPages);
+    return;
   }
   if (e.target.classList.contains('js-previous')) {
     apiService.page -= 1;

@@ -30,7 +30,7 @@ export function renderPagination(page, total) {
     markup = `<li>
         <button class="pagination__btn pagination__btn--pale js-previous" type="button">
                 <svg class="backdrop__icon js-next" width="15" height="15">
-        <use class="js-next" href="../images/symbol-defs.svg#icon-left"></use>
+        <use class="js-next" href="./images/symbol-defs.svg#icon-left"></use>
       </svg>
         </button>
       </li>
