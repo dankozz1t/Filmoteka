@@ -26,7 +26,9 @@ export default class ApiService {
   }
   async fetchImagesByName() {
     try {
-      const url = `${ApiService.BASE_URL}/search/movie/?api_key=${ApiService.API_KEY}&query=${this.searchName}`;
+      // const url = `${ApiService.BASE_URL}/search/movie/?api_key=${ApiService.API_KEY}&query=${this.searchName}`;
+
+      const url = `${ApiService.BASE_URL}/trending/movie/week?api_key=${ApiService.API_KEY}`;
       const data = await axios.get(url);
       this.films = data.data.results;
       this.page = data.data.page;
