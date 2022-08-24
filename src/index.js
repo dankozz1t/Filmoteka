@@ -4,6 +4,8 @@ import { toggleBackdrop } from './js/backdrop.js';
 import { renderPagination } from './js/pagination.js';
 import templateRenderFilms from './templates/template-film.js';
 import templatePlugEmpty from './templates/template-plug-empty.hbs';
+import { onSpinnerOnLoad } from './js/spinner.js';
+import { onSpinnerOffLoad } from './js/spinner.js'
 
 const apiService = new ApiService();
 
@@ -107,6 +109,7 @@ function fillModal(film) {
 
 function onFormSubmit(e) {
   e.preventDefault();
+onSpinnerOnLoad ()
   const query = e.target.elements.query.value;
   e.target.elements.query.value = '';
 
@@ -118,6 +121,7 @@ function onFormSubmit(e) {
     renderFilms(data.results);
     renderPagination(apiService.page, apiService.totalPages);
   });
+  onSpinnerOffLoad()
 }
 
 function renderFilms(arrayFilms) {
