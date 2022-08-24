@@ -11,7 +11,7 @@ export default function renderItem(array) {
       }) => {
         const newPosterPath = poster_path
           ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-          : "#";
+          : '#';
         return `<li class="content__item" id="${id}">
     <div class="content__film-image noImg">
 <img src="${newPosterPath}" alt="${title}" class="card-gallery-image"/>
