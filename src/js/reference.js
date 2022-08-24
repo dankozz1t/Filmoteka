@@ -18,4 +18,6 @@ export const refs = {
 
   paginationControls: document.querySelector('.pagination__controls'),
   currentPage: document.querySelector('.js-current'),
+
+  goTopBtn: document.querySelector('.lift_up'),
 };
