@@ -100,11 +100,3 @@ function onFormSubmit(e) {
     }
   });
 }
-// <<<<<<< HEAD
-
-// function renderFilms(arrayFilms) {
-//   refs.contentList.innerHTML = templateRenderFilms(arrayFilms);
-//   renderPagination(apiService.page, apiService.totalPages);
-// }
-// =======
-// >>>>>>> main
