@@ -4,7 +4,7 @@ function store(value) {
   localStorage.setItem('darkmode', value);
 }
 
-export function load() {
+export function onSwitch() {
   const darkmode = localStorage.getItem('darkmode');
 
   if (!darkmode) {
