@@ -1,10 +1,20 @@
 export default function renderItem(array) {
   const markup = array
     .map(
-      ({ poster_path, title, genre_ids, release_date, vote_average, id }) => {
+      ({
+        poster_path,
+        title,
+        genre_ids,
+        release_date = '',
+        vote_average,
+        id,
+      }) => {
+        const newPosterPath = poster_path
+          ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+          : "#";
         return `<li class="content__item" id="${id}">
-    <div class="content__film-image">
-<img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" class="card-gallery-image"/>
+    <div class="content__film-image noImg">
+<img src="${newPosterPath}" alt="${title}" class="card-gallery-image"/>
     </div>
 
 <div class="content__film-info">

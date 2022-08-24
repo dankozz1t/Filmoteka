@@ -15,7 +15,9 @@ apiService.fetchFilms().then(({ data }) => {
 
   renderPagination(apiService.page, apiService.totalPages);
 });
-
+//!
+apiService.fetchGenres().then((data) => { console.log(data)});
+//
 refs.paginationControls.addEventListener('click', onPaginationClick);
 refs.contentList.addEventListener('click', onGetInfoClick);
 
@@ -130,3 +132,4 @@ function renderFilms(arrayFilms) {
   console.log('RENDER - ', arrayFilms);
   refs.contentList.innerHTML = templateRenderFilms(arrayFilms);
 }
+
