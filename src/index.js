@@ -1,91 +1,69 @@
 import { refs } from './js/reference.js';
-import ApiService from './js/api-service.js';
+import { topArrow } from './js/lift-up';
+import { renderFilms } from './js/renderFilms.js';
+import { apiService } from './js/api-service.js';
 import { toggleBackdrop } from './js/backdrop.js';
 import { renderPagination } from './js/pagination.js';
-import templateRenderFilms from './templates/template-film.js';
-import templatePlugEmpty from './templates/template-plug-empty.hbs';
-import { onSpinnerOnLoad } from './js/spinner.js';
-import { onSpinnerOffLoad } from './js/spinner.js'
+import { spinnerOn } from './js/spinner.js';
+import { spinnerOff } from './js/spinner.js'
+import { onSmoothScroll } from './js/smoothScroll';
 
-const apiService = new ApiService();
+
+topArrow();
+onSmoothScroll();
 
 refs.contentList.addEventListener('click', onGetInfoClick);
 refs.form.addEventListener('submit', onFormSubmit);
+refs.paginationControls.addEventListener('click', onPaginationClick);
+refs.contentList.addEventListener('click', onGetInfoClick);
 
 apiService.fetchFilms().then(({ data }) => {
+  if (!apiService.allGenres) {
+    apiService.fetchGenres();
+  }
+
   renderFilms(data.results);
 
   renderPagination(apiService.page, apiService.totalPages);
 });
-
-refs.paginationControls.addEventListener('click', onPaginationClick);
-refs.contentList.addEventListener('click', onGetInfoClick);
 
 function onPaginationClick(e) {
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
   if (e.target.classList.contains('js-next')) {
-    apiService.page += 1;
-    apiService
-      .fetchImagesByPage()
-      .then(({ data }) => renderFilms(data.results));
-    renderPagination(apiService.page, apiService.totalPages);
+    renderContentByPagination((apiService.page += 1));
+    return;
   }
   if (e.target.classList.contains('js-previous')) {
-    apiService.page -= 1;
-    apiService
-      .fetchImagesByPage()
-      .then(({ data }) => renderFilms(data.results));
-    renderPagination(apiService.page, apiService.totalPages);
+    renderContentByPagination((apiService.page -= 1));
+    return;
   }
   if (e.target.classList.contains('js-second-previous')) {
-    apiService.page -= 2;
-    apiService
-      .fetchImagesByPage()
-      .then(({ data }) => renderFilms(data.results));
-    renderPagination(apiService.page, apiService.totalPages);
+    renderContentByPagination((apiService.page -= 2));
+    return;
   }
   if (e.target.classList.contains('js-second-next')) {
-    apiService.page += 2;
-    apiService
-      .fetchImagesByPage()
-      .then(({ data }) => renderFilms(data.results));
-    renderPagination(apiService.page, apiService.totalPages);
+    renderContentByPagination((apiService.page += 2));
+    return;
   }
   if (e.target.classList.contains('js-first')) {
-    apiService.page = 1;
-    apiService
-      .fetchImagesByPage()
-      .then(({ data }) => renderFilms(data.results));
-    renderPagination(apiService.page, apiService.totalPages);
+    renderContentByPagination(1);
+    return;
   }
   if (e.target.classList.contains('js-last')) {
-    apiService.page = apiService.totalPages;
-    apiService
-      .fetchImagesByPage()
-      .then(({ data }) => renderFilms(data.results));
-    renderPagination(apiService.page, apiService.totalPages);
+    renderContentByPagination(apiService.totalPages);
+    return;
   }
 }
 
-// function onGetInfoClick(e) {
-//   const film = e.target.parentNode.parentNode;
-//   if (film.nodeName !== 'LI') {
-//     return;
-//   }
-//   const findId = apiService.films.find(({ id }) => id == film.id);
-//   refs.filmName.textContent = findId.title;
-//   refs.filmImage.alt = findId.title;
-//   refs.filmImage.src = `https://image.tmdb.org/t/p/w500/${findId.poster_path}`;
-//   refs.filmPopulation.textContent = findId.popularity.toFixed(2);
-//   refs.filmTittle.textContent = findId.original_title;
-//   refs.filmVoteFirst.textContent = findId.vote_average;
-//   refs.filmVoteSecond.textContent = findId.vote_count;
-//   refs.filmAbout.textContent = findId.overview;
+function renderContentByPagination(page) {
+  apiService.page = page;
+  apiService.fetchImagesByPage().then(({ data }) => renderFilms(data.results));
+  renderPagination(apiService.page, apiService.totalPages);
+}
 
 toggleBackdrop();
-
 function onGetInfoClick(e) {
   const filmClick = e.target.parentNode.parentNode;
   if (filmClick.nodeName !== 'LI') {
@@ -99,38 +77,31 @@ function onGetInfoClick(e) {
 function fillModal(film) {
   refs.filmName.textContent = film.title;
   refs.filmImage.alt = film.title;
-  refs.filmImage.src = `https://image.tmdb.org/t/p/w500/${film.poster_path}`;
+  refs.filmImage.src = film.poster_path;
   refs.filmPopulation.textContent = film.popularity.toFixed(2);
   refs.filmTittle.textContent = film.original_title;
   refs.filmVoteFirst.textContent = film.vote_average;
   refs.filmVoteSecond.textContent = film.vote_count;
   refs.filmAbout.textContent = film.overview;
+  refs.filmGenres.textContent = film.genre_ids;
 }
 
 function onFormSubmit(e) {
   e.preventDefault();
-onSpinnerOnLoad ()
+
+spinnerOn()
+
   const query = e.target.elements.query.value;
+  apiService.searchName = query;
   e.target.elements.query.value = '';
 
-  apiService.searchName = query;
-
   apiService.fetchImagesByName().then(({ data }) => {
-    console.log('QU FILM - ', data.results);
-
-    renderFilms(data.results);
-    renderPagination(apiService.page, apiService.totalPages);
+    if (!data.results.length) {
+      apiService.searchName = '';
+      refs.failureMessage.innerHTML = 'Search result not successful';
+    } else {
+      renderFilms(data.results);
+    }
   });
-  onSpinnerOffLoad()
-}
-
-function renderFilms(arrayFilms) {
-  if (!arrayFilms.length) {
-    console.log('SORRY');
-    refs.contentList.innerHTML = templatePlugEmpty();
-    return;
-  }
-
-  console.log('RENDER - ', arrayFilms);
-  refs.contentList.innerHTML = templateRenderFilms(arrayFilms);
+  spinnerOff()
 }
