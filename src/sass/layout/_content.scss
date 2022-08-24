@@ -33,6 +33,13 @@
   }
 }
 
+.noImg {  
+  background-image: url(../images/mike.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;
+}
+
 .content__film-image {
   width: 100%;
 }
