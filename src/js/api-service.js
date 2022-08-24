@@ -11,15 +11,18 @@ class ApiService {
     this.page = 1;
     this.totalPages = 1000;
     this.allGenres = null;
+    this.trendingPosters = [];
   }
 
   async fetchFilms() {
     try {
       const url = `${ApiService.BASE_URL}/trending/movie/week?api_key=${ApiService.API_KEY}`;
       const data = await axios.get(url);
+      console.log(data.data);
       this.films = data.data.results;
       this.page = data.data.page;
       this.totalPages = data.data.total_pages;
+      this.trendingPosters = data.data.results.map(el => el.poster_path);
       return data;
     } catch (error) {
       console.error(error);
