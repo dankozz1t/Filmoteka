@@ -12,7 +12,6 @@ import { onSmoothScroll } from './js/smoothScroll.js';
 onTopArrow();
 onSwitch();
 
-const apiService = new ApiService();
 onSmoothScroll();
 
 refs.contentList.addEventListener('click', onGetInfoClick);
