@@ -1,10 +1,12 @@
 import { refs } from './js/reference.js';
+import { topArrow } from './js/lift-up';
 import { renderFilms } from './js/renderFilms.js';
 import { apiService } from './js/api-service.js';
 import { toggleBackdrop } from './js/backdrop.js';
 import { renderPagination } from './js/pagination.js';
 import { onSmoothScroll } from './js/smoothScroll';
 
+topArrow();
 onSmoothScroll();
 
 refs.contentList.addEventListener('click', onGetInfoClick);
@@ -71,7 +73,6 @@ function onPaginationClick(e) {
 }
 
 toggleBackdrop();
-
 function onGetInfoClick(e) {
   const filmClick = e.target.parentNode.parentNode;
   if (filmClick.nodeName !== 'LI') {
