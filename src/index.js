@@ -2,6 +2,7 @@ import refs from './js/reference.js';
 import ApiService from './js/api-service.js';
 import { toggleBackdrop } from './js/backdrop.js';
 import templateRenderFilms from './templates/template-film.js';
+import templatePlugEmpty from './templates/template-plug-empty.hbs';
 
 const apiService = new ApiService();
 
@@ -48,7 +49,8 @@ function onFormSubmit(e) {
 function renderFilms(arrayFilms) {
   if (!arrayFilms.results.length) {
     console.log('SORRY');
-    //Сюди треба заглушку
+    refs.contentList.innerHTML = templatePlugEmpty();
+    return;
   }
 
   refs.contentList.innerHTML = templateRenderFilms(arrayFilms.results);
