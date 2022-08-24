@@ -1,6 +1,4 @@
-export default function topArrow() {
-  'use strict';
-
+export function topArrow() {
   const refs = {
     goTopBtn: document.querySelector('.lift_up'),
   };
