@@ -1,6 +1,7 @@
 import { apiService } from './api-service.js';
 import { refs } from './reference.js';
 import templateRenderFilms from '../templates/template-film.hbs';
+import { renderPagination } from './pagination.js';
 
 export function renderFilms(arrayFilms) {
   if (!arrayFilms.length) {
@@ -46,4 +47,5 @@ export function renderFilms(arrayFilms) {
     console.log(genresArray);
   });
   refs.contentList.innerHTML = templateRenderFilms(arrayFilms);
+  renderPagination(apiService.page, apiService.totalPages);
 }
