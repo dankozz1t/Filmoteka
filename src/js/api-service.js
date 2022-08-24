@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default class ApiService {
   static API_KEY = 'd7ee9dda466bc4ced4432fb2e147fc44';
-  static BASE_URL = 'https://api.themoviedb.org/3';
+  static BASE_URL = 'http://api.themoviedb.org/3';
 
   constructor() {
     this.searchCategory = 'popular';
