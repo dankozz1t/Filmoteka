@@ -18,8 +18,12 @@
             <path stroke="black" stroke-width="2.1333" stroke-miterlimit="4" stroke-linecap="butt"
                 stroke-linejoin="miter" d="M8.533 23.467l14.933-14.933"></path>
         </symbol>
-
-
+         <symbol id="icon-close-window-orange" viewBox="0 0 32 32">
+            <path stroke="#e5641f" stroke-width="2.1333" stroke-miterlimit="4" stroke-linecap="butt"
+                stroke-linejoin="miter" d="M8.533 8.533l14.933 14.933"></path>
+            <path stroke="#e5641f" stroke-width="2.1333" stroke-miterlimit="4" stroke-linecap="butt"
+                stroke-linejoin="miter" d="M8.533 23.467l14.933-14.933"></path>
+        </symbol>
 
         <symbol id="icon-film-from-header" viewBox="0 0 32 32">
             <path fill="none" stroke="#fff" stroke-width="2.6667" stroke-miterlimit="4" stroke-linecap="round"

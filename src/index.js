@@ -4,7 +4,10 @@ import { renderFilms } from './js/renderFilms.js';
 import { apiService } from './js/api-service.js';
 import { toggleBackdrop } from './js/backdrop.js';
 import { renderPagination } from './js/pagination.js';
+import { spinnerOn } from './js/spinner.js';
+import { spinnerOff } from './js/spinner.js'
 import { onSmoothScroll } from './js/smoothScroll';
+
 
 topArrow();
 onSmoothScroll();
@@ -85,7 +88,8 @@ function fillModal(film) {
 
 function onFormSubmit(e) {
   e.preventDefault();
-  refs.failureMessage.innerHTML = '';
+
+spinnerOn()
 
   const query = e.target.elements.query.value;
   apiService.searchName = query;
@@ -99,4 +103,5 @@ function onFormSubmit(e) {
       renderFilms(data.results);
     }
   });
+  spinnerOff()
 }
