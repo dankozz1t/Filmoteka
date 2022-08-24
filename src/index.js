@@ -10,7 +10,7 @@ refs.contentList.addEventListener('click', onGetInfoClick);
 refs.form.addEventListener('submit', onFormSubmit);
 
 apiService.fetchFilms().then(({ data }) => {
-  renderFilms(data);
+  renderFilms(data.results);
 });
 
 toggleBackdrop();
@@ -42,16 +42,19 @@ function onFormSubmit(e) {
   e.target.elements.query.value = '';
 
   apiService.fetchImagesByName(query).then(({ data }) => {
-    renderFilms(data);
+    console.log('QU FILM - ', data.results);
+
+    renderFilms(data.results);
   });
 }
 
 function renderFilms(arrayFilms) {
-  if (!arrayFilms.results.length) {
+  if (!arrayFilms.length) {
     console.log('SORRY');
     refs.contentList.innerHTML = templatePlugEmpty();
     return;
   }
 
-  refs.contentList.innerHTML = templateRenderFilms(arrayFilms.results);
+  console.log('RENDER - ', arrayFilms);
+  refs.contentList.innerHTML = templateRenderFilms(arrayFilms);
 }
