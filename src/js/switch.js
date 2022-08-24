@@ -18,8 +18,6 @@ export function load() {
   }
 }
 
-load();
-
 refs.switchBtn.addEventListener('click', () => {
   refs.body.classList.toggle('darkmode');
   refs.switchIcon.classList.add('animated');

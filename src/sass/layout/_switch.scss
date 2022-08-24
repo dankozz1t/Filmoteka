@@ -77,6 +77,10 @@ body.darkmode {
   .footer__text {
     color: var(--info-title-cl);
   }
+
+  .film-modal__btn--close {
+    fill: var(--main-bg-cl);
+  }
 }
 
 .darkmode .switch__btn__icon {
