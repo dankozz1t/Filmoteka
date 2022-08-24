@@ -1,9 +1,12 @@
 import { refs } from './js/reference.js';
+import topArrow from './js/lift-up';
 import ApiService from './js/api-service.js';
 import { toggleBackdrop } from './js/backdrop.js';
 import { renderPagination } from './js/pagination.js';
 import templateRenderFilms from './templates/template-film.js';
 import templatePlugEmpty from './templates/template-plug-empty.hbs';
+
+topArrow();
 
 const apiService = new ApiService();
 
@@ -83,7 +86,6 @@ function onPaginationClick(e) {
 //   refs.filmAbout.textContent = findId.overview;
 
 toggleBackdrop();
-
 function onGetInfoClick(e) {
   const filmClick = e.target.parentNode.parentNode;
   if (filmClick.nodeName !== 'LI') {
