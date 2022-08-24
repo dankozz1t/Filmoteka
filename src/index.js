@@ -1,13 +1,13 @@
 import { refs } from './js/reference.js';
-import { onTopArrow } from './js/lift-up';
-import { onSwitch } from './js/switch';
+import { onTopArrow } from './js/lift-up.js';
+import { onSwitch } from './js/switch.js';
 import { renderFilms } from './js/renderFilms.js';
 import { apiService } from './js/api-service.js';
 import { toggleBackdrop } from './js/backdrop.js';
 import { renderPagination } from './js/pagination.js';
 import { spinnerOn } from './js/spinner.js';
 import { spinnerOff } from './js/spinner.js';
-import { onSmoothScroll } from './js/smoothScroll';
+import { onSmoothScroll } from './js/smoothScroll.js';
 
 onTopArrow();
 onSwitch();
