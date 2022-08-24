@@ -189,3 +189,27 @@ input::placeholder {
   font-weight: 400;
   color: inherit;
 }
+
+.header__btn {
+  width: 130px;
+  height: 44px;
+
+  @include media(tablet) {
+    width: 152px;
+    height: 44px;
+  }
+  @include media(desktop) {
+    width: 147px;
+    height: 42px;
+  }
+}
+
+.header__btn-wrapper {
+  gap: 20px;
+  @include media(tablet) {
+    gap: 32px;
+  }
+  @include media(desktop) {
+    gap: 16px;
+  }
+}
