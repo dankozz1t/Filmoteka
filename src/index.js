@@ -1,6 +1,6 @@
 import { refs } from './js/reference.js';
 import topArrow from './js/lift-up';
-import load from './js/switch';
+import { load } from './js/switch';
 import ApiService from './js/api-service.js';
 import { toggleBackdrop } from './js/backdrop.js';
 import { renderPagination } from './js/pagination.js';
