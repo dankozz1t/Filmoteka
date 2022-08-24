@@ -23,10 +23,12 @@
   width: 280px;
   height: 450px;
   margin-bottom: 10px;
+  transition: transform 0.25s;
 
   &:hover,
   &:focus {
     box-shadow: 0 0 5px rgba(222, 94, 8, 0.923);
+    transform: scale(1.02);
   }
 
   @include media(tablet) {
@@ -119,6 +121,7 @@
 
   opacity: 1;
 }
+
 .modal-container {
   transform: translate(-50%, -50%) scale(0);
 }

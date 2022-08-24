@@ -25,25 +25,36 @@ apiService.fetchFilms().then(({ data }) => {
   }
 
   // console.log(data.results);
-  let genreIDS = data.results.map(({ genre_ids }) => genre_ids);
+  //let genreIDS = data.results.map(({ genre_ids }) => genre_ids);
+  //genreIDS.forEach(gen => {
+    //let strGenres = [];
+    //apiService.allGenres.forEach(el => {
+    // console.log('EL ', el.id);
+    //  console.log('genreIDS ', gen);
+      //if (gen.includes(el.id)) {
+        //strGenres.push(el.name);
+      //}
+    //});
+
+    //console.log(strGenres);
+  //});
+
+  let genreIDS = data.results.map(({ genre_ids }) => genre_ids)  
+    ;
+   console.log(genreIDS);
   genreIDS.forEach(gen => {
-    let strGenres = [];
+    let strGenres = []
+    console.log(apiService.allGenres);
     apiService.allGenres.forEach(el => {
-      // console.log('EL ', el.id);
-      console.log('genreIDS ', gen);
-      if (gen.includes(el.id)) {
-        strGenres.push(el.name);
-      }
-    });
-
+        
+        if (gen.id === el.id) { 
+          strGenres.push(el.name);
+        }
+      })
     console.log(strGenres);
-  });
+    })
 
-  //let genreIDS = data.results.forEach(films => {
-  //let strGenres = [];
-  //films.genre_ids.forEach
-
-  // })
+   
 
   renderFilms(data.results);
 

@@ -16,6 +16,8 @@
 }
 
 .content__item {
+  transition: transform 0.25s;
+
   @include media(tablet-only) {
     width: calc((100% - 3 * 30px) / 2);
   }
@@ -25,7 +27,13 @@
   }
 }
 
-.noImg {  
+.content__item:hover {
+  transform: scale(1.02);
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 8px var(--secondary-accent-cl);
+}
+
+.noImg {
   background-image: url(../images/mike.png);
   background-repeat: no-repeat;
   background-position: center;
