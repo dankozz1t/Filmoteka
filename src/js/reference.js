@@ -22,5 +22,7 @@ export const refs = {
 
   failureMessage: document.querySelector('.failure-message'),
 
+  spinner: document.querySelector('.loader'),
+
   goTopBtn: document.querySelector('.lift_up'),
 };
