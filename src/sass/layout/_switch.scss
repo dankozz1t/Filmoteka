@@ -1,0 +1,79 @@
+body {
+  height: 100vh;
+  background-color: var(--main-bg-color);
+}
+
+.switch__btn {
+  position: absolute;
+
+  margin-top: -40px;
+  margin-left: 80px;
+
+  @include media(tablet) {
+    margin-left: 500px;
+  }
+  @include media(desktop) {
+    margin-left: 1000px;
+  }
+}
+
+.switch__btn__icon-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.switch__btn__icon {
+  color: var(--secondary-accent-cl);
+  font-size: 3rem;
+}
+
+/* -------------- ANIMATION ------------ */
+.switch__btn__icon.animated {
+  animation: spin 0.5s;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* -------------- DARKMODE -------------- */
+body.darkmode {
+  background-color: var(--dark-bg-cl);
+
+  .header {
+    box-shadow: 0 0 20px 1px var(--secondary-accent-cl);
+  }
+
+  .film-modal,
+  .modal-team {
+    background-color: var(--dark-bg-cl);
+    color: var(--secondary-text-cl);
+  }
+
+  .pagination__btn,
+  .content__film-name {
+    color: var(--secondary-text-cl);
+  }
+
+  .pagination__btn--pale {
+    color: var(--main-text-cl);
+  }
+
+  .footer {
+    background-color: var(--dark-secondary-bg-cl);
+  }
+
+  .footer__text {
+    color: var(--info-title-cl);
+  }
+}
+
+.darkmode .switch__btn__icon {
+  color: var(--main-bg-cl);
+}

@@ -23,6 +23,14 @@
   @include media(desktop) {
     flex-basis: calc((100% - 32px) / 3);
   }
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 10px 1px var(--secondary-accent-cl);
+    transition: box-shadow;
+    transition-duration: var(--transition-time);
+    transition-timing-function: var(--transition-cubic);
+  }
 }
 
 .content__film-image {
