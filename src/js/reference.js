@@ -1,4 +1,4 @@
-export default refs = {
+export const refs = {
   contentList: document.querySelector('.content__list'),
   form: document.querySelector('#search-form'),
 
