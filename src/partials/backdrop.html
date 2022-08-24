@@ -1,9 +1,11 @@
 <div data-backdrop class="backdrop visually-hidden">
-
   <div data-team-modal class="modal-team modal-container visually-hidden">
-        <button data-team-modal-close class="team-modal__btn--close ">
+    <button data-team-modal-close class="team-modal__btn--close">
       <svg class="backdrop__icon js-btn-close" width="30" height="30">
-        <use class="js-btn-close" href="./images/symbol-defs.svg#icon-close-window"></use>
+        <use
+          class="js-btn-close"
+          href="./images/symbol-defs.svg#icon-close-window"
+        ></use>
       </svg>
     </button>
     <h2 class="team-title">Team</h2>
@@ -124,64 +126,61 @@
         </ul>
       </li>
     </ul>
-    </div>
+  </div>
 
-
-
-<div data-film-modal class="film-modal visually-hidden">
-    <button data-film-modal-close class="film-modal__btn--close ">
+  <div data-film-modal class="film-modal visually-hidden">
+    <button data-film-modal-close class="film-modal__btn--close">
       <svg class="backdrop__icon js-btn-close" width="30" height="30">
-        <use class="js-btn-close" href="./images/symbol-defs.svg#icon-close-window"></use>
+        <use
+          class="js-btn-close"
+          href="./images/symbol-defs.svg#icon-close-window"
+        ></use>
       </svg>
     </button>
+
     <div class="film-modal__wrapper">
       <div class="film-modal__thumb">
         <img class="film-modal__img" src="#" alt="..." />
       </div>
       <div class="film-modal__info">
         <h2 class="film-modal__title js-name"></h2>
-        
-        
-      <table class="params">
-        <tr class="params__list">
-          <td class="params__item">Vote/Votes</td>
-          <td class="params__data-item js-votes"> 
-            <span class="accent-box js-accent-box"></span> /
-            <span class="pale-box js-pale-box"></span>
-          </td>
-        </tr>
-        <tr class="params__list">
-          <td class="params__item">Popularity</td>
-          <td class="params__data-item js-rating">100.2</td>
-        </tr>
-        <tr class="params__list">
-          <td class="params__item">Original Title</td>
-          <td class="params__data-item js-title"></td>
-        </tr>
-        <tr class="params__list">
-          <td class="params__item">Genre</td>
-          <td class="params__data-item js-genre"></td>
-        </tr>
-        
-      </table>
 
-        
-          <p class="film-modal__about">About</p> 
-          <p class="film-modal__description js-about">
-          </p>  
-          <ul class="btn-wrapper film-modal__btn-wrapper">
-            <li>
-              <button type="button" class="btn btn--accent film-modal__btn">
-          Add to watched
-              </button>
-            </li>
-           <li>
-            <button type="button" class="btn film-modal__btn">
-          Add to qeue
+        <table class="params">
+          <tr class="params__list">
+            <td class="params__item">Vote/Votes</td>
+            <td class="params__data-item js-votes">
+              <span class="accent-box js-accent-box"></span> /
+              <span class="pale-box js-pale-box"></span>
+            </td>
+          </tr>
+          <tr class="params__list">
+            <td class="params__item">Popularity</td>
+            <td class="params__data-item js-rating">100.2</td>
+          </tr>
+          <tr class="params__list">
+            <td class="params__item">Original Title</td>
+            <td class="params__data-item js-title"></td>
+          </tr>
+          <tr class="params__list">
+            <td class="params__item">Genre</td>
+            <td class="params__data-item js-genre"></td>
+          </tr>
+        </table>
+
+        <p class="film-modal__about">About</p>
+        <p class="film-modal__description js-about"></p>
+        <ul class="btn-wrapper film-modal__btn-wrapper">
+          <li>
+            <button type="button" class="btn btn--accent film-modal__btn">
+              Add to watched
             </button>
           </li>
-          </ul>
-        </div>
+          <li>
+            <button type="button" class="btn film-modal__btn">
+              Add to qeue
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
