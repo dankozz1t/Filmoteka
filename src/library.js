@@ -1,5 +1,5 @@
-import { onTopArrow } from './js/lift-up.js';
-import { onSwitch } from './js/switch';
+import { onTopArrow } from './js/components/lift-up.js';
+import { onSwitch } from './js//components/switch.js';
 
 onTopArrow();
 onSwitch();

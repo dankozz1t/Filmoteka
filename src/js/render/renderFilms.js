@@ -1,7 +1,7 @@
-import { apiService } from './api-service.js';
-import { refs } from './reference.js';
-import templateRenderFilms from '../templates/template-film.hbs';
-import { renderPagination } from './pagination.js';
+import { apiService } from '../API/api-service.js';
+import { refs } from '../references/reference.js';
+import templateRenderFilms from '../../templates/template-film.hbs';
+import { renderPagination } from '../pagination/pagination.js';
 
 export function renderFilms(arrayFilms) {
   if (!arrayFilms.length) {
