@@ -45,7 +45,7 @@
     transform: translate(-50%, -50%);
 
     width: 704px;
-    max-height: 552px;
+    height: 552px;
     padding: 40px 36px;
   }
 
@@ -53,7 +53,7 @@
     left: 50%;
 
     width: 806px;
-    max-height: 558px;
+    height: 558px;
     padding: 40px 12px;
   }
 }
@@ -208,7 +208,7 @@
 .params__data-item {
   margin: 0;
   padding: 0;
-  width: 150px;
+  min-width: 150px;
   &.js-title {
     text-transform: uppercase;
   }
