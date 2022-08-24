@@ -20,21 +20,10 @@ export default function topArrow() {
   function backToTop() {
     if (window.pageYOffset > 0) {
       window.scrollBy(0, -80);
-      setTimeout(backToTop, 0);
+      setTimeout(backToTop, 10);
     }
   }
 
   window.addEventListener('scroll', trackScroll);
   refs.goTopBtn.addEventListener('click', backToTop);
-}
-
-function scroll() {
-  const { height: cardHeight } = document
-    .querySelector('.content')
-    .firstElementChild.getBoundingClientRect();
-
-  window.scrollBy({
-    top: cardHeight * 2,
-    behavior: 'smooth',
-  });
 }
