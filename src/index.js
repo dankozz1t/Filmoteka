@@ -13,6 +13,7 @@ refs.form.addEventListener('submit', onFormSubmit);
 apiService.fetchFilms().then(({ data }) => {
   renderFilms(data.results);
 
+  console.log(apiService.totalPages);
   renderPagination(apiService.page, apiService.totalPages);
 });
 
@@ -67,21 +68,6 @@ function onPaginationClick(e) {
   }
 }
 
-// function onGetInfoClick(e) {
-//   const film = e.target.parentNode.parentNode;
-//   if (film.nodeName !== 'LI') {
-//     return;
-//   }
-//   const findId = apiService.films.find(({ id }) => id == film.id);
-//   refs.filmName.textContent = findId.title;
-//   refs.filmImage.alt = findId.title;
-//   refs.filmImage.src = `https://image.tmdb.org/t/p/w500/${findId.poster_path}`;
-//   refs.filmPopulation.textContent = findId.popularity.toFixed(2);
-//   refs.filmTittle.textContent = findId.original_title;
-//   refs.filmVoteFirst.textContent = findId.vote_average;
-//   refs.filmVoteSecond.textContent = findId.vote_count;
-//   refs.filmAbout.textContent = findId.overview;
-
 toggleBackdrop();
 
 function onGetInfoClick(e) {
@@ -107,26 +93,26 @@ function fillModal(film) {
 
 function onFormSubmit(e) {
   e.preventDefault();
+  refs.failureMessage.innerHTML = '';
+
   const query = e.target.elements.query.value;
   e.target.elements.query.value = '';
-
   apiService.searchName = query;
 
   apiService.fetchImagesByName().then(({ data }) => {
     console.log('QU FILM - ', data.results);
 
-    renderFilms(data.results);
-    renderPagination(apiService.page, apiService.totalPages);
+    if (!data.results.length) {
+      console.log('SORRY');
+      refs.failureMessage.innerHTML = 'Search result not successful';
+    } else {
+      renderFilms(data.results);
+    }
   });
 }
 
 function renderFilms(arrayFilms) {
-  if (!arrayFilms.length) {
-    console.log('SORRY');
-    refs.contentList.innerHTML = templatePlugEmpty();
-    return;
-  }
-
   console.log('RENDER - ', arrayFilms);
   refs.contentList.innerHTML = templateRenderFilms(arrayFilms);
+  renderPagination(apiService.page, apiService.totalPages);
 }

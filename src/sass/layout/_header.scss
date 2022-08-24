@@ -213,3 +213,11 @@ input::placeholder {
     gap: 16px;
   }
 }
+
+.failure-message {
+  width: fit-content;
+  margin: 5px auto;
+
+  color: #ff001b;
+  font-size: 13px;
+}
