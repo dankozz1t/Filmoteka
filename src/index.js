@@ -13,7 +13,6 @@ refs.form.addEventListener('submit', onFormSubmit);
 apiService.fetchFilms().then(({ data }) => {
   renderFilms(data.results);
 
-  console.log(apiService.totalPages);
   renderPagination(apiService.page, apiService.totalPages);
 });
 
@@ -25,47 +24,35 @@ function onPaginationClick(e) {
     return;
   }
   if (e.target.classList.contains('js-next')) {
-    apiService.page += 1;
-    apiService
-      .fetchImagesByPage()
-      .then(({ data }) => renderFilms(data.results));
-    renderPagination(apiService.page, apiService.totalPages);
+    renderContentByPagination((apiService.page += 1));
+    return;
   }
   if (e.target.classList.contains('js-previous')) {
-    apiService.page -= 1;
-    apiService
-      .fetchImagesByPage()
-      .then(({ data }) => renderFilms(data.results));
-    renderPagination(apiService.page, apiService.totalPages);
+    renderContentByPagination((apiService.page -= 1));
+    return;
   }
   if (e.target.classList.contains('js-second-previous')) {
-    apiService.page -= 2;
-    apiService
-      .fetchImagesByPage()
-      .then(({ data }) => renderFilms(data.results));
-    renderPagination(apiService.page, apiService.totalPages);
+    renderContentByPagination((apiService.page -= 2));
+    return;
   }
   if (e.target.classList.contains('js-second-next')) {
-    apiService.page += 2;
-    apiService
-      .fetchImagesByPage()
-      .then(({ data }) => renderFilms(data.results));
-    renderPagination(apiService.page, apiService.totalPages);
+    renderContentByPagination((apiService.page += 2));
+    return;
   }
   if (e.target.classList.contains('js-first')) {
-    apiService.page = 1;
-    apiService
-      .fetchImagesByPage()
-      .then(({ data }) => renderFilms(data.results));
-    renderPagination(apiService.page, apiService.totalPages);
+    renderContentByPagination(1);
+    return;
   }
   if (e.target.classList.contains('js-last')) {
-    apiService.page = apiService.totalPages;
-    apiService
-      .fetchImagesByPage()
-      .then(({ data }) => renderFilms(data.results));
-    renderPagination(apiService.page, apiService.totalPages);
+    renderContentByPagination(apiService.totalPages);
+    return;
   }
+}
+
+function renderContentByPagination(page) {
+  apiService.page = page;
+  apiService.fetchImagesByPage().then(({ data }) => renderFilms(data.results));
+  renderPagination(apiService.page, apiService.totalPages);
 }
 
 toggleBackdrop();
@@ -96,14 +83,12 @@ function onFormSubmit(e) {
   refs.failureMessage.innerHTML = '';
 
   const query = e.target.elements.query.value;
-  e.target.elements.query.value = '';
   apiService.searchName = query;
+  e.target.elements.query.value = '';
 
   apiService.fetchImagesByName().then(({ data }) => {
-    console.log('QU FILM - ', data.results);
-
     if (!data.results.length) {
-      console.log('SORRY');
+      apiService.searchName = '';
       refs.failureMessage.innerHTML = 'Search result not successful';
     } else {
       renderFilms(data.results);
@@ -112,7 +97,6 @@ function onFormSubmit(e) {
 }
 
 function renderFilms(arrayFilms) {
-  console.log('RENDER - ', arrayFilms);
   refs.contentList.innerHTML = templateRenderFilms(arrayFilms);
   renderPagination(apiService.page, apiService.totalPages);
 }
