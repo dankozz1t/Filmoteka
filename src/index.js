@@ -1,4 +1,4 @@
-import refs from './js/reference.js';
+import { refs } from './js/reference.js';
 import ApiService from './js/api-service.js';
 import { toggleBackdrop } from './js/backdrop.js';
 import templateRenderFilms from './templates/template-film.js';

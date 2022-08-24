@@ -1,4 +1,4 @@
-import refs from './reference.js';
+import { refs } from './reference.js';
 
 export function toggleBackdrop() {
   refs.openFilmBtn.addEventListener('click', onOpenFilmBtnClick);
