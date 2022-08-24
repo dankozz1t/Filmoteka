@@ -23,13 +23,15 @@ export function renderPagination(page, total) {
       </li>
       <li>
         <button class="pagination__btn pagination__btn--pale js-next" type="button">
-          >
+          &#8594
         </button>
       </li>`;
   } else if (page === 2) {
     markup = `<li>
         <button class="pagination__btn pagination__btn--pale js-previous" type="button">
-          <
+                <svg class="backdrop__icon js-next" width="15" height="15">
+        <use class="js-next" href="../images/symbol-defs.svg#icon-left"></use>
+      </svg>
         </button>
       </li>
         <li>
@@ -58,13 +60,13 @@ export function renderPagination(page, total) {
       </li>
       <li>
         <button class="pagination__btn pagination__btn--pale js-next" type="button">
-          >
+          &#8594
         </button>
       </li>`;
   } else if (page === 3) {
     markup = `<li>
         <button class="pagination__btn pagination__btn--pale js-previous" type="button">
-          <
+          &#8592
         </button>
       </li>
       <li>
@@ -98,13 +100,13 @@ export function renderPagination(page, total) {
       </li>
       <li>
         <button class="pagination__btn pagination__btn--pale js-next" type="button">
-          >
+          &#8594
         </button>
       </li>`;
   } else if (page > 3 && page < total - 3) {
     markup = `<li>
         <button class="pagination__btn pagination__btn--pale js-previous" type="button">
-          <
+            &#8592
         </button>
          <li>
         <button class="pagination__btn pagination__first js-first" type="button">1</button>
@@ -142,13 +144,13 @@ export function renderPagination(page, total) {
       </li>
       <li>
         <button class="pagination__btn pagination__btn--pale js-next" type="button">
-          >
+          &#8594
         </button>
       </li>`;
   } else if (page === total - 3) {
     markup = `<li>
         <button class="pagination__btn pagination__btn--pale js-previous" type="button">
-          <
+          &#8592
         </button>
          <li>
         <button class="pagination__btn pagination__first js-first" type="button">1</button>
@@ -186,13 +188,13 @@ export function renderPagination(page, total) {
       </li>
       <li>
         <button class="pagination__btn pagination__btn--pale js-next" type="button">
-          >
+          &#8594
         </button>
       </li>`;
   } else if (page === total - 2) {
     markup = `<li>
         <button class="pagination__btn pagination__btn--pale js-previous" type="button">
-          <
+          &#8592
         </button>
          <li>
         <button class="pagination__btn pagination__first js-first" type="button">1</button>
@@ -223,13 +225,13 @@ export function renderPagination(page, total) {
       </li>
       <li>
         <button class="pagination__btn pagination__btn--pale js-next" type="button">
-          >
+          &#8594
         </button>
       </li>`;
   } else if (page === total - 1) {
     markup = `<li>
         <button class="pagination__btn pagination__btn--pale js-previous" type="button">
-          <
+          &#8592
         </button>
          <li>
         <button class="pagination__btn pagination__first js-first" type="button">1</button>
@@ -255,13 +257,13 @@ export function renderPagination(page, total) {
       </li>
       <li>
         <button class="pagination__btn pagination__btn--pale js-next" type="button">
-          >
+          &#8594
         </button>
       </li>`;
   } else if (page === total) {
     markup = `<li>
         <button class="pagination__btn pagination__btn--pale js-previous" type="button">
-          <
+          &#8592
         </button>
          <li>
         <button class="pagination__btn pagination__first js-first" type="button">1</button>
