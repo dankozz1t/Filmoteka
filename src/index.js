@@ -1,5 +1,5 @@
 import { refs } from './js/reference.js';
-import { onTopArrow } from './js/lift-up.js';
+import onTopArrow from './js/lift-up.js';
 import { onSwitch } from './js/switch.js';
 import { renderFilms } from './js/renderFilms.js';
 import { apiService } from './js/api-service.js';
