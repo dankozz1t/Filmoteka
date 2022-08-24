@@ -1,4 +1,4 @@
-export default function onSmoothScroll() {
+export function onSmoothScroll() {
   const { height: cardHeight } = document
     .querySelector('.content')
     .firstElementChild.getBoundingClientRect();
