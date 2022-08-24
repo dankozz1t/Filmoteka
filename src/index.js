@@ -1,55 +1,55 @@
+import refs from './js/reference.js';
 import ApiService from './js/api-service.js';
 import { toggleBackdrop } from './js/backdrop.js';
-import renderItem from './templates/template-item.js';
-
-const refs = {
-  contentList: document.querySelector('.content__list'),
-  form: document.querySelector('#search-form'),
-  filmName: document.querySelector('.js-name'),
-  filmImage: document.querySelector('.film-modal__img'),
-  filmPopulation: document.querySelector('.js-rating'),
-  filmTittle: document.querySelector('.js-title'),
-  filmVoteFirst: document.querySelector('.js-accent-box'),
-  filmVoteSecond: document.querySelector('.js-pale-box'),
-  filmAbout: document.querySelector('.js-about'),
-};
+import templateRenderFilms from './templates/template-film.js';
 
 const apiService = new ApiService();
 
+refs.contentList.addEventListener('click', onGetInfoClick);
+refs.form.addEventListener('submit', onFormSubmit);
+
 apiService.fetchFilms().then(({ data }) => {
-  // console.log(data);
-  refs.contentList.insertAdjacentHTML('beforeend', renderItem(data.results));
-  // console.log(apiService.films);
+  renderFilms(data);
 });
 
-refs.contentList.addEventListener('click', onGetInfoClick)
+toggleBackdrop();
 
 function onGetInfoClick(e) {
-  const film = e.target.parentNode.parentNode;
-  if (film.nodeName !== 'LI') {
-  return 
-  }   
-  const findId = apiService.films.find(({ id }) => id == film.id);
-  refs.filmName.textContent = findId.title
-  refs.filmImage.alt = findId.title
-  refs.filmImage.src = `https://image.tmdb.org/t/p/w500/${findId.poster_path}`
-  refs.filmPopulation.textContent = findId.popularity.toFixed(2)
-  refs.filmTittle.textContent = findId.original_title
-  refs.filmVoteFirst.textContent = findId.vote_average
-  refs.filmVoteSecond.textContent = findId.vote_count
-  refs.filmAbout.textContent = findId.overview
+  const filmClick = e.target.parentNode.parentNode;
+  if (filmClick.nodeName !== 'LI') {
+    return;
+  }
+  const film = apiService.films.find(({ id }) => id == filmClick.id);
+
+  fillModal(film);
 }
 
-refs.form.addEventListener('submit', onFormSubmit);
+function fillModal(film) {
+  refs.filmName.textContent = film.title;
+  refs.filmImage.alt = film.title;
+  refs.filmImage.src = `https://image.tmdb.org/t/p/w500/${film.poster_path}`;
+  refs.filmPopulation.textContent = film.popularity.toFixed(2);
+  refs.filmTittle.textContent = film.original_title;
+  refs.filmVoteFirst.textContent = film.vote_average;
+  refs.filmVoteSecond.textContent = film.vote_count;
+  refs.filmAbout.textContent = film.overview;
+}
+
 function onFormSubmit(e) {
   e.preventDefault();
   const query = e.target.elements.query.value;
   e.target.elements.query.value = '';
 
   apiService.fetchImagesByName(query).then(({ data }) => {
-    // console.log(data.results);
-    refs.contentList.innerHTML = renderItem(data.results)
+    renderFilms(data);
   });
 }
 
-toggleBackdrop();
+function renderFilms(arrayFilms) {
+  if (!arrayFilms.results.length) {
+    console.log('SORRY');
+    //Сюди треба заглушку
+  }
+
+  refs.contentList.innerHTML = templateRenderFilms(arrayFilms.results);
+}
