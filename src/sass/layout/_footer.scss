@@ -8,10 +8,6 @@
 }
 
 .footer__box {
-  // @media screen and(min-width:768px) {
-  //   display: flex;
-  //   justify-content: center;
-  // }
   @include media(tablet) {
     display: flex;
     justify-content: center;
@@ -45,9 +41,6 @@
 }
 
 .team {
-  //   @media screen and(min-width:320px) {
-  //     font-size: 14px;
-  //   }
   @include media(mobile-only) {
     font-size: 14px;
   }
