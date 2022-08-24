@@ -31,7 +31,6 @@ export default class ApiService {
       this.films = data.data.results;
       this.page = data.data.page;
       this.totalPages = data.data.total_pages;
-      console.log(this.totalPages);
       return data;
     } catch (error) {
       console.error(error);
@@ -50,7 +49,6 @@ export default class ApiService {
       this.films = data.data.results;
       this.page = data.data.page;
       this.totalPages = data.data.total_pages;
-      console.log(this.totalPages);
       return data;
     } catch (error) {
       console.error(error);

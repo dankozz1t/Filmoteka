@@ -1,13 +1,8 @@
-export function renderPagination(page, total) {
-  const refs = {
-    paginationControls: document.querySelector('.pagination__controls'),
-    currentPage: document.querySelector('.js-current'),
-  };
-  //   refs.paginationControls.addEventListener('click', onPaginationClick);
+import { refs } from './reference.js';
 
+export function renderPagination(page, total) {
   let markup = '';
   if (page === 1) {
-    console.log(refs.paginationControls);
     markup = `<li>
         <button class="pagination__btn pagination__btn--accent js-current" type="button">${page}</button>
       </li>
