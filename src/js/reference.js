@@ -20,5 +20,7 @@ export const refs = {
   paginationControls: document.querySelector('.pagination__controls'),
   currentPage: document.querySelector('.js-current'),
 
+  failureMessage: document.querySelector('.failure-message'),
+
   goTopBtn: document.querySelector('.lift_up'),
 };

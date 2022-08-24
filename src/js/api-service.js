@@ -9,7 +9,7 @@ class ApiService {
     this.searchName = '';
     this.films = null;
     this.page = 1;
-    this.totalPages = null;
+    this.totalPages = 1000;
     this.allGenres = null;
   }
 
@@ -33,6 +33,7 @@ class ApiService {
       this.films = data.data.results;
       this.page = data.data.page;
       this.totalPages = data.data.total_pages;
+
       return data;
     } catch (error) {
       console.error(error);
