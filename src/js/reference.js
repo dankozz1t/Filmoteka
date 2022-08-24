@@ -15,8 +15,12 @@ export const refs = {
   filmVoteFirst: document.querySelector('.js-accent-box'),
   filmVoteSecond: document.querySelector('.js-pale-box'),
   filmAbout: document.querySelector('.js-about'),
+  filmGenres: document.querySelector('.js-genre'),
 
   paginationControls: document.querySelector('.pagination__controls'),
   currentPage: document.querySelector('.js-current'),
+
   failureMessage: document.querySelector('.failure-message'),
+
+  goTopBtn: document.querySelector('.lift_up'),
 };

@@ -1,23 +1,28 @@
 import { refs } from './js/reference.js';
-import ApiService from './js/api-service.js';
+import { topArrow } from './js/lift-up';
+import { renderFilms } from './js/renderFilms.js';
+import { apiService } from './js/api-service.js';
 import { toggleBackdrop } from './js/backdrop.js';
 import { renderPagination } from './js/pagination.js';
-import templateRenderFilms from './templates/template-film.js';
-import templatePlugEmpty from './templates/template-plug-empty.hbs';
+import { onSmoothScroll } from './js/smoothScroll';
 
-const apiService = new ApiService();
+topArrow();
+onSmoothScroll();
 
 refs.contentList.addEventListener('click', onGetInfoClick);
 refs.form.addEventListener('submit', onFormSubmit);
+refs.paginationControls.addEventListener('click', onPaginationClick);
+refs.contentList.addEventListener('click', onGetInfoClick);
 
 apiService.fetchFilms().then(({ data }) => {
+  if (!apiService.allGenres) {
+    apiService.fetchGenres();
+  }
+
   renderFilms(data.results);
 
   renderPagination(apiService.page, apiService.totalPages);
 });
-
-refs.paginationControls.addEventListener('click', onPaginationClick);
-refs.contentList.addEventListener('click', onGetInfoClick);
 
 function onPaginationClick(e) {
   if (e.target.nodeName !== 'BUTTON') {
@@ -56,7 +61,6 @@ function renderContentByPagination(page) {
 }
 
 toggleBackdrop();
-
 function onGetInfoClick(e) {
   const filmClick = e.target.parentNode.parentNode;
   if (filmClick.nodeName !== 'LI') {
@@ -70,12 +74,13 @@ function onGetInfoClick(e) {
 function fillModal(film) {
   refs.filmName.textContent = film.title;
   refs.filmImage.alt = film.title;
-  refs.filmImage.src = `https://image.tmdb.org/t/p/w500/${film.poster_path}`;
+  refs.filmImage.src = film.poster_path;
   refs.filmPopulation.textContent = film.popularity.toFixed(2);
   refs.filmTittle.textContent = film.original_title;
   refs.filmVoteFirst.textContent = film.vote_average;
   refs.filmVoteSecond.textContent = film.vote_count;
   refs.filmAbout.textContent = film.overview;
+  refs.filmGenres.textContent = film.genre_ids;
 }
 
 function onFormSubmit(e) {
@@ -95,8 +100,11 @@ function onFormSubmit(e) {
     }
   });
 }
+// <<<<<<< HEAD
 
-function renderFilms(arrayFilms) {
-  refs.contentList.innerHTML = templateRenderFilms(arrayFilms);
-  renderPagination(apiService.page, apiService.totalPages);
-}
+// function renderFilms(arrayFilms) {
+//   refs.contentList.innerHTML = templateRenderFilms(arrayFilms);
+//   renderPagination(apiService.page, apiService.totalPages);
+// }
+// =======
+// >>>>>>> main
