@@ -1,6 +1,6 @@
 import { apiService } from '../API/api-service.js';
-import { renderPagination } from './pagination.js';
-import { renderFilms } from '../render/renderFilms.js';
+import { renderPagination } from '../pagination/pagination.js';
+import { renderFilms } from './renderFilms.js';
 
 export function renderContentByPagination(page) {
   apiService.page = page;

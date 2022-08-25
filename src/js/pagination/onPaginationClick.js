@@ -1,5 +1,5 @@
 import { apiService } from '../API/api-service.js';
-import { renderContentByPagination } from './renderContentByPagination.js';
+import { renderContentByPagination } from '../render/renderContentByPagination.js';
 
 export function onPaginationClick(e) {
   if (e.target.nodeName !== 'BUTTON') {
