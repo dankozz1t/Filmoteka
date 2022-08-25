@@ -94,8 +94,8 @@ body.darkmode {
     color: var(--info-title-cl);
   }
 
-  .film-modal__btn--close {
-    fill: var(--main-bg-cl);
+  .backdrop__icon {
+    stroke: var(--secondary-text-cl);
   }
 }
 
