@@ -1,9 +1,9 @@
 .btn {
-  padding: 0 5px;
-
   display: inline-flex;
   justify-content: center;
   align-items: center;
+
+  padding: 0 5px;
 
   text-transform: uppercase;
 
@@ -11,59 +11,38 @@
   border: 1px solid;
   border-radius: 5px;
 
-  cursor: pointer;
+  &:hover {
+    animation: rotate 0.7s ease-in-out both;
+    animation-delay: 0.04s;
+  }
 
   &--white {
-    border-color: white;
-    color: white;
+    color: var(--white-btn-color);
+    border-color: var(--white-btn-color);
 
     &:hover {
-      border-color: #ff6b08;
-      color: var(--main-bg-cl);
-      background-color: #ff6b08;
+      border-color: var(--accent-btn-color);
+      color: var(--white-btn-color);
+      background-color: var(--accent-btn-color);
     }
   }
 
   &--accent {
-    border-color: #ff6b08;
-    color: var(--main-bg-cl);
-    background-color: #ff6b08;
+    border-color: var(--accent-btn-color);
+    color: var(--white-btn-color);
+    background-color: var(--accent-btn-color);
   }
 
   &--black {
-    border-color: black;
-    color: black;
+    border-color: var(--black-btn-color);
+    color: var(--black-btn-color);
+    opacity: 1;
 
     &:hover {
-      border-color: #ff6b08;
-      color: var(--main-bg-cl);
-      background-color: #ff6b08;
+      border-color: var(--accent-btn-color);
+      color: var(--white-btn-color);
+      background-color: var(--accent-btn-color);
     }
-  }
-
-  opacity: 1;
-
-  &:hover {
-    animation: rotate 0.7s ease-in-out both;
-    animation-delay: 0.06s;
-  }
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg) translate3d(0, 0, 0);
-  }
-  25% {
-    transform: rotate(3deg) translate3d(0, 0, 0);
-  }
-  50% {
-    transform: rotate(-3deg) translate3d(0, 0, 0);
-  }
-  75% {
-    transform: rotate(1deg) translate3d(0, 0, 0);
-  }
-  100% {
-    transform: rotate(0deg) translate3d(0, 0, 0);
   }
 }
 

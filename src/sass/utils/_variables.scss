@@ -26,6 +26,11 @@ $desktop: 1280px;
   --transition-cubic: cubic-bezier(0.4, 0, 0.2, 1);
   --transition-time: 500ms;
 
-  // COLORS darkmode
+  // Darkmode colors
   --dark-icon-color: #fff;
+
+  // Button colors
+  --accent-btn-color: #ff6b08;
+  --white-btn-color: #fff;
+  --black-btn-color: #000;
 }

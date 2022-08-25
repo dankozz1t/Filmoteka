@@ -82,6 +82,11 @@
 
   background-color: inherit;
   border: none;
+  stroke: vat(--black-btn-color);
+}
+
+.backdrop__icon {
+  stroke: var(--black-btn-color);
 }
 
 .film-modal__about {
@@ -97,7 +102,7 @@
   max-height: 245px;
   margin-bottom: 20px;
   margin-top: 0;
-  color: black;
+  color: var(--main-text-cl);
 
   line-height: 1.7;
 
@@ -229,10 +234,4 @@
 
 .js-votes {
   color: var(--info-title-cl);
-}
-
-.btn--hover--modal {
-  &:hover {
-    cursor: pointer;
-  }
 }

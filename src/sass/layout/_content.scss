@@ -16,6 +16,8 @@
 }
 
 .content__item {
+  border-radius: 5px;
+
   @include media(tablet-only) {
     width: calc((100% - 3 * 30px) / 2);
   }
@@ -31,7 +33,6 @@
   &:hover,
   &:focus {
     transform: scale(1.007);
-    border-radius: 5px;
     box-shadow: 0 0 20px -5px var(--secondary-accent-cl);
   }
 }

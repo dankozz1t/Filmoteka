@@ -1,12 +1,13 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
 body {
+  margin: 0;
+
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
-  background-color: var(--main-bg-cl);
+
   color: var(--main-text-cl);
-  font-weight: 500;
-  margin: 0;
+  background-color: var(--main-bg-cl);
 }
 
 main {
@@ -26,11 +27,9 @@ h6 {
 
 ul,
 ol {
-  margin: 0px;
-  padding-left: 0px;
-  list-style-type: none;
   margin: 0;
   padding: 0;
+  list-style-type: none;
 }
 
 img {
@@ -44,8 +43,12 @@ svg {
 }
 
 a {
-  text-decoration: none;
   margin: 0;
   padding: 0;
+  text-decoration: none;
   color: inherit;
+}
+
+button {
+  cursor: pointer;
 }

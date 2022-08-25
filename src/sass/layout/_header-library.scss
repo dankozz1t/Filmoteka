@@ -16,27 +16,57 @@
   box-shadow: -5px 10px 15px -6px var(--secondary-accent-cl);
 
   @include media(mobile-only) {
-    background-image: url(../images/Rectangle-1x-mobile.jpg);
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/Rectangle-1x-mobile.jpg);
 
     @include media(retina) {
-      background-image: url(../images/Rectangle-2x-mobile.jpg);
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/Rectangle-2x-mobile.jpg);
     }
   }
 
   @include media(tablet-only) {
-    background-image: url(../images/Rectangle-1x-tablet.jpg);
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/Rectangle-1x-tablet.jpg);
     height: 220px;
 
     @include media(retina) {
-      background-image: url(../images/Rectangle-2x-tablet.jpg);
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/Rectangle-2x-tablet.jpg);
     }
   }
 
   @include media(desktop) {
-    background-image: url(../images/Rectangle-1x-desktop.jpg);
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/Rectangle-1x-desktop.jpg);
 
     @include media(retina) {
-      background-image: url(../images/Rectangle-2x-desktop.jpg);
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/Rectangle-2x-desktop.jpg);
     }
   }
 }

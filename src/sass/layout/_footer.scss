@@ -1,10 +1,11 @@
 .footer {
   display: flex;
   justify-content: center;
-  font-weight: 400;
   align-items: center;
-  background: var(--secondary-bg-cl);
+
   min-height: 77px;
+
+  background: var(--secondary-bg-cl);
 }
 
 .footer__box {
@@ -15,29 +16,30 @@
 }
 
 .footer__text {
-  @include media(mobile-only) {
-    font-size: 14px;
-    line-height: 1.4;
-    justify-content: center;
-  }
-
   display: flex;
   align-items: center;
   text-align: center;
-  color: var(--text-footer-cl);
+
+  margin-left: 5px;
+
   font-size: 16px;
   font-weight: 400;
-  font-style: normal;
-  margin-left: 5px;
+  color: var(--text-footer-cl);
+
+  @include media(mobile-only) {
+    justify-content: center;
+    @include font(14px, 1.4);
+  }
 }
 
 .footer__image {
-  font-style: normal;
   display: flex;
   align-items: center;
-  color: #ff6b08;
+  color: var(--secondary-accent-cl);
   margin: 0 6px;
-  font-size: 19px;
+
+  @include font(19px, 1.4);
+
   animation-name: 'anime';
   animation-duration: 300ms;
   animation-iteration-count: infinite;
@@ -45,26 +47,6 @@
   animation-timing-function: ease-in;
 }
 
-@keyframes anime {
-  from {
-    transform: scale(1) rotate(1deg);
-  }
-  to {
-    transform: scale(1.5) rotate(1deg);
-  }
-}
-
-.team {
-  @include media(mobile-only) {
-    font-size: 14px;
-  }
-  margin-left: 5px;
-  color: #f1b361;
-  font-size: 16px;
-  font-weight: 400;
-  font-style: normal;
-  text-decoration: underline;
-}
 .footer__btn {
   margin: 0 5px;
 }
