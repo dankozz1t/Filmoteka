@@ -1,4 +1,4 @@
-import { refs } from '../js/reference.js';
+import { refs } from '../references/reference.js';
 
 function store(value) {
   localStorage.setItem('darkmode', value);
