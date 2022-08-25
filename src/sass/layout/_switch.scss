@@ -14,11 +14,21 @@ body {
   margin-top: -40px;
   margin-left: 80px;
 
+  opacity: 0.4;
+
   @include media(tablet) {
     margin-left: 500px;
   }
   @include media(desktop) {
     margin-left: 1000px;
+  }
+
+  transition: opacity;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--transition-cubic);
+
+  &:hover {
+    opacity: 1;
   }
 }
 
