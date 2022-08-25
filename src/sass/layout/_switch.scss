@@ -49,7 +49,14 @@ body.darkmode {
   .header {
     box-shadow: 0 0 20px 1px var(--secondary-accent-cl);
   }
-
+  .slider__cell {
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    );
+    background-color: var(--dark-bg-cl);
+  }
   .film-modal,
   .modal-team {
     background-color: var(--dark-bg-cl);
