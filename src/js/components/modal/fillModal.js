@@ -1,6 +1,7 @@
 import { refs } from '../../references/reference.js';
 
 export function fillModal(film) {
+  refs.filmModalRef.setAttribute('id', film.id);
   refs.filmName.textContent = film.title;
   refs.filmImage.alt = film.title;
   refs.filmImage.src = film.poster_path;
