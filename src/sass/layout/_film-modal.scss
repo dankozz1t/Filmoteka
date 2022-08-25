@@ -30,6 +30,8 @@
   line-height: 1.33;
 
   background-color: var(--main-bg-cl);
+  box-shadow: 0 0 20px -3px black;
+  border-radius: 5px;
 
   visibility: visible;
   pointer-events: painted;
@@ -207,7 +209,6 @@
   margin: 0;
   padding: 0;
 
-
   color: var(--info-title-cl);
 
   @include media(desktop) {
@@ -232,8 +233,6 @@
 
 .btn--hover--modal {
   &:hover {
-    box-shadow: 0 0 20px rgba(222, 94, 8, 0.923);
     cursor: pointer;
-    border-radius: 50%;
   }
 }

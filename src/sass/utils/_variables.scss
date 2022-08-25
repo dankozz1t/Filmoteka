@@ -18,15 +18,14 @@ $desktop: 1280px;
   --secondary-bg-cl: #f7f7f7;
   --dark-bg-cl: #2f2f2f;
   --dark-secondary-bg-cl: #272727;
+  --dark-modal-bg-cl: rgb(47, 46, 46);
 
   --secondary-accent-cl: #ff6b08;
 
   // Transition
   --transition-cubic: cubic-bezier(0.4, 0, 0.2, 1);
   --transition-time: 500ms;
-}
 
-:root {
-  /* COLORS */
+  // COLORS darkmode
   --dark-icon-color: #fff;
 }

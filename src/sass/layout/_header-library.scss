@@ -13,6 +13,8 @@
   background-color: #303030;
   opacity: 0.9;
 
+  box-shadow: -5px 10px 15px -6px var(--secondary-accent-cl);
+
   @include media(mobile-only) {
     background-image: url(../images/Rectangle-1x-mobile.jpg);
 

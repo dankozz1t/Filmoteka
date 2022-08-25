@@ -27,9 +27,22 @@
   margin-bottom: 10px;
   border-radius: 5px;
 
+  transition: transform, border;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--transition-cubic);
+
   &:hover,
   &:focus {
-    box-shadow: 0 0 20px rgba(222, 94, 8, 0.923);
+    border: 2px solid var(--secondary-accent-cl);
+
+    .description-illustration {
+      transform: scale(1.07);
+      bottom: 78px;
+      overflow: hidden;
+      transition: transform, border, bottom;
+      transition-duration: var(--transition-time);
+      transition-timing-function: var(--transition-cubic);
+    }
   }
 
   @include media(tablet) {
@@ -50,17 +63,17 @@
   border-radius: 5px;
 }
 
-.team-item__name {
+.team-item__title {
   margin: 10px 0 5px 0;
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 400;
   text-align: center;
   color: rgba(254, 107, 3, 0.81);
 }
 
 .team-item__position {
-  font-size: 20px;
-  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 14px;
   text-align: center;
   margin: 0 0 10px 0;
   color: rgba(228, 100, 8, 0.81);
@@ -172,8 +185,8 @@
   background-color: rgba(0, 0, 0, 0.8);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
-  border: 5px solid var(--secondary-accent-cl);
+  border-radius: 5px;
+  box-shadow: 0 0 20px -3px var(--secondary-accent-cl);
 }
 
 //for social links (svg)
@@ -201,7 +214,7 @@
 }
 
 .source-icon {
-  margin-top: 15px;
+  margin-top: 5px;
   display: flex;
   width: 44px;
   height: 44px;
@@ -245,6 +258,9 @@
   background-color: rgba(0, 0, 0, 0.7);
   display: inline-block;
   position: absolute;
+
+  z-index: 0;
+  overflow: hidden;
 
   bottom: 80px;
   text-align: center;

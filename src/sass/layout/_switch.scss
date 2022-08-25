@@ -70,14 +70,20 @@ body.darkmode {
     background-color: var(--dark-bg-cl);
   }
 
-  .film-modal,
-  .modal-team {
+  .film-modal {
+    background-color: var(--dark-modal-bg-cl);
+    color: var(--secondary-text-cl);
+  }
+
+  .film-modal__description,
+  .film-modal__title,
+  .params__data-item {
     color: var(--secondary-text-cl);
   }
 
   .film-modal__btn.btn--black {
-    border-color: white;
-    color: white;
+    border-color: var(--secondary-text-cl);
+    color: var(--secondary-text-cl);
 
     &:hover {
       border-color: var(--secondary-accent-cl);
@@ -111,6 +117,18 @@ body.darkmode {
 
   .film-modal__btn--close {
     fill: var(--main-bg-cl);
+  }
+
+  .flickity-button {
+    background: hsla(0, 0, 0, 0.6);
+
+    &:hover {
+      background: hsla(0, 0, 0, 0.9);
+    }
+  }
+
+  .arrow {
+    fill: rgb(207, 206, 206);
   }
 }
 

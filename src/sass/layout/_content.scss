@@ -24,13 +24,15 @@
     flex-basis: calc((100% - 32px) / 3);
   }
 
+  transition: transform, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: var(--transition-cubic);
+
   &:hover,
   &:focus {
+    transform: scale(1.007);
     border-radius: 5px;
-    box-shadow: 0 0 20px -3px var(--secondary-accent-cl);
-    transition: box-shadow;
-    transition-duration: var(--transition-time);
-    transition-timing-function: var(--transition-cubic);
+    box-shadow: 0 0 20px -5px var(--secondary-accent-cl);
   }
 }
 
