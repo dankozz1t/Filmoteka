@@ -11,3 +11,13 @@
   width: 95%;
   height: 530px;
 }
+.slider__img {
+  border-radius: 5px;
+  transition: transform 0.25s;
+}
+.slider__img:hover {
+  transform: scale(1.1);
+  transition: transform;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--transition-cubic);
+}

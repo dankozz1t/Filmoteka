@@ -4,7 +4,6 @@ import { refs } from '../references/reference.js';
 import { apiService } from '../API/api-service.js';
 
 export function renederSlider() {
-  console.log(apiService.trendingPosters);
   const markup = apiService.trendingPosters
     .map(
       el =>

@@ -10,5 +10,5 @@ export function fillModal(film) {
   refs.filmVoteFirst.textContent = film.vote_average;
   refs.filmVoteSecond.textContent = film.vote_count;
   refs.filmAbout.textContent = film.overview;
-  refs.filmGenres.textContent = film.genre_ids;
+  refs.filmGenres.textContent = film.genre_ids_full;
 }

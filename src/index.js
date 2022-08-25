@@ -13,9 +13,6 @@ import { onSmoothScroll } from './js/components/smoothScroll.js';
 
 import { renederSlider } from './js/components/slider.js';
 
-import Flickity from 'flickity';
-import 'flickity/dist/flickity.css';
-
 onTopArrow();
 onSwitch();
 
@@ -27,15 +24,21 @@ refs.paginationControls.addEventListener('click', onPaginationClick);
 refs.contentList.addEventListener('click', onGetInfoClick);
 
 //finction fetch popular films
-apiService.fetchFilms().then(({ data }) => {
-  if (!apiService.allGenres) {
-    apiService.fetchGenres();
-  }
-
-  renderFilms(data.results);
-  renederSlider();
-  renderPagination(apiService.page, apiService.totalPages);
-});
+spinnerOn();
+apiService
+  .fetchFilms()
+  .then(({ data }) => {
+    if (!apiService.allGenres) {
+      apiService.fetchGenres().then(() => {
+        renderFilms(data.results);
+        renederSlider();
+        renderPagination(apiService.page, apiService.totalPages);
+      });
+    }
+  })
+  .finally(() => {
+    spinnerOff();
+  });
 // ----------
 
 toggleBackdrop();
@@ -61,17 +64,21 @@ function onFormSubmit(e) {
   apiService.searchName = query;
   e.target.elements.query.value = '';
 
-  apiService.fetchImagesByName().then(({ data }) => {
-    if (!data.results.length) {
-      apiService.searchName = currentName;
-      refs.failureMessage.innerHTML = 'Search result not successful';
-      setTimeout(() => {
-        refs.failureMessage.innerHTML = '';
-      }, 900);
-    } else {
-      currentName = apiService.searchName;
-      renderFilms(data.results);
-    }
-  });
-  spinnerOff();
+  apiService
+    .fetchImagesByName()
+    .then(({ data }) => {
+      if (!data.results.length) {
+        apiService.searchName = currentName;
+        refs.failureMessage.innerHTML = 'Search result not successful';
+        setTimeout(() => {
+          refs.failureMessage.innerHTML = '';
+        }, 900);
+      } else {
+        currentName = apiService.searchName;
+        renderFilms(data.results);
+      }
+    })
+    .finally(() => {
+      spinnerOff();
+    });
 }

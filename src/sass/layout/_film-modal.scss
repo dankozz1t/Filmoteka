@@ -5,6 +5,8 @@
   width: 100%;
   height: 100%;
 
+  z-index: 999;
+
   background: rgba(0, 0, 0, 0.25);
 
   visibility: visible;
@@ -63,10 +65,12 @@
     display: flex;
     gap: 68px;
   }
+
   @include media(desktop) {
     gap: 16px;
   }
 }
+
 .film-modal__btn--close,
 .team-modal__btn--close {
   position: absolute;
@@ -91,14 +95,17 @@
   max-height: 245px;
   margin-bottom: 20px;
   margin-top: 0;
+  color: black;
 
   line-height: 1.7;
 
   overflow-y: scroll;
+
   @include media(tablet) {
     max-height: 225px;
     margin-bottom: 20px;
   }
+
   @include media(desktop) {
     max-height: 165px;
   }
@@ -112,6 +119,7 @@
     width: 125px;
     height: 44px;
   }
+
   @include media(desktop) {
     width: 136px;
     height: 44px;
@@ -126,6 +134,7 @@
     gap: 15px;
   }
 }
+
 .film-modal__thumb {
   height: 357px;
   max-width: 240px;
@@ -137,6 +146,7 @@
     max-width: 264px;
     height: 373;
   }
+
   @include media(desktop) {
     max-width: 375px;
     height: 478px;
@@ -147,19 +157,23 @@
   width: 100%;
   height: 100%;
 }
+
 .film-modal__info {
   text-align: left;
 
   @include media(tablet) {
     width: 265px;
   }
+
   @include media(desktop) {
     width: 391px;
   }
 }
+
 .film-modal__title {
   margin-top: 0;
   margin-bottom: 20px;
+  color: var(--main-text-cl);
 
   font-size: 20px;
   line-height: 1.17;
@@ -173,6 +187,7 @@
 .params {
   margin-bottom: 20px;
 }
+
 .params__list {
   display: inline-flex;
   justify-content: center;
@@ -192,6 +207,7 @@
   margin: 0;
   padding: 0;
 
+
   color: var(--info-title-cl);
 
   @include media(desktop) {
@@ -203,6 +219,8 @@
   margin: 0;
   padding: 0;
   min-width: 150px;
+  color: var(--main-text-cl);
+
   &.js-title {
     text-transform: uppercase;
   }
@@ -210,4 +228,12 @@
 
 .js-votes {
   color: var(--info-title-cl);
+}
+
+.btn--hover--modal {
+  &:hover {
+    box-shadow: 0 0 20px rgba(222, 94, 8, 0.923);
+    cursor: pointer;
+    border-radius: 50%;
+  }
 }

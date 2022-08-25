@@ -13,20 +13,57 @@
 
   cursor: pointer;
 
-  &--black {
-    border-color: black;
-    color: color;
-  }
-
   &--white {
     border-color: white;
     color: white;
+
+    &:hover {
+      border-color: #ff6b08;
+      color: var(--main-bg-cl);
+      background-color: #ff6b08;
+    }
   }
 
   &--accent {
-    border-color: transparent;
+    border-color: #ff6b08;
     color: var(--main-bg-cl);
     background-color: #ff6b08;
+  }
+
+  &--black {
+    border-color: black;
+    color: black;
+
+    &:hover {
+      border-color: #ff6b08;
+      color: var(--main-bg-cl);
+      background-color: #ff6b08;
+    }
+  }
+
+  opacity: 1;
+
+  &:hover {
+    animation: rotate 0.7s ease-in-out both;
+    animation-delay: 0.06s;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+  25% {
+    transform: rotate(3deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(-3deg) translate3d(0, 0, 0);
+  }
+  75% {
+    transform: rotate(1deg) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
   }
 }
 

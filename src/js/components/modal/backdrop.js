@@ -18,7 +18,6 @@ export function toggleBackdrop() {
   }
 
   function showBackdrop(modal) {
-    console.log(refs.watched.textContent);
     refs.watched.textContent = `Add to watched`;
     refs.qeue.textContent = `Add to qeue`;
 
@@ -62,10 +61,12 @@ function addVisuallyHidden(...args) {
   args.forEach(el => el.classList.add('visually-hidden'));
   document.body.style.overflowY = 'scroll';
 }
+
 function removeVisuallyHidden(...args) {
   args.forEach(el => el.classList.remove('visually-hidden'));
   document.body.style.overflowY = 'hidden';
 }
+
 function onFilmControls(e) {
   if (e.target.nodeName !== 'BUTTON') {
     return;
@@ -86,7 +87,6 @@ function manageAdd(e, content) {
 
     apiService[content].push(watchedFilm);
     localStorage.setItem(content, JSON.stringify(apiService[content]));
-    console.log(apiService[content]);
 
     refs[content].textContent = `Remove from ${content}`;
     return;
@@ -100,8 +100,6 @@ function manageAdd(e, content) {
     }
   });
 
-  console.log(indexToDelete);
   apiService[content].splice(indexToDelete, 1);
   localStorage.setItem(content, JSON.stringify(apiService[content]));
-  console.log(apiService[content]);
 }
