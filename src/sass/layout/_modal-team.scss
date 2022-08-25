@@ -245,7 +245,12 @@
   background-color: rgba(0, 0, 0, 0.7);
   display: inline-block;
   position: absolute;
+
   bottom: 80px;
   text-align: center;
   width: 100%;
+}
+
+.team-item__title {
+  color: white;
 }

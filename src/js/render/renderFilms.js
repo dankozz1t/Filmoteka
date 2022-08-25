@@ -37,7 +37,7 @@ export function renderFilms(arrayFilms) {
     if (film.poster_path) {
       newPosterPath = `https://image.tmdb.org/t/p/w500/${film.poster_path}`;
     } else {
-      newPosterPath = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_epAIe4gfBz_nm87nThUhz4RS9jX1NY4jWQ&usqp=CAU`;
+      newPosterPath = `https://i.imgur.com/klRNrKS.png`;
     }
     film.poster_path = newPosterPath;
     //-------------------

@@ -29,7 +29,7 @@
   align-items: center;
   justify-content: center;
 
-  @include font(20px, 1px);
+  @include font(16px, 1px);
   margin-top: 30px;
 
   @include media(tablet) {
@@ -57,7 +57,7 @@
 }
 
 .content-library__text {
-  @include font(16px, 16px);
+  @include font(14px, 16px);
   font-weight: 400;
   margin-top: 30px;
   margin-bottom: 40px;

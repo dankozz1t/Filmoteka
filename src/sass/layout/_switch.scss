@@ -14,6 +14,7 @@ body {
   @include media(tablet) {
     margin-left: 500px;
   }
+
   @include media(desktop) {
     margin-left: 1000px;
   }
@@ -59,6 +60,7 @@ body.darkmode {
   .flickity-viewport {
     box-shadow: -5px 10px 15px -6px var(--secondary-accent-cl);
   }
+
   .slider__cell {
     background-image: linear-gradient(
       to right,
@@ -67,9 +69,9 @@ body.darkmode {
     );
     background-color: var(--dark-bg-cl);
   }
+
   .film-modal,
   .modal-team {
-    background-color: var(--dark-bg-cl);
     color: var(--secondary-text-cl);
   }
 
@@ -95,12 +97,20 @@ body.darkmode {
     background-color: var(--dark-secondary-bg-cl);
   }
 
+  .backdrop__icon {
+    stroke: var(--secondary-text-cl);
+  }
+
   .footer__text {
     color: var(--info-title-cl);
   }
 
-  .backdrop__icon {
-    stroke: var(--secondary-text-cl);
+  .team-item__title {
+    color: white;
+  }
+
+  .film-modal__btn--close {
+    fill: var(--main-bg-cl);
   }
 }
 
