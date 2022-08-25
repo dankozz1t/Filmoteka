@@ -1,3 +1,4 @@
+import { apiService } from '../../API/api-service.js';
 import { refs } from '../../references/reference.js';
 
 export function toggleBackdrop() {
@@ -17,10 +18,18 @@ export function toggleBackdrop() {
   }
 
   function showBackdrop(modal) {
+    console.log(refs.addWatched.textContent);
+    refs.addWatched.textContent = `Add to watched`;
+
+    if (apiService.watched.some(film => film.id == refs.filmModalRef.id)) {
+      refs.addWatched.textContent = `Remove from watched`;
+    }
+
     removeVisuallyHidden(modal, refs.backdropRef);
 
     refs.backdropRef.addEventListener('click', onCloseClick);
     window.addEventListener('keydown', onEscapeKeyDown);
+    refs.filmControls.addEventListener('click', onFilmControls);
   }
   function hideBackdrop() {
     addVisuallyHidden(refs.backdropRef, refs.filmModalRef, refs.teamModalRef);
@@ -52,4 +61,46 @@ function addVisuallyHidden(...args) {
 function removeVisuallyHidden(...args) {
   args.forEach(el => el.classList.remove('visually-hidden'));
   document.body.style.overflowY = 'hidden';
+}
+function onFilmControls(e) {
+  if (e.target.nodeName !== 'BUTTON') {
+    return;
+  }
+  if (e.target.classList.contains('js-add-watched')) {
+    manageAdd(e, 'watched');
+  }
+  if (e.target.classList.contains('js-add-qeue')) {
+    manageAdd(e, 'qeue');
+  }
+}
+
+function manageAdd(e, content) {
+  if (!apiService.watched.some(film => film.id == refs.filmModalRef.id)) {
+    const watchedFilm = apiService.films.find(
+      ({ id }) => id == refs.filmModalRef.id
+    );
+
+    apiService[content].push(watchedFilm);
+    console.log(apiService[content]);
+
+    refs.addWatched.textContent = `Remove from watched`;
+    return;
+  }
+  refs.addWatched.textContent = `Add to watched`;
+
+  // const index = apiService.watched
+  //   .map(object => object.id)
+  //   .indexOf(refs.filmModalRef.id);
+
+  const index = apiService.watched.map((film, index) => {
+    if (film.id == refs.filmModalRef.id) {
+      return index;
+    }
+  });
+  // console.log(apiService.watched.findIndex(refs.filmModalRef.id));
+
+  console.log(...index);
+  apiService.watched.splice(index[0], 1);
+  console.log(...index);
+  console.log(apiService[content]);
 }

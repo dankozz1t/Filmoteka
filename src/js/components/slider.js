@@ -1,7 +1,7 @@
 import Flickity from 'flickity';
 import 'flickity/dist/flickity.css';
-import { refs } from './references/reference.js';
-import { apiService } from './API/api-service.js';
+import { refs } from '../references/reference.js';
+import { apiService } from '../API/api-service.js';
 
 export function renederSlider() {
   const markup = apiService.trendingPosters

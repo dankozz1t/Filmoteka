@@ -11,7 +11,7 @@ import { spinnerOn } from './js/components/spinner.js';
 import { spinnerOff } from './js/components/spinner.js';
 import { onSmoothScroll } from './js/components/smoothScroll.js';
 
-import { renederSlider } from './js/slider.js';
+import { renederSlider } from './js/components/slider.js';
 
 import Flickity from 'flickity';
 import 'flickity/dist/flickity.css';

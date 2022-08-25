@@ -33,4 +33,8 @@ export const refs = {
   goTopBtn: document.querySelector('.lift_up'),
 
   slider: document.querySelector('.slider'),
+
+  addWatched: document.querySelector('.js-add-watched'),
+  addQeue: document.querySelector('.js-add-qeue'),
+  filmControls: document.querySelector('.js-film-controls'),
 };

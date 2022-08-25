@@ -12,6 +12,7 @@ class ApiService {
     this.totalPages = 1000;
     this.allGenres = null;
     this.trendingPosters = [];
+    this.watched = [];
   }
 
   async fetchFilms() {
