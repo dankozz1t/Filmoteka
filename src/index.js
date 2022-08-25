@@ -56,17 +56,20 @@ function onFormSubmit(e) {
   spinnerOn();
 
   const query = e.target.elements.query.value;
+
+  let currentName = '';
   apiService.searchName = query;
   e.target.elements.query.value = '';
 
   apiService.fetchImagesByName().then(({ data }) => {
     if (!data.results.length) {
-      apiService.searchName = '';
+      apiService.searchName = currentName;
       refs.failureMessage.innerHTML = 'Search result not successful';
       setTimeout(() => {
         refs.failureMessage.innerHTML = '';
       }, 900);
     } else {
+      currentName = apiService.searchName;
       renderFilms(data.results);
     }
   });
