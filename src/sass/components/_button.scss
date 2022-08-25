@@ -13,17 +13,6 @@
 
   cursor: pointer;
 
-  &--black {
-    border-color: black;
-    color: color;
-
-    &:hover {
-      border-color: transparent;
-      color: var(--main-bg-cl);
-      background-color: #ff6b08;
-    }
-  }
-
   &--white {
     border-color: white;
     color: white;
