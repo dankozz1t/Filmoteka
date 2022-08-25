@@ -21,7 +21,7 @@
 
 .team-item {
   position: relative;
-  
+
   width: 280px;
   height: 360px;
   margin-bottom: 10px;
@@ -43,11 +43,11 @@
   }
 }
 
-.team-item__image {  
+.team-item__image {
   height: 280px;
   width: 280px;
   object-fit: cover;
-  border-radius: 5px;  
+  border-radius: 5px;
 }
 
 .team-item__name {
@@ -108,7 +108,6 @@
   @include media(tablet) {
     width: 30px;
     height: 30px;
-
   }
 
   @include media(desktop) {
@@ -155,7 +154,9 @@
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
+
     width: 629px;
+
     min-height: 562px;
   }
 
@@ -169,13 +170,11 @@
   }
 
   background-color: rgba(0, 0, 0, 0.8);
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
-  0px 1px 1px rgba(0, 0, 0, 0.14),
-  0px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   border: 5px solid var(--secondary-accent-cl);
 }
-
 
 //for social links (svg)
 .social-links {
@@ -184,7 +183,7 @@
   justify-content: space-evenly;
 }
 
-.social-links>li {
+.social-links > li {
   width: 44px;
   height: 44px;
 
@@ -193,11 +192,11 @@
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.social-links>li:hover {
-  transform: rotate(360deg)scale(1.3);
+.social-links > li:hover {
+  transform: rotate(360deg) scale(1.3);
 }
 
-.social-links>li:not(:last-child) {
+.social-links > li:not(:last-child) {
   margin-right: 10px;
 }
 
@@ -227,13 +226,13 @@
 
 .source-icon:hover .social-network,
 .source-icon:focus .social-network {
-  fill: #FFFFFF;
+  fill: #ffffff;
 }
 
 .social-network {
   display: flex;
   color: orangered;
-  text-align: center;  
+  text-align: center;
 }
 
 .social-network {
@@ -246,7 +245,7 @@
   background-color: rgba(0, 0, 0, 0.7);
   display: inline-block;
   position: absolute;
-bottom: 80px;
-text-align: center;
-width: 100%;
+  bottom: 80px;
+  text-align: center;
+  width: 100%;
 }

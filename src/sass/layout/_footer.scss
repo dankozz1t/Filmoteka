@@ -38,6 +38,20 @@
   color: #ff6b08;
   margin: 0 6px;
   font-size: 19px;
+  animation-name: 'anime';
+  animation-duration: 300ms;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in;
+}
+
+@keyframes anime {
+  from {
+    transform: scale(1) rotate(1deg);
+  }
+  to {
+    transform: scale(1.5) rotate(1deg);
+  }
 }
 
 .team {
