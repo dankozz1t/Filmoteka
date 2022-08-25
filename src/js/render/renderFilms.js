@@ -5,18 +5,19 @@ import { renderPagination } from '../pagination/pagination.js';
 
 export function renderFilms(arrayFilms) {
   if (!arrayFilms.length) {
-    refs.contentList.innerHTML = templatePlugEmpty();
+    console.log(apiService.watched);
+    // refs.contentList.innerHTML = templatePlugEmpty();
     return;
   }
   arrayFilms.forEach(film => {
     let genresArray = [];
-    film.genre_ids.forEach(id => {
-      apiService.allGenres.forEach(genre => {
-        if (id === genre.id) {
-          genresArray.push(genre.name);
-        }
-      });
-    });
+    // film.genre_ids.forEach(id => {
+    //   apiService.allGenres.forEach(genre => {
+    //     if (id === genre.id) {
+    //       genresArray.push(genre.name);
+    //     }
+    //   });
+    // });
     //-------------------
     if (!film.genre_ids.length) {
       genresArray.push('---');

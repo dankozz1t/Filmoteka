@@ -33,4 +33,9 @@ export const refs = {
   goTopBtn: document.querySelector('.lift_up'),
 
   slider: document.querySelector('.slider'),
+
+  watched: document.querySelector('.js-add-watched'),
+  qeue: document.querySelector('.js-add-qeue'),
+  filmControls: document.querySelector('.js-film-controls'),
+  libraryControls: document.querySelector('.js-library-controls'),
 };

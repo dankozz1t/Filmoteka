@@ -12,6 +12,8 @@ class ApiService {
     this.totalPages = 1000;
     this.allGenres = null;
     this.trendingPosters = [];
+    this.watched = JSON.parse(localStorage.getItem('watched')) ?? [];
+    this.qeue = JSON.parse(localStorage.getItem('qeue')) ?? [];
   }
 
   async fetchFilms() {
@@ -23,6 +25,7 @@ class ApiService {
       this.page = data.data.page;
       this.totalPages = data.data.total_pages;
       this.trendingPosters = data.data.results.map(el => el.poster_path);
+
       return data;
     } catch (error) {
       console.error(error);
@@ -60,6 +63,32 @@ class ApiService {
       console.error(error);
     }
   }
+
+  fetchWatched() {
+    this.page = 1;
+    this.totalPages =
+      this.watched.length < 3 ? 1 : Math.ceil(this.watched.length / 3);
+    if (this.watched.length > 3) {
+      this.films = this.watched.slice(0, 3);
+    } else {
+      this.films = this.watched;
+    }
+
+    return this.films;
+  }
+
+  fetchQeue() {
+    this.page = 1;
+    this.totalPages =
+      this.qeue.length < 3 ? 1 : Math.ceil(this.qeue.length / 3);
+    if (this.qeue.length > 3) {
+      this.films = this.qeue.slice(0, 3);
+    } else {
+      this.films = this.qeue;
+    }
+    return this.films;
+  }
+
   async fetchGenres() {
     const genres = localStorage.getItem('genres');
     if (genres) {
