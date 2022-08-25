@@ -18,11 +18,15 @@ export function toggleBackdrop() {
   }
 
   function showBackdrop(modal) {
-    console.log(refs.addWatched.textContent);
-    refs.addWatched.textContent = `Add to watched`;
+    console.log(refs.watched.textContent);
+    refs.watched.textContent = `Add to watched`;
+    refs.qeue.textContent = `Add to qeue`;
 
     if (apiService.watched.some(film => film.id == refs.filmModalRef.id)) {
-      refs.addWatched.textContent = `Remove from watched`;
+      refs.watched.textContent = `Remove from watched`;
+    }
+    if (apiService.qeue.some(film => film.id == refs.filmModalRef.id)) {
+      refs.qeue.textContent = `Remove from qeue`;
     }
 
     removeVisuallyHidden(modal, refs.backdropRef);
@@ -75,32 +79,29 @@ function onFilmControls(e) {
 }
 
 function manageAdd(e, content) {
-  if (!apiService.watched.some(film => film.id == refs.filmModalRef.id)) {
+  if (!apiService[content].some(film => film.id == refs.filmModalRef.id)) {
     const watchedFilm = apiService.films.find(
       ({ id }) => id == refs.filmModalRef.id
     );
 
     apiService[content].push(watchedFilm);
+    localStorage.setItem(content, JSON.stringify(apiService[content]));
     console.log(apiService[content]);
 
-    refs.addWatched.textContent = `Remove from watched`;
+    refs[content].textContent = `Remove from ${content}`;
     return;
   }
-  refs.addWatched.textContent = `Add to watched`;
+  refs[content].textContent = `Add to ${content}`;
 
-  // const index = apiService.watched
-  //   .map(object => object.id)
-  //   .indexOf(refs.filmModalRef.id);
-
-  const index = apiService.watched.map((film, index) => {
+  let indexToDelete = 0;
+  apiService[content].forEach((film, index) => {
     if (film.id == refs.filmModalRef.id) {
-      return index;
+      indexToDelete = index;
     }
   });
-  // console.log(apiService.watched.findIndex(refs.filmModalRef.id));
 
-  console.log(...index);
-  apiService.watched.splice(index[0], 1);
-  console.log(...index);
+  console.log(indexToDelete);
+  apiService[content].splice(indexToDelete, 1);
+  localStorage.setItem(content, JSON.stringify(apiService[content]));
   console.log(apiService[content]);
 }

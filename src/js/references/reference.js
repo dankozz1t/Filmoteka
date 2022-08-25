@@ -34,7 +34,7 @@ export const refs = {
 
   slider: document.querySelector('.slider'),
 
-  addWatched: document.querySelector('.js-add-watched'),
-  addQeue: document.querySelector('.js-add-qeue'),
+  watched: document.querySelector('.js-add-watched'),
+  qeue: document.querySelector('.js-add-qeue'),
   filmControls: document.querySelector('.js-film-controls'),
 };
