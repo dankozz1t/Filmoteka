@@ -14,27 +14,57 @@
   opacity: 0.9;
 
   @include media(mobile-only) {
-    background-image: url(../images/abstract-1x-mobile.jpg);
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/abstract-1x-mobile.jpg);
 
     @include media(retina) {
-      background-image: url(../images/abstract-2x-mobile.jpg);
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/abstract-2x-mobile.jpg);
     }
   }
 
   @include media(tablet-only) {
-    background-image: url(../images/abstract-1x-tablet.jpg);
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/abstract-1x-tablet.jpg);
     height: 220px;
 
     @include media(retina) {
-      background-image: url(../images/abstract-2x-tablet.jpg);
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/abstract-2x-tablet.jpg);
     }
   }
 
   @include media(desktop) {
-    background-image: url(../images/abstract-1x-Desktop.jpg);
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/abstract-1x-Desktop.jpg);
 
     @include media(retina) {
-      background-image: url(../images/abstract-2x-Desktop.jpg);
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/abstract-2x-Desktop.jpg);
     }
   }
 }
@@ -68,6 +98,48 @@
   &:focus {
     color: #ff6b08;
     transform: scale(1.1);
+    animation: transition 0.2s ease-out;
+
+    &:active {
+      box-shadow: 0 0 0 0 transparent;
+      transition: box-shadow 0.2s ease-in;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      width: 0px;
+      height: 86%;
+      position: absolute;
+      top: 7%;
+      left: 0%;
+
+      opacity: 0;
+      background: white;
+      box-shadow: 0 0 15px 3px white;
+      transform: skewX(-20deg);
+
+      animation: shine 0.5s 0s linear;
+    }
+
+    .header__logo-svg:hover {
+      box-shadow: 0 0 30px 0 transparentize(#ff6b08, 0.5);
+    }
+  }
+}
+
+@keyframes shine {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    left: 100%;
   }
 }
 
@@ -175,7 +247,8 @@
 
 .header__form-btn {
   position: relative;
-  left: -24px;
+  left: -18px;
+  bottom: -3px;
 
   border: none;
   background-color: transparent;
