@@ -12,6 +12,7 @@ body {
   @include media(tablet) {
     margin-left: 500px;
   }
+
   @include media(desktop) {
     margin-left: 1000px;
   }
@@ -49,17 +50,17 @@ body.darkmode {
   .header {
     box-shadow: 0 0 20px 1px var(--secondary-accent-cl);
   }
+
   .slider__cell {
-    background-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.56),
-      rgba(0, 0, 0, 0.56)
-    );
+    background-image: linear-gradient(to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56));
     background-color: var(--dark-bg-cl);
   }
+
   .film-modal,
   .modal-team {
-    background-color: var(--dark-bg-cl);
+    
     color: var(--secondary-text-cl);
   }
 
@@ -83,6 +84,10 @@ body.darkmode {
 
   .footer__text {
     color: var(--info-title-cl);
+  }
+
+  .team-item__title {
+    color: white;
   }
 
   .film-modal__btn--close {
