@@ -3,35 +3,37 @@ import { refs } from '../references/reference.js';
 import templateRenderFilms from '../../templates/template-film.hbs';
 import { renderPagination } from '../pagination/pagination.js';
 
-export function renderFilms(arrayFilms) {
-  if (!arrayFilms.length) {
-    console.log(apiService.watched);
-    // refs.contentList.innerHTML = templatePlugEmpty();
-    return;
-  }
+export async function renderFilms(arrayFilms) {
   arrayFilms.forEach(film => {
     let genresArray = [];
     let genresArrayFull = [];
-    film.genre_ids.forEach(id => {
-      apiService.allGenres.forEach(genre => {
-        if (id === genre.id) {
-          genresArray.push(genre.name);
-          genresArrayFull.push(genre.name);
-        }
-      });
-    });
-    //-------------------
 
-    if (!film.genre_ids.length) {
-      genresArray.push('---');
-      genresArrayFull.push('---');
-    } else if (film.genre_ids.length >= 3) {
-      genresArray = genresArray.splice(
-        genresArray.length - 2,
-        genresArray.length - 1
-      );
-      genresArray.push('Other');
+    if (typeof film.genre_ids === 'object') {
+      film.genre_ids.forEach(id => {
+        apiService.allGenres.forEach(genre => {
+          if (id === genre.id) {
+            genresArray.push(genre.name);
+            genresArrayFull.push(genre.name);
+          }
+        });
+      });
+
+      if (!film.genre_ids.length) {
+        genresArray.push('---');
+        genresArrayFull.push('---');
+      } else if (film.genre_ids.length >= 3) {
+        genresArray = genresArray.splice(
+          genresArray.length - 2,
+          genresArray.length - 1
+        );
+        genresArray.push('Other');
+      }
+
+      film.genre_ids = genresArray.join(', ');
+      film.genre_ids_full = genresArrayFull.join(', ');
     }
+
+    //-------------------
 
     //-------------------
     if (!film.release_date) {
@@ -49,9 +51,6 @@ export function renderFilms(arrayFilms) {
     }
     film.poster_path = newPosterPath;
     //-------------------
-
-    film.genre_ids = genresArray.join(', ');
-    film.genre_ids_full = genresArrayFull.join(', ');
   });
   refs.contentList.innerHTML = templateRenderFilms(arrayFilms);
   renderPagination(apiService.page, apiService.totalPages);

@@ -7,14 +7,10 @@ import { renderFilms } from './js/render/renderFilms.js';
 import { apiService } from './js/API/api-service.js';
 import { toggleBackdrop } from './js/components/modal/backdrop.js';
 import { renderPagination } from './js/pagination/pagination.js';
-// import { spinnerOn } from './js/components/spinner.js';
-// import { spinnerOff } from './js/components/spinner.js';
+import { spinnerOn } from './js/components/spinner.js';
+import { spinnerOff } from './js/components/spinner.js';
 import { onSmoothScroll } from './js/components/smoothScroll.js';
-
-import { renederSlider } from './js/components/slider.js';
-
-import Flickity from 'flickity';
-import 'flickity/dist/flickity.css';
+import templatePlugEmpty from './templates/template-plug-empty.hbs';
 
 onTopArrow();
 onSwitch();
@@ -22,11 +18,20 @@ onSwitch();
 onSmoothScroll();
 
 refs.libraryControls.addEventListener('click', onLibraryControls);
-
 refs.contentList.addEventListener('click', onGetInfoClick);
 refs.paginationControls.addEventListener('click', onPaginationClick);
 
-renderFilms(apiService.fetchWatched());
+async function filmRender() {
+  const data = await apiService.fetchWatched();
+
+  const render = await renderFilms(data);
+  if (!apiService.watched.length) {
+    refs.contentList.innerHTML = templatePlugEmpty();
+  }
+  return render;
+}
+
+filmRender();
 
 function onLibraryControls(e) {
   if (e.target.nodeName !== 'BUTTON') {
@@ -37,12 +42,18 @@ function onLibraryControls(e) {
     reverseBtnStyle(e.currentTarget.children[0].firstElementChild);
 
     renderFilms(apiService.fetchWatched());
+    if (!apiService.watched.length) {
+      refs.contentList.innerHTML = templatePlugEmpty();
+    }
   }
   if (e.target.classList.contains('js-btn-qeue')) {
     reverseBtnStyle(e.currentTarget.children[1].firstElementChild);
     reverseBtnStyle(e.currentTarget.children[0].firstElementChild);
 
     renderFilms(apiService.fetchQeue());
+    if (!apiService.qeue.length) {
+      refs.contentList.innerHTML = templatePlugEmpty();
+    }
   }
 }
 
