@@ -61,17 +61,21 @@ function onFormSubmit(e) {
   apiService.searchName = query;
   e.target.elements.query.value = '';
 
-  apiService.fetchImagesByName().then(({ data }) => {
-    if (!data.results.length) {
-      apiService.searchName = currentName;
-      refs.failureMessage.innerHTML = 'Search result not successful';
-      setTimeout(() => {
-        refs.failureMessage.innerHTML = '';
-      }, 900);
-    } else {
-      currentName = apiService.searchName;
-      renderFilms(data.results);
-    }
-  });
-  spinnerOff();
+  apiService
+    .fetchImagesByName()
+    .then(({ data }) => {
+      if (!data.results.length) {
+        apiService.searchName = currentName;
+        refs.failureMessage.innerHTML = 'Search result not successful';
+        setTimeout(() => {
+          refs.failureMessage.innerHTML = '';
+        }, 900);
+      } else {
+        currentName = apiService.searchName;
+        renderFilms(data.results);
+      }
+    })
+    .finally(() => {
+      spinnerOff();
+    });
 }
