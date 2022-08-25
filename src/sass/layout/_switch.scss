@@ -71,6 +71,10 @@ body.darkmode {
   .film-modal__btn.btn--black {
     border-color: white;
     color: white;
+
+    &:hover {
+      border-color: var(--secondary-accent-cl);
+    }
   }
 
   .pagination__btn,
