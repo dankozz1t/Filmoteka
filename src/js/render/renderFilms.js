@@ -27,7 +27,7 @@ export function renderFilms(arrayFilms) {
     }
     //-------------------
     if (!film.release_date) {
-      film.release_date = '----';
+      film.release_date = '---';
     } else {
       film.release_date = film.release_date.slice(0, 4);
     }

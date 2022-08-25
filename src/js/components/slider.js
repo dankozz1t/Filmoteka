@@ -8,7 +8,7 @@ export function renederSlider() {
   const markup = apiService.trendingPosters
     .map(
       el =>
-        `<div class="slider__cell"><img class="slider__img" src="https://image.tmdb.org/t/p/w500/${el}" alt="" height="500"/></div>`
+        `<div class="slider__cell"><img class="slider__img" src="https://image.tmdb.org/t/p/w500/${el}" alt="Film poster" height="500"/></div>`
     )
     .join('');
 

@@ -81,7 +81,7 @@ function onFilmControls(e) {
 function manageAdd(e, content) {
   if (!apiService[content].some(film => film.id == refs.filmModalRef.id)) {
     const watchedFilm = apiService.films.find(
-      ({ id }) => id == refs.filmModalRef.id
+      ({ id }) => id === Number(refs.filmModalRef.id)
     );
 
     apiService[content].push(watchedFilm);
