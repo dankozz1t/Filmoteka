@@ -75,6 +75,18 @@
   color: rgba(228, 100, 8, 0.81);
 }
 
+.backdrop__icon {
+  stroke: black;
+
+  transition: transform, color;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--transition-cubic);
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
 .team-modal__btn--close {
   display: flex;
   align-items: center;
@@ -85,19 +97,12 @@
   border: 1px var(--secondary-accent-cl) solid;
   border-radius: 50%;
   transition: 250ms ease;
-  stroke: #e5641f;
+  fill: #e5641f;
 
   &:hover,
   &:focus {
-    // background-color: var(--secondary-accent-cl);
-    // stroke: var(--secondary-text-cl);
-
     box-shadow: 0 0 20px rgba(222, 94, 8, 0.923);
     cursor: pointer;
-
-    & .team-modal__btn--close {
-      stroke: var(--secondary-text-cl);
-    }
   }
 
   @include media(tablet) {

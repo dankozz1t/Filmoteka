@@ -9,11 +9,21 @@ body {
   margin-top: -40px;
   margin-left: 80px;
 
+  opacity: 0.4;
+
   @include media(tablet) {
     margin-left: 500px;
   }
   @include media(desktop) {
     margin-left: 1000px;
+  }
+
+  transition: opacity;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--transition-cubic);
+
+  &:hover {
+    opacity: 1;
   }
 }
 
@@ -46,8 +56,8 @@ body {
 body.darkmode {
   background-color: var(--dark-bg-cl);
 
-  .header {
-    box-shadow: 0 0 20px 1px var(--secondary-accent-cl);
+  .flickity-viewport {
+    box-shadow: -5px 10px 15px -6px var(--secondary-accent-cl);
   }
   .slider__cell {
     background-image: linear-gradient(
@@ -66,6 +76,10 @@ body.darkmode {
   .film-modal__btn.btn--black {
     border-color: white;
     color: white;
+
+    &:hover {
+      border-color: var(--secondary-accent-cl);
+    }
   }
 
   .pagination__btn,
@@ -85,8 +99,8 @@ body.darkmode {
     color: var(--info-title-cl);
   }
 
-  .film-modal__btn--close {
-    fill: var(--main-bg-cl);
+  .backdrop__icon {
+    stroke: var(--secondary-text-cl);
   }
 }
 
