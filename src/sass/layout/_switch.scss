@@ -3,6 +3,11 @@ body {
   background-color: var(--main-bg-color);
 }
 
+// .switch__btn__icon.fa-solid.fa-sun {
+//   width: 15px;
+//   h
+// }
+
 .switch__btn {
   position: absolute;
 
@@ -46,8 +51,8 @@ body {
 body.darkmode {
   background-color: var(--dark-bg-cl);
 
-  .header {
-    box-shadow: 0 0 20px 1px var(--secondary-accent-cl);
+  .flickity-viewport {
+    box-shadow: -5px 10px 15px -6px var(--secondary-accent-cl);
   }
   .slider__cell {
     background-image: linear-gradient(
