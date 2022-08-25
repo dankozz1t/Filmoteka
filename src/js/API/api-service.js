@@ -20,7 +20,6 @@ class ApiService {
     try {
       const url = `${ApiService.BASE_URL}/trending/movie/week?api_key=${ApiService.API_KEY}`;
       const data = await axios.get(url);
-      console.log(data.data);
       this.films = data.data.results;
       this.page = data.data.page;
       this.totalPages = data.data.total_pages;

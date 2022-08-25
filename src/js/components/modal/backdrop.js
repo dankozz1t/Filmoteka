@@ -18,7 +18,6 @@ export function toggleBackdrop() {
   }
 
   function showBackdrop(modal) {
-    console.log(refs.watched.textContent);
     refs.watched.textContent = `Add to watched`;
     refs.qeue.textContent = `Add to qeue`;
 
