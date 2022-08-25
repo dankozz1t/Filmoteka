@@ -31,4 +31,6 @@ export const refs = {
   spinner: document.querySelector('.loader'),
 
   goTopBtn: document.querySelector('.lift_up'),
+
+  slider: document.querySelector('.slider'),
 };

@@ -14,27 +14,57 @@
   opacity: 0.9;
 
   @include media(mobile-only) {
-    background-image: url(../images/abstract-1x-mobile.jpg);
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/abstract-1x-mobile.jpg);
 
     @include media(retina) {
-      background-image: url(../images/abstract-2x-mobile.jpg);
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/abstract-2x-mobile.jpg);
     }
   }
 
   @include media(tablet-only) {
-    background-image: url(../images/abstract-1x-tablet.jpg);
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/abstract-1x-tablet.jpg);
     height: 220px;
 
     @include media(retina) {
-      background-image: url(../images/abstract-2x-tablet.jpg);
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/abstract-2x-tablet.jpg);
     }
   }
 
   @include media(desktop) {
-    background-image: url(../images/abstract-1x-Desktop.jpg);
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/abstract-1x-Desktop.jpg);
 
     @include media(retina) {
-      background-image: url(../images/abstract-2x-Desktop.jpg);
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/abstract-2x-Desktop.jpg);
     }
   }
 }

@@ -11,6 +11,11 @@ import { spinnerOn } from './js/components/spinner.js';
 import { spinnerOff } from './js/components/spinner.js';
 import { onSmoothScroll } from './js/components/smoothScroll.js';
 
+import { renederSlider } from './js/slider.js';
+
+import Flickity from 'flickity';
+import 'flickity/dist/flickity.css';
+
 onTopArrow();
 onSwitch();
 
@@ -28,7 +33,7 @@ apiService.fetchFilms().then(({ data }) => {
   }
 
   renderFilms(data.results);
-
+  renederSlider();
   renderPagination(apiService.page, apiService.totalPages);
 });
 // ----------
@@ -58,6 +63,9 @@ function onFormSubmit(e) {
     if (!data.results.length) {
       apiService.searchName = '';
       refs.failureMessage.innerHTML = 'Search result not successful';
+      setTimeout(() => {
+        refs.failureMessage.innerHTML = '';
+      }, 900);
     } else {
       renderFilms(data.results);
     }
