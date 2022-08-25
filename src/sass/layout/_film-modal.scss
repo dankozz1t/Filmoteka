@@ -95,6 +95,7 @@
   max-height: 245px;
   margin-bottom: 20px;
   margin-top: 0;
+  color: black;
 
   line-height: 1.7;
 
@@ -172,6 +173,7 @@
 .film-modal__title {
   margin-top: 0;
   margin-bottom: 20px;
+  color: var(--main-text-cl);
 
   font-size: 20px;
   line-height: 1.17;
@@ -205,6 +207,7 @@
   margin: 0;
   padding: 0;
 
+
   color: var(--info-title-cl);
 
   @include media(desktop) {
@@ -216,6 +219,7 @@
   margin: 0;
   padding: 0;
   min-width: 150px;
+  color: var(--main-text-cl);
 
   &.js-title {
     text-transform: uppercase;
