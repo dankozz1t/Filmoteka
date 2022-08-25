@@ -98,11 +98,7 @@
   &:focus {
     color: #ff6b08;
     transform: scale(1.1);
-    animation: all 0.2s ease-out;
-
-    &:before {
-      animation: shine 0.5s 0s linear;
-    }
+    animation: transition 0.2s ease-out;
 
     &:active {
       box-shadow: 0 0 0 0 transparent;
@@ -122,6 +118,8 @@
       background: white;
       box-shadow: 0 0 15px 3px white;
       transform: skewX(-20deg);
+
+      animation: shine 0.5s 0s linear;
     }
 
     .header__logo-svg:hover {
