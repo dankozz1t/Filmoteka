@@ -1,14 +1,13 @@
-import { apiService } from './api-service.js';
-import { refs } from './reference.js';
-import templateRenderFilms from '../templates/template-film.hbs';
-import { renderPagination } from './pagination.js';
+import { apiService } from '../API/api-service.js';
+import { refs } from '../references/reference.js';
+import templateRenderFilms from '../../templates/template-film.hbs';
+import { renderPagination } from '../pagination/pagination.js';
 
 export function renderFilms(arrayFilms) {
   if (!arrayFilms.length) {
     refs.contentList.innerHTML = templatePlugEmpty();
     return;
   }
-  console.clear();
   arrayFilms.forEach(film => {
     let genresArray = [];
     film.genre_ids.forEach(id => {
@@ -23,7 +22,6 @@ export function renderFilms(arrayFilms) {
       genresArray.push('---');
     } else if (film.genre_ids.length >= 3) {
       genresArray = genresArray.splice(1, genresArray.length - 1);
-      console.log(genresArray);
       genresArray.push('Other');
     }
     //-------------------
@@ -44,7 +42,6 @@ export function renderFilms(arrayFilms) {
     //-------------------
 
     film.genre_ids = genresArray.join(', ');
-    console.log(genresArray);
   });
   refs.contentList.innerHTML = templateRenderFilms(arrayFilms);
   renderPagination(apiService.page, apiService.totalPages);
