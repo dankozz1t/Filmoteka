@@ -13,9 +13,6 @@ import { onSmoothScroll } from './js/components/smoothScroll.js';
 
 import { renederSlider } from './js/components/slider.js';
 
-import Flickity from 'flickity';
-import 'flickity/dist/flickity.css';
-
 onTopArrow();
 onSwitch();
 
@@ -27,15 +24,21 @@ refs.paginationControls.addEventListener('click', onPaginationClick);
 refs.contentList.addEventListener('click', onGetInfoClick);
 
 //finction fetch popular films
-apiService.fetchFilms().then(({ data }) => {
-  if (!apiService.allGenres) {
-    apiService.fetchGenres();
-  }
-
-  renderFilms(data.results);
-  renederSlider();
-  renderPagination(apiService.page, apiService.totalPages);
-});
+spinnerOn();
+apiService
+  .fetchFilms()
+  .then(({ data }) => {
+    if (!apiService.allGenres) {
+      apiService.fetchGenres().then(() => {
+        renderFilms(data.results);
+        renederSlider();
+        renderPagination(apiService.page, apiService.totalPages);
+      });
+    }
+  })
+  .finally(() => {
+    spinnerOff();
+  });
 // ----------
 
 toggleBackdrop();
