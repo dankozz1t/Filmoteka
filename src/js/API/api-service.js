@@ -1,5 +1,6 @@
 import axios from 'axios';
-
+import { spinnerOn } from '../components/spinner.js';
+import { spinnerOff } from '../components/spinner.js';
 class ApiService {
   static API_KEY = 'd7ee9dda466bc4ced4432fb2e147fc44';
   static BASE_URL = 'https://api.themoviedb.org/3';
@@ -45,6 +46,7 @@ class ApiService {
     }
   }
   async fetchImagesByPage() {
+    spinnerOn();
     try {
       let url = '';
       if (this.searchName) {
@@ -53,7 +55,9 @@ class ApiService {
         url = `${ApiService.BASE_URL}/trending/movie/week?api_key=${ApiService.API_KEY}&page=${this.page}`;
       }
 
-      const data = await axios.get(url);
+      const data = await axios.get(url).finally(() => {
+        spinnerOff();
+      });
       this.films = data.data.results;
       this.page = data.data.page;
       this.totalPages = data.data.total_pages;

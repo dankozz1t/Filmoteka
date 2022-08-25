@@ -3,7 +3,7 @@ body {
 }
 
 .loader {
-  position: absolute;
+  position: fixed;
   top: calc(50% - 32px);
   left: calc(50% - 32px);
   width: 64px;
