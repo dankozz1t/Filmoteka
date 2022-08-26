@@ -27,7 +27,8 @@
     }
   }
 
-  &--accent {
+  &--accent,
+  &-js-active {
     border-color: var(--accent-btn-color);
     color: var(--white-btn-color);
     background-color: var(--accent-btn-color);

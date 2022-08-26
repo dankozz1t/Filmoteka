@@ -3,7 +3,14 @@ import { renderPagination } from '../pagination/pagination.js';
 import { renderFilms } from './renderFilms.js';
 
 export function renderContentByPagination(page) {
-  apiService.page = page;
+  if (!page) {
+    apiService.page = 1;
+  } else if (page > 2) {
+    apiService.page = apiService.totalPages;
+  } else {
+    apiService.page += page;
+  }
+
   apiService.fetchImagesByPage().then(({ data }) => renderFilms(data.results));
   renderPagination(apiService.page, apiService.totalPages);
 }
