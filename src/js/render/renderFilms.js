@@ -34,14 +34,15 @@ export async function renderFilms(arrayFilms, isLibrary = false) {
     }
 
     //-------------------
-
+    if (!film.overview) {
+      film.overview = '-------------';
+    }
     //-------------------
     if (!film.release_date) {
       film.release_date = '----';
     } else {
       film.release_date = film.release_date.slice(0, 4);
     }
-    //-------------------
     //-------------------
     let newPosterPath = '';
     if (film.poster_path) {
