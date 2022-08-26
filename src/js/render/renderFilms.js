@@ -3,8 +3,16 @@ import { refs } from '../references/reference.js';
 import templateRenderFilms from '../../templates/template-film.hbs';
 import { renderPagination } from '../pagination/pagination.js';
 import { getActiveLibraryCategory } from '../library/getActiveLibraryCategory.js';
+import templatePlugEmpty from '../../templates/template-plug-empty.hbs';
 
 export async function renderFilms(arrayFilms, isLibrary = false) {
+  if (!arrayFilms.length) {
+    console.log(templatePlugEmpty);
+    refs.contentList.innerHTML = templatePlugEmpty();
+    refs.paginationControls.innerHTML = '';
+    return;
+  }
+
   arrayFilms.forEach(film => {
     let genresArray = [];
     let genresArrayFull = [];
