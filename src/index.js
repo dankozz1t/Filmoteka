@@ -24,7 +24,7 @@ refs.form.addEventListener('submit', onFormSubmit);
 refs.paginationControls.addEventListener('click', onPaginationClick);
 refs.contentList.addEventListener('click', onGetInfoClick);
 
-//finction fetch popular films
+//function fetch popular films
 spinnerOn();
 apiService
   .fetchFilms()
@@ -61,21 +61,18 @@ function onFormSubmit(e) {
 
   const query = e.target.elements.query.value;
 
-  let currentName = '';
-  apiService.searchName = query;
   e.target.elements.query.value = '';
 
   apiService
-    .fetchImagesByName()
+    .fetchImagesByName(query)
     .then(({ data }) => {
       if (!data.results.length) {
-        apiService.searchName = currentName;
         refs.failureMessage.innerHTML = 'Search result not successful';
         setTimeout(() => {
           refs.failureMessage.innerHTML = '';
         }, 900);
       } else {
-        currentName = apiService.searchName;
+        apiService.searchName = query;
         renderFilms(data.results);
         scrollContent();
       }
