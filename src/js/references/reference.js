@@ -1,4 +1,6 @@
 export const refs = {
+  content: document.querySelector('.content'),
+
   contentList: document.querySelector('.content__list'),
   form: document.querySelector('#search-form'),
 

@@ -57,11 +57,9 @@ export async function renderFilms(arrayFilms, isLibrary = false) {
   if (isLibrary) {
     if (refs.libQeueBtn.classList.contains('btn-js-active')) {
       renderPagination(apiService.qeuePage, apiService.totalQeuePages);
-      console.log(4444);
       return;
     } else if (refs.libWatchedBtn.classList.contains('btn-js-active')) {
       renderPagination(apiService.watchedPage, apiService.totalWatchedPages);
-      console.log(123);
       return;
     }
     return;

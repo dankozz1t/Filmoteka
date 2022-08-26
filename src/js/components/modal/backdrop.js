@@ -73,7 +73,6 @@ function onFilmControls(e) {
   }
   if (e.target.classList.contains('js-add-watched')) {
     manageAdd(e, 'watched');
-    console(e.target.textContent);
   }
   if (e.target.classList.contains('js-add-qeue')) {
     manageAdd(e, 'qeue');

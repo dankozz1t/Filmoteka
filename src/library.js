@@ -32,7 +32,6 @@ async function filmRender() {
   return render;
 }
 filmRender();
-console.log(apiService);
 
 function onLibraryControls(e) {
   if (e.target.nodeName !== 'BUTTON') {
