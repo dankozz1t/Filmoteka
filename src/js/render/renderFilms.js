@@ -2,6 +2,7 @@ import { apiService } from '../API/api-service.js';
 import { refs } from '../references/reference.js';
 import templateRenderFilms from '../../templates/template-film.hbs';
 import { renderPagination } from '../pagination/pagination.js';
+import { getActiveLibraryCategory } from '../library/getActiveLibraryCategory.js';
 
 export async function renderFilms(arrayFilms, isLibrary = false) {
   arrayFilms.forEach(film => {
@@ -55,15 +56,11 @@ export async function renderFilms(arrayFilms, isLibrary = false) {
   refs.contentList.innerHTML = templateRenderFilms(arrayFilms);
 
   if (isLibrary) {
-    if (refs.libQeueBtn.classList.contains('btn-js-active')) {
+    if (getActiveLibraryCategory() === 'qeue') {
       renderPagination(apiService.qeuePage, apiService.totalQeuePages);
-      console.log(4444);
-      return;
-    } else if (refs.libWatchedBtn.classList.contains('btn-js-active')) {
-      renderPagination(apiService.watchedPage, apiService.totalWatchedPages);
-      console.log(123);
       return;
     }
+    renderPagination(apiService.watchedPage, apiService.totalWatchedPages);
     return;
   }
   renderPagination(apiService.page, apiService.totalPages);

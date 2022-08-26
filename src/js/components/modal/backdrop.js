@@ -1,5 +1,7 @@
 import { apiService } from '../../API/api-service.js';
 import { refs } from '../../references/reference.js';
+import { getActiveLibraryCategory } from '../../library/getActiveLibraryCategory.js';
+import { renderFilms } from '../../render/renderFilms.js';
 
 export function toggleBackdrop() {
   refs.openFilmBtn.addEventListener('click', onOpenFilmBtnClick);
@@ -73,10 +75,28 @@ function onFilmControls(e) {
   }
   if (e.target.classList.contains('js-add-watched')) {
     manageAdd(e, 'watched');
-    console(e.target.textContent);
+
+    if (refs.paginationControls.classList.contains('js-lib-pagination')) {
+      if (getActiveLibraryCategory() === 'watched') {
+        console.log('watched');
+        renderFilms(apiService.fetchWatched(), true);
+      } else {
+        console.log('qeue');
+        renderFilms(apiService.fetchQeue(), true);
+      }
+    }
   }
   if (e.target.classList.contains('js-add-qeue')) {
     manageAdd(e, 'qeue');
+    if (refs.paginationControls.classList.contains('js-lib-pagination')) {
+      if (getActiveLibraryCategory() === 'watched') {
+        renderFilms(apiService.fetchWatched(), true);
+        console.log('watched');
+      } else {
+        console.log('qeue');
+        renderFilms(apiService.fetchQeue(), true);
+      }
+    }
   }
 }
 
