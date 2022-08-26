@@ -31,8 +31,8 @@ async function filmRender() {
   }
   return render;
 }
-
 filmRender();
+console.log(apiService);
 
 function onLibraryControls(e) {
   if (e.target.nodeName !== 'BUTTON') {
@@ -41,8 +41,6 @@ function onLibraryControls(e) {
   if (e.target.classList.contains('js-btn-watched')) {
     refs.libWatchedBtn.classList.add('btn-js-active');
     refs.libQeueBtn.classList.remove('btn-js-active');
-    // reverseBtnStyle(refs.libWatchedBtn);
-    // reverseBtnStyle(refs.libQeueBtn);
 
     renderFilms(apiService.fetchWatched(), true);
     if (!apiService.watched.length) {
@@ -60,16 +58,6 @@ function onLibraryControls(e) {
       refs.contentList.innerHTML = templatePlugEmpty();
     }
   }
-}
-
-// renderPagination();
-function reverseBtnStyle(btn) {
-  if (btn.classList.contains('btn-js-active')) {
-    btn.classList.add('btn--accent');
-
-    return;
-  }
-  btn.classList.remove('btn--accent');
 }
 
 toggleBackdrop();
