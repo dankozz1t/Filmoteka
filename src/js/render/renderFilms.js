@@ -6,13 +6,16 @@ import { getActiveLibraryCategory } from '../library/getActiveLibraryCategory.js
 import templatePlugEmpty from '../../templates/template-plug-empty.hbs';
 
 export async function renderFilms(arrayFilms, isLibrary = false) {
+  if (!arrayFilms) {
+    return;
+  }
   if (!arrayFilms.length) {
     refs.contentList.innerHTML = templatePlugEmpty();
     refs.paginationControls.innerHTML = '';
     return;
   }
 
-  arrayFilms.forEach(film => {
+  arrayFilms.forEach((film = {}) => {
     let genresArray = [];
     let genresArrayFull = [];
 

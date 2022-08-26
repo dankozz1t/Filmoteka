@@ -101,26 +101,36 @@ function onFilmControls(e) {
 }
 
 function manageAdd(e, content) {
-  if (!apiService[content].some(film => film.id == refs.filmModalRef.id)) {
-    const watchedFilm = apiService.films.find(
-      ({ id }) => id == refs.filmModalRef.id
-    );
+  if (apiService[content]) {
+    if (
+      !apiService[content].some(
+        film => film.id === Number(refs.filmModalRef.id)
+      )
+    ) {
+      const watchedFilm = apiService.films.find(
+        ({ id }) => id === Number(refs.filmModalRef.id)
+      );
+      if (!watchedFilm) {
+        console.log('oops');
+        return;
+      }
+      apiService[content].push(watchedFilm);
+      localStorage.setItem(content, JSON.stringify(apiService[content]));
 
-    apiService[content].push(watchedFilm);
-    localStorage.setItem(content, JSON.stringify(apiService[content]));
-
-    refs[content].textContent = `Remove from ${content}`;
-    return;
-  }
-  refs[content].textContent = `Add to ${content}`;
-
-  let indexToDelete = 0;
-  apiService[content].forEach((film, index) => {
-    if (film.id == refs.filmModalRef.id) {
-      indexToDelete = index;
+      refs[content].textContent = `Remove from ${content}`;
+      return;
     }
-  });
 
-  apiService[content].splice(indexToDelete, 1);
-  localStorage.setItem(content, JSON.stringify(apiService[content]));
+    refs[content].textContent = `Add to ${content}`;
+
+    let indexToDelete = 0;
+    apiService[content].forEach((film, index) => {
+      if (film.id === Number(refs.filmModalRef.id)) {
+        indexToDelete = index;
+      }
+    });
+
+    apiService[content].splice(indexToDelete, 1);
+    localStorage.setItem(content, JSON.stringify(apiService[content]));
+  }
 }

@@ -36,26 +36,6 @@ class ApiService {
       console.error(error);
     }
   }
-  // async fetchImagesByName() {
-  //   try {
-  //     const url = `${ApiService.BASE_URL}/search/movie?api_key=${ApiService.API_KEY}&query=${this.searchName}`;
-
-  //     const data = await axios.get(url);
-
-  //     if (!this.searchName) {
-  //       this.name = this.currentName;
-  //       this.page = data.data.page;
-  //       this.totalPages = data.data.total_pages;
-  //     }
-  //     this.films = data.data.results;
-  //     // this.page = data.data.page;
-  //     // this.totalPages = data.data.total_pages;
-
-  //     return data;
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
 
   async fetchImagesByName(query) {
     try {
