@@ -6,8 +6,8 @@ body {
 .switch__btn {
   position: absolute;
 
-  margin-top: -40px;
-  margin-left: 80px;
+  margin-top: -33px;
+  margin-left: 90px;
 
   opacity: 0.4;
 
@@ -39,21 +39,15 @@ body {
 
 .switch__btn__icon {
   color: var(--secondary-accent-cl);
-  font-size: 3rem;
+  font-size: 25px;
 }
 
-/* -------------- ANIMATION ------------ */
 .switch__btn__icon.animated {
   animation: spin 0.5s;
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
+// -----------------------DARKMODE------------------------- //
 
-/* -------------- DARKMODE -------------- */
 body.darkmode {
   background-color: var(--dark-bg-cl);
 
@@ -70,14 +64,20 @@ body.darkmode {
     background-color: var(--dark-bg-cl);
   }
 
-  .film-modal,
-  .modal-team {
+  .film-modal {
+    background-color: var(--dark-modal-bg-cl);
+    color: var(--secondary-text-cl);
+  }
+
+  .film-modal__description,
+  .film-modal__title,
+  .params__data-item {
     color: var(--secondary-text-cl);
   }
 
   .film-modal__btn.btn--black {
-    border-color: white;
-    color: white;
+    border-color: var(--secondary-text-cl);
+    color: var(--secondary-text-cl);
 
     &:hover {
       border-color: var(--secondary-accent-cl);
@@ -85,7 +85,9 @@ body.darkmode {
   }
 
   .pagination__btn,
-  .content__film-name {
+  .content__film-name,
+  .team-item__title,
+  .content-library__list {
     color: var(--secondary-text-cl);
   }
 
@@ -105,12 +107,25 @@ body.darkmode {
     color: var(--info-title-cl);
   }
 
-  .team-item__title {
-    color: white;
+  .flickity-button {
+    background: hsla(0, 0, 0, 0.6);
+
+    &:hover {
+      background: hsla(0, 0, 0, 0.9);
+    }
   }
 
-  .film-modal__btn--close {
-    fill: var(--main-bg-cl);
+  .arrow {
+    fill: rgb(207, 206, 206);
+  }
+
+  .flickity-page-dot {
+    background: #d7d7d740;
+
+    &:hover,
+    &:focus {
+      background: rgb(245, 245, 245);
+    }
   }
 }
 

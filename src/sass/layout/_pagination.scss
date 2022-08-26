@@ -20,15 +20,22 @@
   background-color: inherit;
   border-color: transparent;
   border-radius: 5px;
-  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  transition: transform;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--transition-cubic);
 
   &--accent {
     color: var(--main-bg-cl);
-    background-color: #ff6b08;
+    background-color: var(--secondary-accent-cl);
   }
 
   &--pale {
-    background-color: #f7f7f7;
+    background-color: var(--secondary-bg-cl);
   }
 }
 .pagination__rest,
@@ -37,7 +44,4 @@
   @include media(mobile-only) {
     display: none;
   }
-}
-.pagination__rest {
-  cursor: default;
 }

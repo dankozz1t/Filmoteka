@@ -96,7 +96,7 @@
 
   &:hover,
   &:focus {
-    color: #ff6b08;
+    color: var(--secondary-accent-cl);
     transform: scale(1.1);
     animation: transition 0.2s ease-out;
 
@@ -107,12 +107,13 @@
 
     &:before {
       content: '';
-      display: block;
-      width: 0px;
-      height: 86%;
       position: absolute;
       top: 7%;
       left: 0%;
+
+      display: block;
+      width: 0px;
+      height: 86%;
 
       opacity: 0;
       background: white;
@@ -125,21 +126,6 @@
     .header__logo-svg:hover {
       box-shadow: 0 0 30px 0 transparentize(#ff6b08, 0.5);
     }
-  }
-}
-
-@keyframes shine {
-  from {
-    opacity: 0;
-    left: 0%;
-  }
-
-  50% {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-    left: 100%;
   }
 }
 
@@ -184,7 +170,7 @@
 
   &:hover,
   &:focus {
-    color: #ff6b08;
+    color: var(--secondary-accent-cl);
     transform: scale(1.1);
   }
 }
@@ -207,7 +193,7 @@
   justify-content: center;
   align-items: center;
 
-  color: white;
+  color: var(--secondary-text-cl);
 
   transition-property: transform, color;
   transition-duration: var(--transition-time);
@@ -215,7 +201,7 @@
 
   &:hover,
   &:focus {
-    color: #ff6b08;
+    color: var(--secondary-accent-cl);
     transform: scale(1.1);
   }
 
@@ -250,11 +236,11 @@
   left: -18px;
   bottom: -3px;
 
+  padding: 15px 0;
+
   border: none;
   background-color: transparent;
   color: transparent;
-
-  padding: 15px 0;
 }
 
 input::placeholder {
