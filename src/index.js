@@ -12,6 +12,7 @@ import { spinnerOff } from './js/components/spinner.js';
 import { onSmoothScroll } from './js/components/smoothScroll.js';
 
 import { renederSlider } from './js/components/slider.js';
+import { scrollContent } from './js/components/scrollContent.js';
 
 onTopArrow();
 onSwitch();
@@ -76,29 +77,15 @@ function onFormSubmit(e) {
       } else {
         currentName = apiService.searchName;
         renderFilms(data.results);
+        scrollContent();
       }
     })
     .finally(() => {
       spinnerOff();
     });
 }
-(function scrollDownBySubmit() {
-const btnScrollDown = document.querySelector('.header__form-btn');
-  function scrollDown() {
-    // const windowCoords = document.documentElement.offsetHeight;
-    // const windowCoords = document.getElementById('.container').clientHeight;
-  const windowCoords = document.querySelector('.content')
-    .firstElementChild.getBoundingClientRect();
-    console.log(windowCoords);
-    (function scroll() {
-        if (window.pageYOffset < windowCoords.top) {
-          window.scrollBy(0, 8);
-          setTimeout(scroll, 8);
-        }
-        if (window.pageYOffset > windowCoords.top) {
-          window.scrollTo(0, windowCoords);
-        }
-    })(); 
-  }
-  btnScrollDown.addEventListener('click', scrollDown);
-})()
+// function scrollDownBySubmit() {
+
+// refs.formBtn.addEventListener('click', scrollDown);
+// }
+// scrollDownBySubmit();
