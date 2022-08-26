@@ -53,6 +53,37 @@ function onGetInfoClick(e) {
   fillModal(film);
 }
 
+// function onFormSubmit(e) {
+//   e.preventDefault();
+
+//   spinnerOn();
+
+//   const query = e.target.elements.query.value;
+
+//   apiService.searchName = query;
+//   e.target.elements.query.value = '';
+
+//   apiService
+//     .fetchImagesByName()
+//     .then(({ data }) => {
+//       if (!data.results.length) {
+//         // apiService.searchName = currentName;
+//         // console.log(currentName);
+//         refs.failureMessage.innerHTML = 'Search result not successful';
+//         setTimeout(() => {
+//           refs.failureMessage.innerHTML = '';
+//         }, 900);
+//       } else {
+//         apiService.currentName = query;
+//         // currentName = apiService.searchName;
+//         // console.log(currentName);
+//         renderFilms(data.results);
+//       }
+//     })
+//     .finally(() => {
+//       spinnerOff();
+//     });
+// }
 function onFormSubmit(e) {
   e.preventDefault();
 
@@ -60,21 +91,18 @@ function onFormSubmit(e) {
 
   const query = e.target.elements.query.value;
 
-  let currentName = '';
-  apiService.searchName = query;
   e.target.elements.query.value = '';
 
   apiService
-    .fetchImagesByName()
+    .fetchImagesByName(query)
     .then(({ data }) => {
       if (!data.results.length) {
-        apiService.searchName = currentName;
         refs.failureMessage.innerHTML = 'Search result not successful';
         setTimeout(() => {
           refs.failureMessage.innerHTML = '';
         }, 900);
       } else {
-        currentName = apiService.searchName;
+        apiService.searchName = query;
         renderFilms(data.results);
       }
     })
