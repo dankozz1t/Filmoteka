@@ -19,52 +19,43 @@ onSmoothScroll();
 
 refs.libraryControls.addEventListener('click', onLibraryControls);
 refs.contentList.addEventListener('click', onGetInfoClick);
-refs.paginationControls.addEventListener('click', onPaginationClick);
+refs.paginationControls.addEventListener('click', onPaginationClick, true);
 
 async function filmRender() {
   const data = await apiService.fetchWatched();
 
-  const render = await renderFilms(data);
+  const render = await renderFilms(data, true);
+
   if (!apiService.watched.length) {
     refs.contentList.innerHTML = templatePlugEmpty();
   }
   return render;
 }
-
 filmRender();
+console.log(apiService);
 
 function onLibraryControls(e) {
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
   if (e.target.classList.contains('js-btn-watched')) {
-    reverseBtnStyle(e.currentTarget.children[1].firstElementChild);
-    reverseBtnStyle(e.currentTarget.children[0].firstElementChild);
+    refs.libWatchedBtn.classList.add('btn-js-active');
+    refs.libQeueBtn.classList.remove('btn-js-active');
 
-    renderFilms(apiService.fetchWatched());
+    renderFilms(apiService.fetchWatched(), true);
     if (!apiService.watched.length) {
       refs.contentList.innerHTML = templatePlugEmpty();
     }
   }
   if (e.target.classList.contains('js-btn-qeue')) {
-    reverseBtnStyle(e.currentTarget.children[1].firstElementChild);
-    reverseBtnStyle(e.currentTarget.children[0].firstElementChild);
+    refs.libQeueBtn.classList.add('btn-js-active');
+    refs.libWatchedBtn.classList.remove('btn-js-active');
 
-    renderFilms(apiService.fetchQeue());
+    renderFilms(apiService.fetchQeue(), true);
     if (!apiService.qeue.length) {
       refs.contentList.innerHTML = templatePlugEmpty();
     }
   }
-}
-
-renderPagination;
-function reverseBtnStyle(btn) {
-  if (btn.classList.contains('btn--accent')) {
-    btn.classList.replace('btn--accent', 'btn--white');
-
-    return;
-  }
-  btn.classList.replace('btn--white', 'btn--accent');
 }
 
 toggleBackdrop();

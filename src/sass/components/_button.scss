@@ -24,7 +24,8 @@
     }
   }
 
-  &--accent {
+  &--accent,
+  &-js-active {
     border-color: #ff6b08;
     color: var(--main-bg-cl);
     background-color: #ff6b08;

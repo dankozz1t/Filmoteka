@@ -38,4 +38,6 @@ export const refs = {
   qeue: document.querySelector('.js-add-qeue'),
   filmControls: document.querySelector('.js-film-controls'),
   libraryControls: document.querySelector('.js-library-controls'),
+  libWatchedBtn: document.querySelector('.js-btn-watched'),
+  libQeueBtn: document.querySelector('.js-btn-qeue'),
 };
