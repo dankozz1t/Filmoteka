@@ -2,15 +2,35 @@
   margin-bottom: 50px;
 }
 .slider__cell {
-  width: 355px;
-  height: 530px;
+  width: 142px;
+  height: 201px;
 
   background: #282a2d;
+
+  @include media(tablet) {
+    width: 213px;
+    height: 302px;
+  }
+
+  @include media(desktop) {
+    width: 284px;
+    height: 402px;
+  }
 }
+
 .slider__img {
   width: 95%;
-  height: 530px;
+  height: 201px;
+
+  @include media(tablet-only) {
+    height: 302px;
+  }
+
+  @include media(desktop) {
+    height: 402px;
+  }
 }
+
 .slider__img {
   border-radius: 5px;
   transition: transform 0.25s;
