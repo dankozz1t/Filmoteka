@@ -33,7 +33,6 @@ refs.paginationControls.addEventListener('click', onPaginationClick, true);
 // }
 // filmRender();
 renderFilms(apiService.fetchWatched(), true);
-console.log(apiService);
 
 function onLibraryControls(e) {
   if (e.target.nodeName !== 'BUTTON') {

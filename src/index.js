@@ -12,6 +12,7 @@ import { spinnerOff } from './js/components/spinner.js';
 import { onSmoothScroll } from './js/components/smoothScroll.js';
 
 import { renederSlider } from './js/components/slider.js';
+import { scrollContent } from './js/components/scrollContent.js';
 
 onTopArrow();
 onSwitch();
@@ -73,9 +74,15 @@ function onFormSubmit(e) {
       } else {
         apiService.searchName = query;
         renderFilms(data.results);
+        scrollContent();
       }
     })
     .finally(() => {
       spinnerOff();
     });
 }
+// function scrollDownBySubmit() {
+
+// refs.formBtn.addEventListener('click', scrollDown);
+// }
+// scrollDownBySubmit();

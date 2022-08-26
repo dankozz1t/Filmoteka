@@ -45,14 +45,15 @@ export async function renderFilms(arrayFilms, isLibrary = false) {
     }
 
     //-------------------
-
+    if (!film.overview) {
+      film.overview = '-------------';
+    }
     //-------------------
     if (!film.release_date) {
       film.release_date = '----';
     } else {
       film.release_date = film.release_date.slice(0, 4);
     }
-    //-------------------
     //-------------------
     let newPosterPath = '';
     if (film.poster_path) {
@@ -68,6 +69,9 @@ export async function renderFilms(arrayFilms, isLibrary = false) {
   if (isLibrary) {
     if (getActiveLibraryCategory() === 'qeue') {
       renderPagination(apiService.qeuePage, apiService.totalQeuePages);
+      return;
+    } else if (refs.libWatchedBtn.classList.contains('btn-js-active')) {
+      renderPagination(apiService.watchedPage, apiService.totalWatchedPages);
       return;
     }
     renderPagination(apiService.watchedPage, apiService.totalWatchedPages);
