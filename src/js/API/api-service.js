@@ -72,7 +72,6 @@ class ApiService {
   }
 
   fetchWatched() {
-    // this.page = 1;
     const perPage = 3;
     this.totalWatchedPages = Math.ceil(this.watched.length / perPage);
     this.watched.length < perPage
@@ -95,7 +94,6 @@ class ApiService {
   }
 
   fetchQeue() {
-    // this.page = 1;
     const perPage = 3;
     this.totalQeuePages = Math.ceil(this.qeue.length / perPage);
     this.qeue.length < perPage ? 1 : Math.ceil(this.qeue.length / perPage);

@@ -9,14 +9,14 @@ export async function renderFilms(arrayFilms, isLibrary = false) {
     let genresArrayFull = [];
 
     if (typeof film.genre_ids === 'object') {
-      // film.genre_ids.forEach(id => {
-      //   apiService.allGenres.forEach(genre => {
-      //     if (id === genre.id) {
-      //       genresArray.push(genre.name);
-      //       genresArrayFull.push(genre.name);
-      //     }
-      //   });
-      // });
+      film.genre_ids.forEach(id => {
+        apiService.allGenres.forEach(genre => {
+          if (id === genre.id) {
+            genresArray.push(genre.name);
+            genresArrayFull.push(genre.name);
+          }
+        });
+      });
 
       if (!film.genre_ids.length) {
         genresArray.push('---');
@@ -37,7 +37,7 @@ export async function renderFilms(arrayFilms, isLibrary = false) {
 
     //-------------------
     if (!film.release_date) {
-      film.release_date = '---';
+      film.release_date = '----';
     } else {
       film.release_date = film.release_date.slice(0, 4);
     }

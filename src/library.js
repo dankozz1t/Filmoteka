@@ -50,8 +50,6 @@ function onLibraryControls(e) {
   if (e.target.classList.contains('js-btn-qeue')) {
     refs.libQeueBtn.classList.add('btn-js-active');
     refs.libWatchedBtn.classList.remove('btn-js-active');
-    // reverseBtnStyle(refs.libWatchedBtn);
-    // reverseBtnStyle(refs.libQeueBtn);
 
     renderFilms(apiService.fetchQeue(), true);
     if (!apiService.qeue.length) {
@@ -71,5 +69,3 @@ function onGetInfoClick(e) {
 
   fillModal(film);
 }
-
-// function onWatchedPaginationClick(){}

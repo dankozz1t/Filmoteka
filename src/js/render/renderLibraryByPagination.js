@@ -23,5 +23,4 @@ export function renderLibraryByPagination(page) {
     }
     renderFilms(apiService.fetchQeue(), true);
   }
-  //   renderPagination(apiService.libPage, 100);
 }
