@@ -1,32 +1,73 @@
 import { apiService } from '../API/api-service.js';
 import { renderContentByPagination } from '../render/renderContentByPagination.js';
+import { renderLibraryByPagination } from '../render/renderLibraryByPagination.js';
+import { renderFilms } from '../render/renderFilms.js';
 
 export function onPaginationClick(e) {
+  if (e.currentTarget.classList.contains('js-lib-pagination')) {
+    managePaginationType(e, 'library');
+    return;
+  }
+
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
+  managePaginationType(e, 'home');
+}
+
+function managePaginationType(e, paginationCategory) {
   if (e.target.classList.contains('js-next')) {
-    renderContentByPagination((apiService.page += 1));
-    return;
+    if (paginationCategory === 'home') {
+      renderContentByPagination(+1);
+      return;
+    }
+    if (paginationCategory === 'library') {
+      renderLibraryByPagination(+1);
+    }
   }
   if (e.target.classList.contains('js-previous')) {
-    renderContentByPagination((apiService.page -= 1));
-    return;
+    if (paginationCategory === 'home') {
+      renderContentByPagination(-1);
+      return;
+    }
+    if (paginationCategory === 'library') {
+      renderLibraryByPagination(-1);
+    }
   }
   if (e.target.classList.contains('js-second-previous')) {
-    renderContentByPagination((apiService.page -= 2));
-    return;
+    if (paginationCategory === 'home') {
+      renderContentByPagination(-2);
+      return;
+    }
+    if (paginationCategory === 'library') {
+      renderLibraryByPagination(-2);
+    }
   }
   if (e.target.classList.contains('js-second-next')) {
-    renderContentByPagination((apiService.page += 2));
-    return;
+    if (paginationCategory === 'home') {
+      renderContentByPagination(+2);
+      return;
+    }
+    if (paginationCategory === 'library') {
+      renderLibraryByPagination(+2);
+    }
   }
   if (e.target.classList.contains('js-first')) {
-    renderContentByPagination(1);
-    return;
+    if (paginationCategory === 'home') {
+      renderContentByPagination(0);
+      return;
+    }
+    if (paginationCategory === 'library') {
+      renderLibraryByPagination(0);
+    }
   }
   if (e.target.classList.contains('js-last')) {
-    renderContentByPagination(apiService.totalPages);
-    return;
+    if (paginationCategory === 'home') {
+      renderContentByPagination(5);
+      return;
+    }
+    if (paginationCategory === 'library') {
+      renderLibraryByPagination(5);
+    }
   }
 }

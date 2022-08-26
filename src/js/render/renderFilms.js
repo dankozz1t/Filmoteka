@@ -3,20 +3,20 @@ import { refs } from '../references/reference.js';
 import templateRenderFilms from '../../templates/template-film.hbs';
 import { renderPagination } from '../pagination/pagination.js';
 
-export async function renderFilms(arrayFilms) {
+export async function renderFilms(arrayFilms, isLibrary = false) {
   arrayFilms.forEach(film => {
     let genresArray = [];
     let genresArrayFull = [];
 
     if (typeof film.genre_ids === 'object') {
-      film.genre_ids.forEach(id => {
-        apiService.allGenres.forEach(genre => {
-          if (id === genre.id) {
-            genresArray.push(genre.name);
-            genresArrayFull.push(genre.name);
-          }
-        });
-      });
+      // film.genre_ids.forEach(id => {
+      //   apiService.allGenres.forEach(genre => {
+      //     if (id === genre.id) {
+      //       genresArray.push(genre.name);
+      //       genresArrayFull.push(genre.name);
+      //     }
+      //   });
+      // });
 
       if (!film.genre_ids.length) {
         genresArray.push('---');
@@ -53,5 +53,17 @@ export async function renderFilms(arrayFilms) {
     //-------------------
   });
   refs.contentList.innerHTML = templateRenderFilms(arrayFilms);
+
+  if (isLibrary) {
+    if (refs.libQeueBtn.classList.contains('btn-js-active')) {
+      renderPagination(apiService.qeuePage, apiService.totalQeuePages);
+      return;
+    } else if (refs.libWatchedBtn.classList.contains('btn-js-active')) {
+      renderPagination(apiService.watchedPage, apiService.totalWatchedPages);
+
+      return;
+    }
+    return;
+  }
   renderPagination(apiService.page, apiService.totalPages);
 }

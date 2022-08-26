@@ -11,6 +11,10 @@ class ApiService {
     this.films = null;
     this.page = 1;
     this.totalPages = 1000;
+    this.watchedPage = 1;
+    this.totalWatchedPages = 77;
+    this.qeuePage = 1;
+    this.totalQeuePages = 99;
     this.allGenres = null;
     this.trendingPosters = [];
     this.watched = JSON.parse(localStorage.getItem('watched')) ?? [];
@@ -68,11 +72,21 @@ class ApiService {
   }
 
   fetchWatched() {
-    this.page = 1;
-    this.totalPages =
-      this.watched.length < 3 ? 1 : Math.ceil(this.watched.length / 3);
-    if (this.watched.length > 3) {
-      this.films = this.watched.slice(0, 3);
+    // this.page = 1;
+    const perPage = 3;
+    this.totalWatchedPages = Math.ceil(this.watched.length / perPage);
+    this.watched.length < perPage
+      ? 1
+      : Math.ceil(this.watched.length / perPage);
+
+    if (this.watched.length > perPage) {
+      this.films =
+        this.watchedPage === 1
+          ? this.watched.slice(0, perPage)
+          : this.watched.slice(
+              (this.watchedPage - 1) * perPage,
+              this.watchedPage * perPage
+            );
     } else {
       this.films = this.watched;
     }
@@ -81,11 +95,18 @@ class ApiService {
   }
 
   fetchQeue() {
-    this.page = 1;
-    this.totalPages =
-      this.qeue.length < 3 ? 1 : Math.ceil(this.qeue.length / 3);
-    if (this.qeue.length > 3) {
-      this.films = this.qeue.slice(0, 3);
+    // this.page = 1;
+    const perPage = 3;
+    this.totalQeuePages = Math.ceil(this.qeue.length / perPage);
+    this.qeue.length < perPage ? 1 : Math.ceil(this.qeue.length / perPage);
+    if (this.qeue.length > perPage) {
+      this.films =
+        this.qeuePage === 1
+          ? this.qeue.slice(0, perPage)
+          : this.qeue.slice(
+              (this.qeuePage - 1) * perPage,
+              this.qeuePage * perPage
+            );
     } else {
       this.films = this.qeue;
     }
