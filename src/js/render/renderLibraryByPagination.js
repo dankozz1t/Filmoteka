@@ -1,5 +1,4 @@
 import { apiService } from '../API/api-service.js';
-import { renderPagination } from '../pagination/pagination.js';
 import { refs } from '../references/reference.js';
 import { renderFilms } from './renderFilms.js';
 
