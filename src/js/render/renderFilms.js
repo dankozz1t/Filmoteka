@@ -8,7 +8,6 @@ import templatePlugEmpty from '../../templates/template-plug-empty.hbs';
 
 export async function renderFilms(arrayFilms, isLibrary = false) {
   if (!arrayFilms) {
-    console.log('ff');
     return;
   }
 
