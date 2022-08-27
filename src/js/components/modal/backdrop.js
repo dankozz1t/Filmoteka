@@ -1,6 +1,6 @@
 import { apiService } from '../../API/api-service.js';
 import { refs } from '../../references/reference.js';
-import { getActiveLibraryCategory } from '../../library/getActiveLibraryCategory.js';
+import { getActiveLibraryCategory } from '../../getPages/getActiveLibraryCategory.js';
 import { renderFilms } from '../../render/renderFilms.js';
 
 export function toggleBackdrop() {
@@ -111,12 +111,14 @@ function manageAdd(e, content) {
         ({ id }) => id === Number(refs.filmModalRef.id)
       );
       if (!watchedFilm) {
-        console.log('oops');
+        apiService[content].push(apiService.backupDeletedFilm);
+        localStorage.setItem(content, JSON.stringify(apiService[content]));
+        refs[content].textContent = `Remove from ${content}`;
         return;
       }
+
       apiService[content].push(watchedFilm);
       localStorage.setItem(content, JSON.stringify(apiService[content]));
-
       refs[content].textContent = `Remove from ${content}`;
       return;
     }
@@ -130,7 +132,10 @@ function manageAdd(e, content) {
       }
     });
 
-    apiService[content].splice(indexToDelete, 1);
+    apiService.backupDeletedFilm = apiService[content].splice(
+      indexToDelete,
+      1
+    )[0];
     localStorage.setItem(content, JSON.stringify(apiService[content]));
   }
 }

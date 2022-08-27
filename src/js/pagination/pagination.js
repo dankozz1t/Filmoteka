@@ -1,4 +1,5 @@
 import { refs } from '../references/reference.js';
+import { getActivePage } from '../getPages/getActivePage.js';
 
 export function renderPagination(page, total) {
   let markup = '';
@@ -10,9 +11,15 @@ export function renderPagination(page, total) {
      </li>`;
   }
   if (page > 1) {
-    markup += `<li>
+    if (total < 6) {
+      markup += `<li>
+       <button class="pagination__btn pagination__first js-first js-first-no-hide" type="button">1</button>
+      </li>`;
+    } else {
+      markup += `<li>
        <button class="pagination__btn pagination__first js-first" type="button">1</button>
       </li>`;
+    }
   }
   if (page > 4) {
     markup += `<li><p class="pagination__btn pagination__rest" type="button">...</p></li>`;
@@ -52,15 +59,26 @@ export function renderPagination(page, total) {
     markup += `<li><p class="pagination__btn pagination__rest" type="button">...</p></li>`;
   }
   if (total > page) {
-    markup += `<li>
-          <button class="pagination__btn pagination__last js-last" type="button">${total}</button>
-          </li>
-          <li>`;
-    markup += `<li>
+    if (total < 6) {
+      markup += `<li>
+       <button class="pagination__btn pagination__last js-last js-last-no-hide" type="button">${total}</button>
+      </li>`;
+      markup += `<li>
           <button class="pagination__btn pagination__btn--pale js-next" type="button">
           &#8594
           </button>
           </li>`;
+    } else {
+      markup += `<li>
+          <button class="pagination__btn pagination__last js-last" type="button">${total}</button>
+          </li>
+          <li>`;
+      markup += `<li>
+          <button class="pagination__btn pagination__btn--pale js-next" type="button">
+          &#8594
+          </button>
+          </li>`;
+    }
   }
   refs.paginationControls.innerHTML = markup;
 }
