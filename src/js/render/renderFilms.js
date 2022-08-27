@@ -2,9 +2,20 @@ import { apiService } from '../API/api-service.js';
 import { refs } from '../references/reference.js';
 import templateRenderFilms from '../../templates/template-film.hbs';
 import { renderPagination } from '../pagination/pagination.js';
+import { getActiveLibraryCategory } from '../library/getActiveLibraryCategory.js';
+import templatePlugEmpty from '../../templates/template-plug-empty.hbs';
 
 export async function renderFilms(arrayFilms, isLibrary = false) {
-  arrayFilms.forEach(film => {
+  if (!arrayFilms) {
+    return;
+  }
+  if (!arrayFilms.length) {
+    refs.contentList.innerHTML = templatePlugEmpty();
+    refs.paginationControls.innerHTML = '';
+    return;
+  }
+
+  arrayFilms.forEach((film = {}) => {
     let genresArray = [];
     let genresArrayFull = [];
 
@@ -56,13 +67,14 @@ export async function renderFilms(arrayFilms, isLibrary = false) {
   refs.contentList.innerHTML = templateRenderFilms(arrayFilms);
 
   if (isLibrary) {
-    if (refs.libQeueBtn.classList.contains('btn-js-active')) {
+    if (getActiveLibraryCategory() === 'qeue') {
       renderPagination(apiService.qeuePage, apiService.totalQeuePages);
       return;
     } else if (refs.libWatchedBtn.classList.contains('btn-js-active')) {
       renderPagination(apiService.watchedPage, apiService.totalWatchedPages);
       return;
     }
+    renderPagination(apiService.watchedPage, apiService.totalWatchedPages);
     return;
   }
   renderPagination(apiService.page, apiService.totalPages);

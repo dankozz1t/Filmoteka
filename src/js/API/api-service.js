@@ -19,6 +19,7 @@ class ApiService {
     this.trendingPosters = [];
     this.watched = JSON.parse(localStorage.getItem('watched')) ?? [];
     this.qeue = JSON.parse(localStorage.getItem('qeue')) ?? [];
+    this.currentName = '';
   }
 
   async fetchFilms() {
@@ -35,20 +36,24 @@ class ApiService {
       console.error(error);
     }
   }
-  async fetchImagesByName() {
-    try {
-      const url = `${ApiService.BASE_URL}/search/movie?api_key=${ApiService.API_KEY}&query=${this.searchName}`;
 
+  async fetchImagesByName(query) {
+    try {
+      const url = `${ApiService.BASE_URL}/search/movie?api_key=${ApiService.API_KEY}&query=${query}`;
       const data = await axios.get(url);
       this.films = data.data.results;
-      this.page = data.data.page;
-      this.totalPages = data.data.total_pages;
+
+      if (!query) {
+        this.page = data.data.page;
+        this.totalPages = data.data.total_pages;
+      }
 
       return data;
     } catch (error) {
       console.error(error);
     }
   }
+
   async fetchImagesByPage() {
     spinnerOn();
     try {

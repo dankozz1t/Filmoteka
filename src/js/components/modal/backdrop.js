@@ -1,5 +1,7 @@
 import { apiService } from '../../API/api-service.js';
 import { refs } from '../../references/reference.js';
+import { getActiveLibraryCategory } from '../../library/getActiveLibraryCategory.js';
+import { renderFilms } from '../../render/renderFilms.js';
 
 export function toggleBackdrop() {
   refs.openFilmBtn.addEventListener('click', onOpenFilmBtnClick);
@@ -14,7 +16,11 @@ export function toggleBackdrop() {
   }
 
   function onOpenTeamBtnClick() {
-    showBackdrop(refs.teamModalRef);
+    removeVisuallyHidden(refs.teamModalRef, refs.backdropRef);
+
+    refs.backdropRef.addEventListener('click', onCloseClick);
+    window.addEventListener('keydown', onEscapeKeyDown);
+    refs.filmControls.addEventListener('click', onFilmControls);
   }
 
   function showBackdrop(modal) {
@@ -34,6 +40,7 @@ export function toggleBackdrop() {
     window.addEventListener('keydown', onEscapeKeyDown);
     refs.filmControls.addEventListener('click', onFilmControls);
   }
+
   function hideBackdrop() {
     addVisuallyHidden(refs.backdropRef, refs.filmModalRef, refs.teamModalRef);
 
@@ -73,33 +80,58 @@ function onFilmControls(e) {
   }
   if (e.target.classList.contains('js-add-watched')) {
     manageAdd(e, 'watched');
+
+    if (refs.paginationControls.classList.contains('js-lib-pagination')) {
+      if (getActiveLibraryCategory() === 'watched') {
+        renderFilms(apiService.fetchWatched(), true);
+      } else {
+        renderFilms(apiService.fetchQeue(), true);
+      }
+    }
   }
   if (e.target.classList.contains('js-add-qeue')) {
     manageAdd(e, 'qeue');
+    if (refs.paginationControls.classList.contains('js-lib-pagination')) {
+      if (getActiveLibraryCategory() === 'watched') {
+        renderFilms(apiService.fetchWatched(), true);
+      } else {
+        renderFilms(apiService.fetchQeue(), true);
+      }
+    }
   }
 }
 
 function manageAdd(e, content) {
-  if (!apiService[content].some(film => film.id == refs.filmModalRef.id)) {
-    const watchedFilm = apiService.films.find(
-      ({ id }) => id == refs.filmModalRef.id
-    );
+  if (apiService[content]) {
+    if (
+      !apiService[content].some(
+        film => film.id === Number(refs.filmModalRef.id)
+      )
+    ) {
+      const watchedFilm = apiService.films.find(
+        ({ id }) => id === Number(refs.filmModalRef.id)
+      );
+      if (!watchedFilm) {
+        console.log('oops');
+        return;
+      }
+      apiService[content].push(watchedFilm);
+      localStorage.setItem(content, JSON.stringify(apiService[content]));
 
-    apiService[content].push(watchedFilm);
-    localStorage.setItem(content, JSON.stringify(apiService[content]));
-
-    refs[content].textContent = `Remove from ${content}`;
-    return;
-  }
-  refs[content].textContent = `Add to ${content}`;
-
-  let indexToDelete = 0;
-  apiService[content].forEach((film, index) => {
-    if (film.id == refs.filmModalRef.id) {
-      indexToDelete = index;
+      refs[content].textContent = `Remove from ${content}`;
+      return;
     }
-  });
 
-  apiService[content].splice(indexToDelete, 1);
-  localStorage.setItem(content, JSON.stringify(apiService[content]));
+    refs[content].textContent = `Add to ${content}`;
+
+    let indexToDelete = 0;
+    apiService[content].forEach((film, index) => {
+      if (film.id === Number(refs.filmModalRef.id)) {
+        indexToDelete = index;
+      }
+    });
+
+    apiService[content].splice(indexToDelete, 1);
+    localStorage.setItem(content, JSON.stringify(apiService[content]));
+  }
 }
