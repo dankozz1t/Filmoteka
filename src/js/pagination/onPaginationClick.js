@@ -2,7 +2,7 @@ import { apiService } from '../API/api-service.js';
 import { renderContentByPagination } from '../render/renderContentByPagination.js';
 import { renderLibraryByPagination } from '../render/renderLibraryByPagination.js';
 import { renderFilms } from '../render/renderFilms.js';
-import { scrollContent } from '../components/scrollContent.js';
+import { scrollToContent } from '../components/scrollContent.js';
 
 export function onPaginationClick(e) {
   if (e.currentTarget.classList.contains('js-lib-pagination')) {
@@ -14,7 +14,7 @@ export function onPaginationClick(e) {
     return;
   }
   managePaginationType(e, 'home');
-  scrollContent();
+  scrollToContent();
 }
 
 function managePaginationType(e, paginationCategory) {

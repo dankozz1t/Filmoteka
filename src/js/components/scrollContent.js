@@ -1,19 +1,24 @@
-// import { refs } from '../references/reference';
+const COORDS_TO_CONTENT = 800;
 
-export function scrollContent() {
-  //   let windowCoords = refs.content.getBoundingClientRect().y;
-  //   console.log(windowCoords);
+export function scrollToContent() {
+  if (window.pageYOffset < COORDS_TO_CONTENT) {
+    goToBot();
+  }
+  if (window.pageYOffset > COORDS_TO_CONTENT) {
+    goToTop();
+  }
 
-  let windowCoords = document.documentElement.offsetHeight;
-
-  function scroll() {
-    if (window.pageYOffset < windowCoords) {
+  function goToBot() {
+    if (window.pageYOffset < COORDS_TO_CONTENT) {
       window.scrollBy(0, 20);
-      setTimeout(scroll, 20);
-    }
-    if (window.pageYOffset > windowCoords) {
-      window.scrollTo(0, windowCoords);
+      setTimeout(goToBot, 10);
     }
   }
-  scroll();
+
+  function goToTop() {
+    if (window.pageYOffset > COORDS_TO_CONTENT) {
+      window.scrollBy(0, -80);
+      setTimeout(goToTop, 10);
+    }
+  }
 }
