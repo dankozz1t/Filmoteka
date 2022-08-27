@@ -11,7 +11,7 @@ import { spinnerOn } from './js/components/spinner.js';
 import { spinnerOff } from './js/components/spinner.js';
 import { onSmoothScroll } from './js/components/smoothScroll.js';
 
-import { renederSlider } from './js/components/slider.js';
+import { renderSlider } from './js/components/slider.js';
 import { scrollToContent } from './js/components/scrollContent.js';
 
 onTopArrow();
@@ -32,7 +32,7 @@ apiService
     if (!apiService.allGenres) {
       apiService.fetchGenres().then(() => {
         renderFilms(data.results);
-        renederSlider();
+        renderSlider();
         renderPagination(apiService.page, apiService.totalPages);
       });
     }
