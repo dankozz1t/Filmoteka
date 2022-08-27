@@ -12,7 +12,7 @@ import { spinnerOff } from './js/components/spinner.js';
 import { onSmoothScroll } from './js/components/smoothScroll.js';
 
 import { renderSlider } from './js/components/slider.js';
-import { scrollToContent } from './js/components/scrollContent.js';
+import { scrollToContent } from './js/components/scrollToContent.js';
 
 onTopArrow();
 onSwitch();
