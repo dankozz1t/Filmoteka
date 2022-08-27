@@ -14,47 +14,31 @@ import templatePlugEmpty from './templates/template-plug-empty.hbs';
 
 onTopArrow();
 onSwitch();
-
 onSmoothScroll();
 
 refs.libraryControls.addEventListener('click', onLibraryControls);
 refs.contentList.addEventListener('click', onGetInfoClick);
 refs.paginationControls.addEventListener('click', onPaginationClick, true);
 
-// async function filmRender() {
-//   const data = await apiService.fetchWatched();
-
-//   const render = await renderFilms(data, true);
-
-//   if (!apiService.watched.length) {
-//     refs.contentList.innerHTML = templatePlugEmpty();
-//   }
-//   return render;
-// }
-// filmRender();
 renderFilms(apiService.fetchWatched(), true);
 
 function onLibraryControls(e) {
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
+
   if (e.target.classList.contains('js-btn-watched')) {
     refs.libWatchedBtn.classList.add('btn-js-active');
     refs.libQeueBtn.classList.remove('btn-js-active');
 
     renderFilms(apiService.fetchWatched(), true);
-    // if (!apiService.watched.length) {
-    //   refs.contentList.innerHTML = templatePlugEmpty();
-    // }
   }
+
   if (e.target.classList.contains('js-btn-qeue')) {
     refs.libQeueBtn.classList.add('btn-js-active');
     refs.libWatchedBtn.classList.remove('btn-js-active');
 
     renderFilms(apiService.fetchQeue(), true);
-    // if (!apiService.qeue.length) {
-    //   refs.contentList.innerHTML = templatePlugEmpty();
-    // }
   }
 }
 

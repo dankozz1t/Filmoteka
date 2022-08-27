@@ -1,4 +1,5 @@
 import { refs } from './js/references/reference.js';
+import { onFormSubmit } from './js/components/onFormSubmit.js';
 import { onTopArrow } from './js/components/lift-up.js';
 import { fillModal } from './js/components/modal/fillModal.js';
 import { onSwitch } from './js/components/switch.js';
@@ -16,7 +17,6 @@ import { scrollToContent } from './js/components/scrollToContent.js';
 
 onTopArrow();
 onSwitch();
-
 onSmoothScroll();
 
 refs.contentList.addEventListener('click', onGetInfoClick);
@@ -53,36 +53,3 @@ function onGetInfoClick(e) {
 
   fillModal(film);
 }
-
-function onFormSubmit(e) {
-  e.preventDefault();
-
-  spinnerOn();
-
-  const query = e.target.elements.query.value;
-
-  e.target.elements.query.value = '';
-
-  apiService
-    .fetchImagesByName(query)
-    .then(({ data }) => {
-      if (!data.results.length) {
-        refs.failureMessage.innerHTML = 'Search result not successful';
-        setTimeout(() => {
-          refs.failureMessage.innerHTML = '';
-        }, 900);
-      } else {
-        apiService.searchName = query;
-        renderFilms(data.results);
-        scrollToContent();
-      }
-    })
-    .finally(() => {
-      spinnerOff();
-    });
-}
-// function scrollDownBySubmit() {
-
-// refs.formBtn.addEventListener('click', scrollDown);
-// }
-// scrollDownBySubmit();
