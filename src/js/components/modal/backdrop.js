@@ -16,7 +16,11 @@ export function toggleBackdrop() {
   }
 
   function onOpenTeamBtnClick() {
-    showBackdrop(refs.teamModalRef);
+    removeVisuallyHidden(refs.teamModalRef, refs.backdropRef);
+
+    refs.backdropRef.addEventListener('click', onCloseClick);
+    window.addEventListener('keydown', onEscapeKeyDown);
+    refs.filmControls.addEventListener('click', onFilmControls);
   }
 
   function showBackdrop(modal) {
@@ -36,6 +40,7 @@ export function toggleBackdrop() {
     window.addEventListener('keydown', onEscapeKeyDown);
     refs.filmControls.addEventListener('click', onFilmControls);
   }
+
   function hideBackdrop() {
     addVisuallyHidden(refs.backdropRef, refs.filmModalRef, refs.teamModalRef);
 
