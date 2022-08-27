@@ -5,7 +5,7 @@ import { spinnerOff } from './spinner.js';
 import { renderSlider } from './slider.js';
 import { renderPagination } from '../pagination/pagination.js';
 
-export function onPopularFilms() {
+export function getPopularFilms() {
   spinnerOn();
   apiService
     .fetchFilms()

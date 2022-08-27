@@ -1,5 +1,5 @@
 import { apiService } from '../API/api-service.js';
-import { fillModal } from './modal/fillModal.js';
+import { fillModal } from '../components/modal/fillModal.js';
 
 export function onGetInfoClick(e) {
   const filmClick = e.target.parentNode.parentNode;

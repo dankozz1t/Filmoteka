@@ -6,8 +6,8 @@ import { onSmoothScroll } from './js/components/smoothScroll.js';
 import { apiService } from './js/API/api-service.js';
 import { renderFilms } from './js/render/renderFilms.js';
 
-import { onLibraryControls } from './js/components/onLibraryControls.js';
-import { onGetInfoClick } from './js/components/onGetInfoClick.js';
+import { onLibraryControls } from './js/events/onLibraryControls.js';
+import { onGetInfoClick } from './js/events/onGetInfoClick.js';
 import { onPaginationClick } from './js/pagination/onPaginationClick.js';
 
 import { toggleBackdrop } from './js/components/modal/backdrop.js';

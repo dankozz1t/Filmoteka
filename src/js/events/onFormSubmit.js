@@ -1,8 +1,8 @@
 import { refs } from '../references/reference.js';
 import { apiService } from '../API/api-service.js';
-import { scrollToContent } from './scrollToContent.js';
-import { spinnerOn } from './spinner.js';
-import { spinnerOff } from './spinner.js';
+import { scrollToContent } from '../components/scrollToContent.js';
+import { spinnerOn } from '../components/spinner.js';
+import { spinnerOff } from '../components/spinner.js';
 import { renderFilms } from '../render/renderFilms.js';
 
 export function onFormSubmit(e) {
