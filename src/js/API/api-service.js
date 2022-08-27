@@ -8,8 +8,10 @@ class ApiService {
   constructor() {
     this.searchCategory = 'popular';
     this.searchName = '';
+    this.backupSearchName = '';
     this.films = null;
     this.page = 1;
+    this.backupPage = 1;
     this.totalPages = 1000;
     this.watchedPage = 1;
     this.totalWatchedPages = 77;
@@ -19,7 +21,7 @@ class ApiService {
     this.trendingPosters = [];
     this.watched = JSON.parse(localStorage.getItem('watched')) ?? [];
     this.qeue = JSON.parse(localStorage.getItem('qeue')) ?? [];
-    this.currentName = '';
+    // this.currentName = '';
   }
 
   async fetchFilms() {
@@ -37,15 +39,28 @@ class ApiService {
     }
   }
 
-  async fetchImagesByName(query) {
+  async fetchImagesByName() {
     try {
-      const url = `${ApiService.BASE_URL}/search/movie?api_key=${ApiService.API_KEY}&query=${query}`;
+      const url = `${ApiService.BASE_URL}/search/movie?api_key=${ApiService.API_KEY}&query=${this.searchName}`;
       const data = await axios.get(url);
       this.films = data.data.results;
+      console.log(this.searchName);
 
-      if (!query) {
-        this.page = data.data.page;
+      if (!data.data.results.length) {
+        console.log('aaaa fuck');
+        this.searchName = '';
+        // this.page = 1;
+      }
+      // if (!this.searchName) {
+      //   this.page = data.data.page;
+      //   console.log('false query', this.page, this.totalPages);
+      // this.totalPages cons= data.data.total_pages;
+      // }
+      else {
+        this.backupSearchName = this.searchName;
+        this.page = 1;
         this.totalPages = data.data.total_pages;
+        console.log('valid query', this.page, this.totalPages);
       }
 
       return data;
@@ -69,6 +84,7 @@ class ApiService {
       });
       this.films = data.data.results;
       this.page = data.data.page;
+      console.log('by page', this.page, this.totalPages);
       this.totalPages = data.data.total_pages;
       return data;
     } catch (error) {

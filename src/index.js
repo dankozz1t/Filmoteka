@@ -61,20 +61,23 @@ function onFormSubmit(e) {
   const query = e.target.elements.query.value;
 
   e.target.elements.query.value = '';
-
+  apiService.searchName = query;
   apiService
-    .fetchImagesByName(query)
+    .fetchImagesByName()
     .then(({ data }) => {
       if (!data.results.length) {
         refs.failureMessage.innerHTML = 'Search result not successful';
         setTimeout(() => {
           refs.failureMessage.innerHTML = '';
         }, 900);
-      } else {
-        apiService.searchName = query;
-        renderFilms(data.results);
       }
+      // else {
+      //   // console.log('aaaaaaa');
+      //   apiService.searchName = query;
+      //   renderFilms(data.results);
+      // }
     })
+    // .catch(() => console.log(console.error()))
     .finally(() => {
       spinnerOff();
     });
