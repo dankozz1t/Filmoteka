@@ -43,27 +43,23 @@ class ApiService {
     try {
       const url = `${ApiService.BASE_URL}/search/movie?api_key=${ApiService.API_KEY}&query=${this.searchName}`;
       const data = await axios.get(url);
-      this.films = data.data.results;
-      console.log(this.searchName);
+      console.log(data);
+      console.log(this.page);
+      if (data.data.results.length) {
+        this.page = 1;
+        this.films = data.data.results;
+        console.log('valid query', this.page, this.totalPages);
+        console.log(this.searchName);
+        this.backupSearchName = this.searchName;
+        this.totalPages = data.data.total_pages;
+      }
 
       if (!data.data.results.length) {
         console.log('aaaa fuck');
         this.searchName = '';
-        // this.page = 1;
-      }
-      // if (!this.searchName) {
-      //   this.page = data.data.page;
-      //   console.log('false query', this.page, this.totalPages);
-      // this.totalPages cons= data.data.total_pages;
-      // }
-      else {
-        this.backupSearchName = this.searchName;
-        this.page = 1;
-        this.totalPages = data.data.total_pages;
-        console.log('valid query', this.page, this.totalPages);
       }
 
-      return data;
+      return data.data.results;
     } catch (error) {
       console.error(error);
     }
@@ -76,6 +72,7 @@ class ApiService {
       if (this.searchName) {
         url = `${ApiService.BASE_URL}/search/movie?api_key=${ApiService.API_KEY}&query=${this.searchName}&page=${this.page}`;
       } else {
+        // console(this.searchName);
         url = `${ApiService.BASE_URL}/trending/movie/week?api_key=${ApiService.API_KEY}&page=${this.page}`;
       }
 
@@ -83,7 +80,7 @@ class ApiService {
         spinnerOff();
       });
       this.films = data.data.results;
-      this.page = data.data.page;
+      // this.page = data.data.page;
       console.log('by page', this.page, this.totalPages);
       this.totalPages = data.data.total_pages;
       return data;

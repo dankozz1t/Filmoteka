@@ -64,17 +64,15 @@ function onFormSubmit(e) {
   apiService.searchName = query;
   apiService
     .fetchImagesByName()
-    .then(({ data }) => {
-      if (!data.results.length) {
+    .then(results => {
+      if (!results.length) {
+        console.log('fuckfcuk');
         refs.failureMessage.innerHTML = 'Search result not successful';
         setTimeout(() => {
           refs.failureMessage.innerHTML = '';
         }, 900);
       }
-      // else {
-      //   // console.log('aaaaaaa');
-      //   apiService.searchName = query;
-      //   renderFilms(data.results);
+      renderFilms(results);
       // }
     })
     // .catch(() => console.log(console.error()))
