@@ -1,5 +1,4 @@
 import { apiService } from '../API/api-service.js';
-import { scrollToContent } from '../components/scrollToContent.js';
 import { spinnerOn } from '../components/spinner.js';
 import { spinnerOff } from '../components/spinner.js';
 import { renderFilms } from '../render/renderFilms.js';
@@ -17,9 +16,7 @@ export function onFormSubmit(e) {
     .fetchFilmsByName()
     .then(results => {
       renderFilms(results);
-      scrollToContent();
     })
-
     .finally(() => {
       spinnerOff();
     });

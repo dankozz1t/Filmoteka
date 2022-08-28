@@ -2,6 +2,7 @@ import axios from 'axios';
 import { refs } from '../references/reference.js';
 import { spinnerOn } from '../components/spinner.js';
 import { spinnerOff } from '../components/spinner.js';
+import { scrollToContent } from '../components/scrollToContent.js';
 
 class ApiService {
   static API_KEY = 'd7ee9dda466bc4ced4432fb2e147fc44';
@@ -84,6 +85,7 @@ class ApiService {
         }
       }
 
+      scrollToContent();
       return data.data.results;
     } catch (error) {
       console.error(error);
