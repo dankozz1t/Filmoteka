@@ -145,8 +145,6 @@ class ApiService {
 
   fetchQeue() {
     const perPage = 3;
-    console.log('all', this.qeue);
-    console.log('page', this.qeuePage);
     this.totalQeuePages =
       this.qeue.length < perPage ? 1 : Math.ceil(this.qeue.length / perPage);
     if (this.qeue.length > perPage) {
