@@ -32,6 +32,10 @@ export async function renderFilms(arrayFilms, isLibrary = false) {
   refs.contentList.innerHTML = templateRenderFilms(arrayFilms);
 
   if (isLibrary) {
+    document
+      .querySelectorAll('.js-span-vote')
+      .forEach(film => film.classList.remove('visually-hidden'));
+
     if (getActiveLibraryCategory() === 'qeue') {
       renderPagination(apiService.qeuePage, apiService.totalQeuePages);
       return;
