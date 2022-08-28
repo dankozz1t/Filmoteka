@@ -1,6 +1,9 @@
 export const refs = {
+  content: document.querySelector('.content'),
+
   contentList: document.querySelector('.content__list'),
   form: document.querySelector('#search-form'),
+  failureMessage: document.querySelector('.failure-message'),
 
   openFilmBtn: document.querySelector('[data-film-modal-open]'),
   openTeamBtn: document.querySelector('[data-team-modal-open]'),
@@ -27,8 +30,6 @@ export const refs = {
   switchBtn: document.querySelector('.switch__btn'),
   switchIcon: document.querySelector('.switch__btn__icon'),
 
-  failureMessage: document.querySelector('.failure-message'),
-
   spinner: document.querySelector('.loader'),
 
   goTopBtn: document.querySelector('.lift_up'),
@@ -38,8 +39,10 @@ export const refs = {
 
   watched: document.querySelector('.js-add-watched'),
   qeue: document.querySelector('.js-add-qeue'),
+
   filmControls: document.querySelector('.js-film-controls'),
   libraryControls: document.querySelector('.js-library-controls'),
+
   libWatchedBtn: document.querySelector('.js-btn-watched'),
   libQeueBtn: document.querySelector('.js-btn-qeue'),
 };

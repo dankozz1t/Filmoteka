@@ -17,7 +17,11 @@ export function toggleBackdrop() {
   }
 
   function onOpenTeamBtnClick() {
-    showBackdrop(refs.teamModalRef);
+    removeVisuallyHidden(refs.teamModalRef, refs.backdropRef);
+
+    refs.backdropRef.addEventListener('click', onCloseClick);
+    window.addEventListener('keydown', onEscapeKeyDown);
+    refs.filmControls.addEventListener('click', onFilmControls);
   }
 
   function showBackdrop(modal) {
@@ -37,6 +41,7 @@ export function toggleBackdrop() {
     window.addEventListener('keydown', onEscapeKeyDown);
     refs.filmControls.addEventListener('click', onFilmControls);
   }
+
   function hideBackdrop() {
     addVisuallyHidden(refs.backdropRef, refs.filmModalRef, refs.teamModalRef);
     refs.redirectBtn.classList.add('visually-hidden');
@@ -83,10 +88,8 @@ function onFilmControls(e) {
 
     if (refs.paginationControls.classList.contains('js-lib-pagination')) {
       if (getActiveLibraryCategory() === 'watched') {
-        console.log('watched');
         renderFilms(apiService.fetchWatched(), true);
       } else {
-        console.log('qeue');
         renderFilms(apiService.fetchQeue(), true);
       }
     }
@@ -96,9 +99,7 @@ function onFilmControls(e) {
     if (refs.paginationControls.classList.contains('js-lib-pagination')) {
       if (getActiveLibraryCategory() === 'watched') {
         renderFilms(apiService.fetchWatched(), true);
-        console.log('watched');
       } else {
-        console.log('qeue');
         renderFilms(apiService.fetchQeue(), true);
       }
     }
