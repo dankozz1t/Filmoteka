@@ -10,15 +10,19 @@ export function scrollToContent() {
 
   function goToBot() {
     if (window.pageYOffset < COORDS_TO_CONTENT) {
-      window.scrollBy(0, 20);
-      setTimeout(goToBot, 10);
+      window.scrollBy({
+        top: COORDS_TO_CONTENT,
+        behavior: 'smooth',
+      });
     }
   }
 
   function goToTop() {
     if (window.pageYOffset > COORDS_TO_CONTENT) {
-      window.scrollBy(0, -80);
-      setTimeout(goToTop, 10);
-    }
+      window.scrollTo({
+        top: COORDS_TO_CONTENT,
+        behavior: 'smooth',
+      });
+
   }
 }
