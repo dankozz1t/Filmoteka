@@ -1,19 +1,53 @@
-// import { refs } from '../references/reference';
+const COORDS_TO_CONTENT = document.documentElement.clientHeight;
 
 export function scrollContent() {
-  //   let windowCoords = refs.content.getBoundingClientRect().y;
-  //   console.log(windowCoords);
+  if (window.pageYOffset < COORDS_TO_CONTENT) {
+    goToBot();
+  }
+  if (window.pageYOffset > COORDS_TO_CONTENT) {
+    window.scrollBy(0, -80);
+    setTimeout(goToTop, 10);
+  }
+}
 
-  let windowCoords = document.documentElement.offsetHeight;
-
-  function scroll() {
-    if (window.pageYOffset < windowCoords) {
-      window.scrollBy(0, 20);
-      setTimeout(scroll, 20);
-    }
-    if (window.pageYOffset > windowCoords) {
-      window.scrollTo(0, windowCoords);
+function goToBot() {
+  if (window.pageYOffset < COORDS_TO_CONTENT) {
+    if (window.innerWidth >= 1024) {
+      window.scrollBy({
+        top: 700,
+        behavior: 'smooth',
+      });
+    } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+      window.scrollBy({
+        top: 630,
+        behavior: 'smooth',
+      });
+    } else if (window.innerWidth < 768) {
+      window.scrollBy({
+        top: 500,
+        behavior: 'smooth',
+      });
     }
   }
-  scroll();
+}
+
+function goToTop() {
+  if (window.pageYOffset > COORDS_TO_CONTENT) {
+    if (window.innerWidth >= 1024) {
+      window.scrollTo({
+        top: 700,
+        behavior: 'smooth',
+      });
+    } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+      window.scrollTo({
+        top: 600,
+        behavior: 'smooth',
+      });
+    } else if (window.innerWidth < 768) {
+      window.scrollTo({
+        top: 500,
+        behavior: 'smooth',
+      });
+    }
+  }
 }
