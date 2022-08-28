@@ -100,7 +100,9 @@ function onFilmControls(e) {
       if (getActiveLibraryCategory() === 'watched') {
         renderFilms(apiService.fetchWatched(), true);
       } else {
+        console.log('pre', apiService.films, apiService.qeue);
         renderFilms(apiService.fetchQeue(), true);
+        console.log('post', apiService.films, apiService.qeue);
       }
     }
   }

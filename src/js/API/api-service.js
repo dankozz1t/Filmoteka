@@ -116,10 +116,10 @@ class ApiService {
 
   fetchWatched() {
     const perPage = 3;
-    this.totalWatchedPages = Math.ceil(this.watched.length / perPage);
-    this.watched.length < perPage
-      ? 1
-      : Math.ceil(this.watched.length / perPage);
+    this.totalWatchedPages =
+      this.watched.length < perPage
+        ? 1
+        : Math.ceil(this.watched.length / perPage);
 
     if (this.watched.length > perPage) {
       this.films =
@@ -130,16 +130,25 @@ class ApiService {
               this.watchedPage * perPage
             );
     } else {
+      this.watchedPage = 1;
       this.films = this.watched;
     }
-
+    if (!this.films.length) {
+      this.watchedPage -= 1;
+      this.films = this.watched.slice(
+        (this.watchedPage - 1) * perPage,
+        this.watchedPage * perPage
+      );
+    }
     return this.films;
   }
 
   fetchQeue() {
     const perPage = 3;
-    this.totalQeuePages = Math.ceil(this.qeue.length / perPage);
-    this.qeue.length < perPage ? 1 : Math.ceil(this.qeue.length / perPage);
+    console.log('all', this.qeue);
+    console.log('page', this.qeuePage);
+    this.totalQeuePages =
+      this.qeue.length < perPage ? 1 : Math.ceil(this.qeue.length / perPage);
     if (this.qeue.length > perPage) {
       this.films =
         this.qeuePage === 1
@@ -149,7 +158,15 @@ class ApiService {
               this.qeuePage * perPage
             );
     } else {
+      this.qeuePage = 1;
       this.films = this.qeue;
+    }
+    if (!this.films.length) {
+      this.qeuePage -= 1;
+      this.films = this.qeue.slice(
+        (this.qeuePage - 1) * perPage,
+        this.qeuePage * perPage
+      );
     }
     return this.films;
   }
