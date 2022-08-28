@@ -3,7 +3,6 @@ import { renderFilms } from '../render/renderFilms.js';
 import { spinnerOn } from './spinner.js';
 import { spinnerOff } from './spinner.js';
 import { renderSlider } from './slider.js';
-import { renderPagination } from '../pagination/pagination.js';
 
 export function getPopularFilms() {
   spinnerOn();

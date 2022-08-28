@@ -9,21 +9,6 @@ class ApiService {
 
   constructor() {
     this.searchName = '';
-    // <<<<<<< HEAD
-    // this.backupSearchName = '';
-    // this.films = null;
-    // this.page = 1;
-    // this.totalPages = 1000;
-    // this.watchedPage = 1;
-    // this.totalWatchedPages = 77;
-    // this.qeuePage = 1;
-    // this.totalQeuePages = 99;
-    // this.allGenres = null;
-    // this.trendingPosters = [];
-    // this.sliderFilms = [];
-    // this.watched = JSON.parse(localStorage.getItem('watched')) ?? [];
-    // this.qeue = JSON.parse(localStorage.getItem('qeue')) ?? [];
-    // =======
     this.backupSearchName = '';
 
     this.films = null;
@@ -32,7 +17,6 @@ class ApiService {
 
     this.allGenres = null;
     this.sliderFilms = [];
-    // this.trendingPosters = [];
 
     //pagination
     this.page = 1;
@@ -43,7 +27,6 @@ class ApiService {
 
     this.qeuePage = 1;
     this.totalQeuePages = 99;
-    // >>>>>>> main
   }
 
   async fetchFilms() {
@@ -55,7 +38,6 @@ class ApiService {
       this.page = data.data.page;
       this.totalPages = data.data.total_pages;
       this.sliderFilms = data.data.results;
-      // this.trendingPosters = data.data.results.map(el => el.poster_path);
 
       return data;
     } catch (error) {
@@ -67,14 +49,8 @@ class ApiService {
     try {
       const url = `${ApiService.BASE_URL}/search/movie?api_key=${ApiService.API_KEY}&query=${this.searchName}`;
       const data = await axios.get(url);
-      // <<<<<<< HEAD
+
       if (data.data.results.length) {
-        // =======
-
-        // this.films = data.data.results;
-
-        // if (!query) {
-        // >>>>>>> main
         this.page = data.data.page;
         this.totalPages = data.data.total_pages;
         this.films = data.data.results;
@@ -114,7 +90,7 @@ class ApiService {
     }
   }
 
-  async fetchImagesByPage() {
+  async fetchFilmsByPage() {
     try {
       spinnerOn();
 

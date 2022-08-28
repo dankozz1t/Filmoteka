@@ -1,13 +1,9 @@
 import { apiService } from '../API/api-service.js';
 import { refs } from '../references/reference.js';
 import { renderPagination } from '../pagination/pagination.js';
-// <<<<<<< HEAD
 import { getActiveLibraryCategory } from '../getPages/getActiveLibraryCategory.js';
-// =======
-// import { getActiveLibraryCategory } from '../library/getActiveLibraryCategory.js';
 
 import templateRenderFilms from '../../templates/template-film.hbs';
-// >>>>>>> main
 import templatePlugEmpty from '../../templates/template-plug-empty.hbs';
 
 export async function renderFilms(arrayFilms, isLibrary = false) {

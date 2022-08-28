@@ -1,5 +1,4 @@
 import { refs } from '../references/reference.js';
-import { getActivePage } from '../getPages/getActivePage.js';
 
 export function renderPagination(page, total) {
   let markup = '';
