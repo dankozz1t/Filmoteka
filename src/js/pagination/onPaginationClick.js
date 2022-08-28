@@ -1,13 +1,7 @@
-import { apiService } from '../API/api-service.js';
 import { renderContentByPagination } from '../render/renderContentByPagination.js';
 import { renderLibraryByPagination } from '../render/renderLibraryByPagination.js';
-import { renderFilms } from '../render/renderFilms.js';
-// <<<<<<< HEAD
-import { refs } from '../references/reference.js';
 import { getActivePage } from '../getPages/getActivePage.js';
-// =======
 import { scrollToContent } from '../components/scrollToContent.js';
-// >>>>>>> main
 
 export function onPaginationClick(e) {
   if (e.target.nodeName !== 'BUTTON') {
