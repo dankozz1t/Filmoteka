@@ -45,3 +45,10 @@
     display: none;
   }
 }
+
+.pagination__first.js-first-no-hide,
+.pagination__last.js-last-no-hide {
+  @include media(mobile-only) {
+    display: flex;
+  }
+}

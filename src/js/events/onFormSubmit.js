@@ -5,6 +5,33 @@ import { spinnerOn } from '../components/spinner.js';
 import { spinnerOff } from '../components/spinner.js';
 import { renderFilms } from '../render/renderFilms.js';
 
+// export function onFormSubmit(e) {
+//   e.preventDefault();
+
+//   spinnerOn();
+
+//   const query = e.target.elements.query.value;
+
+//   e.target.elements.query.value = '';
+
+//   apiService
+//     .fetchImagesByName(query)
+//     .then(({ data }) => {
+//       if (!data.results.length) {
+//         refs.failureMessage.innerHTML = 'Search result not successful';
+//         setTimeout(() => {
+//           refs.failureMessage.innerHTML = '';
+//         }, 900);
+//       } else {
+//         apiService.searchName = query;
+//         renderFilms(data.results);
+//         scrollToContent();
+//       }
+//     })
+//     .finally(() => {
+//       spinnerOff();
+//     });
+// }
 export function onFormSubmit(e) {
   e.preventDefault();
 
@@ -13,21 +40,14 @@ export function onFormSubmit(e) {
   const query = e.target.elements.query.value;
 
   e.target.elements.query.value = '';
-
+  apiService.searchName = query;
   apiService
-    .fetchImagesByName(query)
-    .then(({ data }) => {
-      if (!data.results.length) {
-        refs.failureMessage.innerHTML = 'Search result not successful';
-        setTimeout(() => {
-          refs.failureMessage.innerHTML = '';
-        }, 900);
-      } else {
-        apiService.searchName = query;
-        renderFilms(data.results);
-        scrollToContent();
-      }
+    .fetchFilmsByName()
+    .then(results => {
+      renderFilms(results);
+      scrollToContent();
     })
+
     .finally(() => {
       spinnerOff();
     });

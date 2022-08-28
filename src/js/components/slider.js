@@ -1,14 +1,13 @@
 import { refs } from '../references/reference.js';
 import { apiService } from '../API/api-service.js';
-
 import Flickity from 'flickity';
 import 'flickity/dist/flickity.css';
 
 export function renderSlider() {
-  const markup = apiService.trendingPosters
+  const markup = apiService.sliderFilms
     .map(
-      el =>
-        `<div class="slider__cell"><img class="slider__img" src="https://image.tmdb.org/t/p/w500/${el}" alt="Film poster" loading="lazy" height="500"/></div>`
+      ({ id, poster_path, title }) =>
+        `<div class="slider__cell"><img class="slider__img" src="${poster_path}" alt=${title} id=${id} loading="lazy" height="500"/></div>`
     )
     .join('');
 
@@ -19,5 +18,6 @@ export function renderSlider() {
     autoPlay: 2000,
     groupCells: true,
     wrapAround: true,
+    pageDots: false,
   });
 }

@@ -135,7 +135,9 @@
 
 .film-modal__btn-wrapper {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
 
   @include media(tablet) {
     gap: 15px;

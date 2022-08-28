@@ -14,7 +14,6 @@ export function getPopularFilms() {
         apiService.fetchGenres().then(() => {
           renderFilms(data.results);
           renderSlider();
-          renderPagination(apiService.page, apiService.totalPages);
         });
       }
     })
