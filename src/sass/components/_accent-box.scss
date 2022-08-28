@@ -23,3 +23,15 @@
   background-color: var(--secondary-bg-cl);
   border-radius: 5px;
 }
+
+.accent-box-rating {
+  margin-left: 5px;
+
+  @include media(desktop) {
+    height: 20px;
+    width: 40px;
+
+    text-align: center;
+    font-size: 12px;
+  }
+}
