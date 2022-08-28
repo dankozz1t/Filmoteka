@@ -9,20 +9,16 @@ export function scrollToContent() {
   }
 
   function goToBot() {
-    if (window.pageYOffset < COORDS_TO_CONTENT) {
-      window.scrollBy({
-        top: COORDS_TO_CONTENT,
-        behavior: 'smooth',
-      });
-    }
+    window.scrollBy({
+      top: COORDS_TO_CONTENT,
+      behavior: 'smooth',
+    });
   }
 
   function goToTop() {
-    if (window.pageYOffset > COORDS_TO_CONTENT) {
-      window.scrollTo({
-        top: COORDS_TO_CONTENT,
-        behavior: 'smooth',
-      });
-
+    window.scrollTo({
+      top: COORDS_TO_CONTENT,
+      behavior: 'smooth',
+    });
   }
 }
