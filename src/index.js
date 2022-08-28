@@ -32,7 +32,7 @@ apiService
       apiService.fetchGenres().then(() => {
         renderFilms(data.results);
         renederSlider();
-        renderPagination(apiService.page, apiService.totalPages);
+        // renderPagination(apiService.page, apiService.totalPages);
       });
     }
   })
@@ -63,19 +63,11 @@ function onFormSubmit(e) {
   e.target.elements.query.value = '';
   apiService.searchName = query;
   apiService
-    .fetchImagesByName()
+    .fetchFilmsByName()
     .then(results => {
-      if (!results.length) {
-        console.log('fuckfcuk');
-        refs.failureMessage.innerHTML = 'Search result not successful';
-        setTimeout(() => {
-          refs.failureMessage.innerHTML = '';
-        }, 900);
-      }
       renderFilms(results);
-      // }
     })
-    // .catch(() => console.log(console.error()))
+
     .finally(() => {
       spinnerOff();
     });

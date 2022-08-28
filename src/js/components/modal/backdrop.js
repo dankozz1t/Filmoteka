@@ -2,6 +2,7 @@ import { apiService } from '../../API/api-service.js';
 import { refs } from '../../references/reference.js';
 import { getActiveLibraryCategory } from '../../getPages/getActiveLibraryCategory.js';
 import { renderFilms } from '../../render/renderFilms.js';
+import { getActivePage } from '../../getPages/getActivePage.js';
 
 export function toggleBackdrop() {
   refs.openFilmBtn.addEventListener('click', onOpenFilmBtnClick);
@@ -38,6 +39,7 @@ export function toggleBackdrop() {
   }
   function hideBackdrop() {
     addVisuallyHidden(refs.backdropRef, refs.filmModalRef, refs.teamModalRef);
+    refs.redirectBtn.classList.add('visually-hidden');
 
     window.removeEventListener('keydown', onEscapeKeyDown);
     refs.backdropRef.removeEventListener('click', onCloseClick);
@@ -72,6 +74,9 @@ function removeVisuallyHidden(...args) {
 function onFilmControls(e) {
   if (e.target.nodeName !== 'BUTTON') {
     return;
+  }
+  if (getActivePage() === 'home') {
+    refs.redirectBtn.classList.remove('visually-hidden');
   }
   if (e.target.classList.contains('js-add-watched')) {
     manageAdd(e, 'watched');

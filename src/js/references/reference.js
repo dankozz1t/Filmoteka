@@ -6,6 +6,7 @@ export const refs = {
   openTeamBtn: document.querySelector('[data-team-modal-open]'),
   backdropRef: document.querySelector('[data-backdrop]'),
   filmModalRef: document.querySelector('[data-film-modal]'),
+  redirectBtn: document.querySelector('.redirect'),
   teamModalRef: document.querySelector('[data-team-modal]'),
 
   filmName: document.querySelector('.js-name'),
@@ -33,6 +34,7 @@ export const refs = {
   goTopBtn: document.querySelector('.lift_up'),
 
   slider: document.querySelector('.slider'),
+  sliderImage: document.querySelector('.slider__img'),
 
   watched: document.querySelector('.js-add-watched'),
   qeue: document.querySelector('.js-add-qeue'),
