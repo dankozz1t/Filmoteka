@@ -46,7 +46,6 @@
 [![Олексій Швець](https://img.shields.io/badge/Scrum_Master-Олексій_Швець-purple?style=for-the-badge&logo=Contacts&logoColor=white)](#)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alexey-shvets-a76b08249/)
 [![GitHub](https://img.shields.io/badge/GitHub-grey?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Alexei-Shvets)
-[![Telegram](https://img.shields.io/badge/Telegram-blue?style=for-the-badge&logo=Telegram&logoColor=white)](https://t.me/Alexey__Shvets)
 [![Email](https://img.shields.io/badge/shvetsalexei@gmail.com-%23DD0031.svg?&style=for-the-badge&logo=gmail&logoColor=white)](mailto:shvetsalexei@gmail.com)
 
 [![Анастасія Свечнікова](https://img.shields.io/badge/Developer-Анастасія_Свечнікова-purple?style=for-the-badge&logo=Contacts&logoColor=white)](#)
