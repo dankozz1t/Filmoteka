@@ -5,7 +5,7 @@ export function fillModal(film) {
   refs.filmName.textContent = film.title;
   refs.filmImage.alt = film.title;
   refs.filmImage.src = film.poster_path;
-  refs.filmPopulation.textContent = film.popularity.toFixed(2);
+  refs.filmPopulation.textContent = film.popularity;
   refs.filmTittle.textContent = film.original_title;
   refs.filmVoteFirst.textContent = film.vote_average;
   refs.filmVoteSecond.textContent = film.vote_count;

@@ -18,15 +18,21 @@ export async function renderFilms(arrayFilms, isLibrary = false) {
   }
 
   arrayFilms.forEach((film = {}) => {
-    checkTitle(film);
+    if (typeof film.genre_ids === 'object') {
+      checkTitle(film);
 
-    checkGenres(film);
+      checkGenres(film);
 
-    checkDate(film);
+      checkDate(film);
 
-    checkPoster(film);
+      checkVote(film);
 
-    checkAbout(film);
+      checkPopulation(film);
+
+      checkPoster(film);
+
+      checkAbout(film);
+    }
   });
 
   refs.contentList.innerHTML = templateRenderFilms(arrayFilms);
@@ -48,6 +54,18 @@ export async function renderFilms(arrayFilms, isLibrary = false) {
   }
 
   renderPagination(apiService.page, apiService.totalPages);
+}
+
+function checkVote(film) {
+  if (film.vote_average) {
+    film.vote_average = Number(film.vote_average).toFixed(1);
+  }
+}
+
+function checkPopulation(film) {
+  if (film.popularity) {
+    film.popularity = Number(film.popularity).toFixed(1);
+  }
 }
 
 function checkAbout(film) {
@@ -75,30 +93,28 @@ function checkDate(film) {
 }
 
 function checkGenres(film) {
-  if (typeof film.genre_ids === 'object') {
-    let genresArray = [];
-    let genresArrayFull = [];
+  let genresArray = [];
+  let genresArrayFull = [];
 
-    film.genre_ids.forEach(id => {
-      apiService.allGenres.forEach(genre => {
-        if (id === genre.id) {
-          genresArray.push(genre.name);
-          genresArrayFull.push(genre.name);
-        }
-      });
+  film.genre_ids.forEach(id => {
+    apiService.allGenres.forEach(genre => {
+      if (id === genre.id) {
+        genresArray.push(genre.name);
+        genresArrayFull.push(genre.name);
+      }
     });
+  });
 
-    if (!film.genre_ids.length) {
-      genresArray.push('---');
-      genresArrayFull.push('---');
-    } else if (film.genre_ids.length >= 3) {
-      genresArray.splice(2, genresArray.length - 1);
-      genresArray.push('Other...');
-    }
-
-    film.genre_ids = genresArray.join(', ');
-    film.genre_ids_full = genresArrayFull.join(', ');
+  if (!film.genre_ids.length) {
+    genresArray.push('---');
+    genresArrayFull.push('---');
+  } else if (film.genre_ids.length >= 3) {
+    genresArray.splice(2, genresArray.length - 1);
+    genresArray.push('Other...');
   }
+
+  film.genre_ids = genresArray.join(', ');
+  film.genre_ids_full = genresArrayFull.join(', ');
 }
 
 function checkTitle(film) {
