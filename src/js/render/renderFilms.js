@@ -1,7 +1,7 @@
 import { apiService } from '../API/api-service.js';
 import { refs } from '../references/reference.js';
 import { renderPagination } from '../pagination/pagination.js';
-import { getActiveLibraryCategory } from '../library/getActiveLibraryCategory.js';
+import { getActiveLibraryCategory } from '../getPages/getActiveLibraryCategory.js';
 
 import templateRenderFilms from '../../templates/template-film.hbs';
 import templatePlugEmpty from '../../templates/template-plug-empty.hbs';

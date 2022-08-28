@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { refs } from '../references/reference.js';
 import { spinnerOn } from '../components/spinner.js';
 import { spinnerOff } from '../components/spinner.js';
 
@@ -8,13 +9,14 @@ class ApiService {
 
   constructor() {
     this.searchName = '';
+    this.backupSearchName = '';
 
     this.films = null;
     this.watched = JSON.parse(localStorage.getItem('watched')) ?? [];
     this.qeue = JSON.parse(localStorage.getItem('qeue')) ?? [];
 
     this.allGenres = null;
-    this.trendingPosters = [];
+    this.sliderFilms = [];
 
     //pagination
     this.page = 1;
@@ -35,7 +37,7 @@ class ApiService {
       this.films = data.data.results;
       this.page = data.data.page;
       this.totalPages = data.data.total_pages;
-      this.trendingPosters = data.data.results.map(el => el.poster_path);
+      this.sliderFilms = data.data.results;
 
       return data;
     } catch (error) {
@@ -43,25 +45,52 @@ class ApiService {
     }
   }
 
-  async fetchImagesByName(query) {
+  async fetchFilmsByName() {
     try {
-      const url = `${ApiService.BASE_URL}/search/movie?api_key=${ApiService.API_KEY}&query=${query}`;
+      const url = `${ApiService.BASE_URL}/search/movie?api_key=${ApiService.API_KEY}&query=${this.searchName}`;
       const data = await axios.get(url);
 
-      this.films = data.data.results;
-
-      if (!query) {
+      if (data.data.results.length) {
         this.page = data.data.page;
         this.totalPages = data.data.total_pages;
+        this.films = data.data.results;
+        this.backupSearchName = this.searchName;
       }
 
-      return data;
+      if (!data.data.results.length) {
+        refs.failureMessage.innerHTML = 'Search result not successful';
+        setTimeout(() => {
+          refs.failureMessage.innerHTML = '';
+        }, 900);
+        this.bk = Number(
+          refs.paginationControls.querySelector('.js-current').textContent
+        );
+        if (this.backupSearchName) {
+          this.searchName = this.backupSearchName;
+          this.page = this.bk;
+
+          const url = `${ApiService.BASE_URL}/search/movie?api_key=${ApiService.API_KEY}&query=${this.searchName}&page=${this.bk}`;
+          const data = await axios.get(url);
+
+          return data.data.results;
+        } else if (!this.backupSearchName) {
+          this.searchName = '';
+
+          const url = `${ApiService.BASE_URL}/trending/movie/week?api_key=${ApiService.API_KEY}&page=${this.bk}`;
+          const data = await axios.get(url);
+          this.page = data.data.page;
+          this.totalPages = data.data.total_pages;
+          return data.data.results;
+        }
+      }
+
+      return data.data.results;
     } catch (error) {
       console.error(error);
     }
   }
 
-  async fetchImagesByPage() {
+  async fetchFilmsByPage() {
     try {
       spinnerOn();
 
@@ -77,7 +106,6 @@ class ApiService {
       });
 
       this.films = data.data.results;
-      this.page = data.data.page;
       this.totalPages = data.data.total_pages;
 
       return data;
