@@ -2,10 +2,13 @@
 
  [![Typing SVG](https://readme-typing-svg.herokuapp.com?color=%2336BCF7&lines=This+is+our+team+experience)](https://git.io/typing-svg)
 # Website - "Filmoteka" 
-## STACK - JavaScript (API, Axios, lodash...), HTML/CSS (BEM, SASS)
+
+![Demonstration](https://github.com/dankozz1t/Filmoteka/blob/main/src/images/demonstration/demo.jpg)
 
 - Look at [**Layout (Figma)**](<https://www.figma.com/file/IOrJziFAjQD8Xb5V1fx0ib/Filmoteka-(Copy)-(Copy)?node-id=0%3A1>)
 - Look at [**WebSite (GitPages)**](<https://dankozz1t.github.io/Filmoteka/>)
+
+## STACK - JavaScript (API, Axios, lodash...), HTML/CSS (BEM, SASS)
 
 ---
 ### Through this work, we have learned
